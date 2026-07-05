@@ -1,3 +1,9 @@
+"""
+Collect FIFA Men's World Rankings from the official FIFA JSON API.
+
+Source: https://api.fifa.com/api/v3/rankings?gender=1
+"""
+
 import json
 from datetime import datetime, timezone
 from pathlib import Path
@@ -8,10 +14,24 @@ import requests
 
 API_URL = "https://api.fifa.com/api/v3/rankings"
 MENS_GENDER = 1
-MIN_TEAM_COUNT = 150
+MIN_TEAM_COUNT = 200
 
 RAW_DIR = Path("data/raw")
 PROCESSED_PATH = Path("data/processed/fifa_rankings.csv")
+
+OUTPUT_COLUMNS = [
+    "ranking_date",
+    "team",
+    "country_id",
+    "fifa_rank",
+    "previous_rank",
+    "fifa_points",
+    "decimal_points",
+    "ranking_movement",
+    "confederation",
+    "matches_played",
+    "collected_at",
+]
 
 HEADERS = {
     "User-Agent": (
@@ -26,7 +46,7 @@ HEADERS = {
 
 
 def create_fifa_session() -> requests.Session:
-    """Create a requests session with browser-like headers for Akamai."""
+    """Create a requests session with Chrome-like headers for Akamai."""
     session = requests.Session()
     session.headers.update(HEADERS)
     return session
@@ -45,7 +65,7 @@ def validate_api_response(response: requests.Response) -> None:
     if response.status_code == 403:
         raise RuntimeError(
             "FIFA API returned HTTP 403. Akamai likely blocked the request. "
-            "Ensure browser-like headers are set on the session."
+            "Ensure a Chrome-like User-Agent is set on the session."
         )
 
     if "text/html" in content_type or body_start.startswith("<html"):
@@ -79,10 +99,16 @@ def fetch_fifa_rankings(
 
 def parse_rankings_response(data: dict) -> pd.DataFrame:
     """Normalize FIFA rankings JSON into a flat dataframe."""
-    results = data.get("Results", [])
+    if "Results" not in data:
+        raise ValueError("FIFA API response is missing the 'Results' field.")
+
+    results = data["Results"]
+
+    if not isinstance(results, list):
+        raise ValueError("FIFA API 'Results' field is not a list.")
 
     if not results:
-        raise ValueError("No ranking data returned by FIFA API.")
+        raise ValueError("FIFA API returned an empty 'Results' list.")
 
     if len(results) < MIN_TEAM_COUNT:
         raise ValueError(
@@ -118,7 +144,7 @@ def parse_rankings_response(data: dict) -> pd.DataFrame:
     if rankings_df[required_columns].isnull().sum().sum() > 0:
         raise ValueError("Missing required FIFA ranking fields.")
 
-    return rankings_df
+    return rankings_df[OUTPUT_COLUMNS]
 
 
 def collect_fifa_rankings() -> None:
@@ -127,6 +153,7 @@ def collect_fifa_rankings() -> None:
     data = fetch_fifa_rankings(session)
 
     RAW_DIR.mkdir(parents=True, exist_ok=True)
+    PROCESSED_PATH.parent.mkdir(parents=True, exist_ok=True)
 
     raw_file = (
         RAW_DIR /
