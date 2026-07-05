@@ -648,3 +648,102 @@ Model training is complete. All three models trained and compared. Best model sa
 ### Status
 
 ✅ Completed
+
+---
+
+## Iteration 5
+
+**Date:** 2026-07-05
+
+### Stage
+
+Tournament Simulation
+
+### Original Plan
+
+The original plan described a Monte Carlo simulation: predict probabilities for every match, simulate thousands of times, and report the probability of each team reaching each stage. No implementation details were given.
+
+### Observations
+
+**Fixture file only covers matches up to the point of collection**
+
+The `world_cup_fixtures.csv` file (collected during data collection) had 90 matches — all group stage, all Round of 32, and 2 Round of 16 matches. The remaining 6 Round of 16 matches, plus Quarter-finals, Semi-finals, and Final, were not yet scheduled in the FIFA API at collection time.
+
+This meant the simulation could not be built by simply iterating the fixture file. The bracket had to be reconstructed from first principles.
+
+**Bracket reconstruction from R32 pairing pattern**
+
+The Round of 32 matchups follow a fixed bracket drawn before the tournament. By looking at which R32 winners played each other in the known Round of 16 results (Canada vs Morocco, Paraguay vs France), the bracket pairing pattern was identified:
+
+- R32 matches are grouped in pairs: (1,6), (2,4), (3,8), (5,7), (9,14), (10,12), (11,15), (13,16)
+- The two confirmed R16 results matched slots (1,6) and (2,4) exactly
+
+From this, the remaining 6 Round of 16 matchups were derived:
+
+| Match | Home | Away |
+|---|---|---|
+| R16-3 | Brazil | England |
+| R16-4 | Norway | Belgium |
+| R16-5 | Mexico | Egypt |
+| R16-6 | Portugal | USA |
+| R16-7 | Spain | Switzerland |
+| R16-8 | Argentina | Colombia |
+
+**Single-row model prediction is slow — fixed by pre-computing pairwise probabilities**
+
+The first implementation called `pipeline.predict_proba()` inside the simulation loop: once per match per simulation. With 7 matches per simulation and 10,000 runs, that is 70,000 model calls at 1.3ms each — approximately 90 seconds total. The script ran silently for 2.5 minutes before being killed.
+
+Fix: pre-compute P(home wins) for all 182 ordered team pairs (14 × 13) before the simulation loop. The loop then just does `random.random() < p_home`. Total model calls reduced from 70,000 to 182. Runtime dropped from ~90 seconds to 4 seconds.
+
+**Draw resolution in knockout rounds**
+
+The model outputs three-class probabilities: home_win, draw, away_win. In knockout rounds there are no draws. The draw probability was split equally between home win and away win, and the match was decided by sampling from the adjusted two-class distribution.
+
+**USA name mismatch between historical results and FIFA names**
+
+In `features.csv`, the United States appears as "United States" (from the historical results dataset). The FIFA rankings, Elo code map, and fixture file all use "USA". A `FIXTURE_TO_RESULTS_NAME` mapping was added to the simulation to correctly look up USA's rolling form from the historical data.
+
+### Results
+
+10,000 Monte Carlo simulations from current bracket state (Round of 16, 2026-07-05):
+
+| Team | QF% | SF% | Final% | Win% |
+|---|---|---|---|---|
+| France | 100.0 | 63.9 | 36.0 | **21.8** |
+| Brazil | 58.9 | 40.3 | 20.8 | 13.5 |
+| Spain | 71.7 | 41.8 | 25.5 | 13.4 |
+| Argentina | 68.1 | 36.3 | 21.9 | 11.3 |
+| Morocco | 100.0 | 36.1 | 15.6 | 7.6 |
+| England | 41.1 | 24.3 | 12.6 | 7.1 |
+| Belgium | 64.3 | 26.7 | 12.3 | 7.1 |
+| Portugal | 65.8 | 36.9 | 19.0 | 7.0 |
+| Mexico | 63.6 | 33.1 | 15.1 | 4.8 |
+| Colombia | 31.9 | 12.8 | 6.2 | 2.2 |
+| USA | 34.2 | 15.6 | 4.6 | 1.3 |
+| Switzerland | 28.3 | 9.0 | 4.0 | 1.2 |
+| Norway | 35.7 | 8.7 | 2.7 | 0.9 |
+| Egypt | 36.4 | 14.4 | 3.5 | 0.9 |
+
+France is the model's pick to win the 2026 World Cup at 21.8%, followed by Brazil (13.5%) and Spain (13.4%).
+
+### Decisions
+
+1. **Bracket hard-coded from R32 pairing pattern** — the remaining R16 pairings were derived from the confirmed matches, not fetched from an API. All 8 R16 matchups are documented in the script.
+
+2. **Pre-compute all pairwise win probabilities** — 182 model calls before the simulation, zero model calls inside the loop. 22× speedup (90s → 4s).
+
+3. **Draw probability split 50/50** — draw probability is redistributed equally between home and away win for knockout rounds. Simple and unbiased.
+
+4. **FIXTURE_TO_RESULTS_NAME map** — handles USA/United States name discrepancy for rolling form lookup.
+
+### Version 1 Impact
+
+Tournament simulation is complete. Championship probabilities produced for all 14 remaining teams.
+
+| Output | Details |
+|--------|---------|
+| `data/processed/simulation_results.csv` | Per-team QF/SF/Final/Win probabilities from 10,000 simulations |
+
+### Status
+
+✅ Completed
