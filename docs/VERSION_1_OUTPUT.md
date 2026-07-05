@@ -125,15 +125,29 @@ France and Morocco confirmed in Quarter-finals from actual results.
 
 ---
 
-## Version 2 Ideas
+## Version 2 Ideas (Final Version)
 
-- Historical FIFA ranking snapshots instead of single current snapshot
-- Historical Elo time series to fill the 70% null gap
-- Player availability and injury data
+**Features & Data**
+- Historical FIFA ranking snapshots (time series, not single snapshot)
+- Historical Elo ratings time series to fill the 70% null gap in training data
+- Squad market values and player ratings
+- Expected Goals (xG) data
+- Injury and suspension information
 - Head-to-head record features
-- Tournament-specific form (WC qualifying form vs friendlies)
-- Hyperparameter tuning (cross-validated grid search)
+- Tournament-specific form (WC qualifying vs friendlies vs major tournaments)
+
+**Modelling**
+- Hyperparameter tuning via cross-validated grid search
+- Automated feature selection
 - Neural network model comparison
+- Improved probability calibration
+
+**Engineering & Deployment**
+- Automated data refresh pipeline
+- CI/CD deployment
+- Docker containerisation
+- Cloud deployment
+- Real-time prediction updates during the tournament
 
 ---
 

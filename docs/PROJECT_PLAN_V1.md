@@ -297,27 +297,33 @@ Displays:
 
 ## Future Improvements
 
-Version 2
+Version 2 (Final)
 
-- Additional engineered features
-- Rolling performance metrics
-- Hyperparameter tuning
-- Automated feature selection
+**Features & Data**
 
-Version 3
-
+- Historical FIFA ranking snapshots (time series, not single snapshot)
+- Historical Elo ratings time series to fill the 70% null gap in training data
 - Squad market values
-- Player ratings
-- Expected Goals (xG)
-- Injury information
+- Player ratings and availability
+- Expected Goals (xG) data
+- Injury and suspension information
+- Head-to-head record features
+- Tournament-specific form (WC qualifying vs friendlies vs major tournaments)
 
-Version 4
+**Modelling**
+
+- Hyperparameter tuning via cross-validated grid search
+- Automated feature selection
+- Neural network model comparison
+- Improved probability calibration
+
+**Engineering & Deployment**
 
 - Automated data refresh pipeline
 - CI/CD deployment
-- Docker containerization
+- Docker containerisation
 - Cloud deployment
-- Real-time prediction updates
+- Real-time prediction updates during the tournament
 
 # Design Iterations
 
