@@ -1,0 +1,12 @@
+# Dataset Inventory
+
+| Dataset | File / Source | Collection Method | Status | Used in Version 1 | Purpose |
+|---|---|---|---|---|---|
+| Historical Match Results | `data/raw/results.csv` | Kaggle download | ✅ Collected + preprocessed | ✅ Yes | Training data and recent performance features |
+| Former Team Names | `data/raw/former_names.csv` | Kaggle download | ✅ Collected + preprocessed | ✅ Yes | Standardize historical team names |
+| Shootouts | `data/raw/shootouts.csv` | Kaggle download | ✅ Collected + preprocessed | Future | Penalty shootout analysis |
+| Goalscorers | `data/raw/goalscorers.csv` | Kaggle download | ✅ Collected + preprocessed | Future | Player-level features |
+| FIFA World Rankings | Official FIFA rankings | Python collection | ⬜ Planned | ✅ Yes | FIFA rank and FIFA points |
+| World Football Elo Ratings | World Football Elo Ratings | Python collection | ⬜ Planned | ✅ Yes | Dynamic team strength |
+| World Cup History | Curated CSV | Manual build | ⬜ Planned | ✅ Yes | Appearances, titles, best finish |
+| World Cup Fixtures | Official FIFA fixtures | Python collection | ⬜ Planned | ✅ Yes | Tournament simulation |
