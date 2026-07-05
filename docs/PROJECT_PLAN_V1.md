@@ -286,7 +286,7 @@ Displays:
 | Stage | Status |
 |---------|---------|
 | Project Setup | ✅ Complete |
-| Data Collection | ⬜ Planned |
+| Data Collection | ✅ Complete |
 | Data Cleaning | ⬜ Planned |
 | Feature Engineering | ⬜ Planned |
 | Model Training | ⬜ Planned |
@@ -318,3 +318,164 @@ Version 4
 - Docker containerization
 - Cloud deployment
 - Real-time prediction updates
+
+# Design Iterations
+
+This section documents design decisions, architectural changes, and implementation improvements made during the development of Version 1. The original project scope remains unchanged unless explicitly stated.
+
+---
+
+## Iteration 1
+
+**Date:** 2026-07-04
+
+### Stage
+
+Data Exploration & Preprocessing
+
+### Original Plan
+
+The original Version 1 plan assumed preprocessing would primarily focus on the historical match results dataset before moving on to collecting external datasets (FIFA Rankings, Elo Ratings, and World Cup History).
+
+### Observation
+
+During exploration of the downloaded historical football dataset, four local datasets were identified:
+
+- results.csv
+- former_names.csv
+- shootouts.csv
+- goalscorers.csv
+
+Rather than treating `results.csv` as the only local dataset, the remaining files were evaluated to determine their role within the overall machine learning pipeline.
+
+### Decision
+
+The preprocessing phase was expanded to include every local dataset before beginning external data collection.
+
+The following preprocessing scripts were added:
+
+- clean_match_results.py
+- clean_former_names.py
+- clean_shootouts.py
+- clean_goalscorers.py
+
+### Rationale
+
+This change establishes a consistent preprocessing pipeline for every locally available dataset.
+
+Benefits include:
+
+- Standardized preprocessing architecture.
+- Early validation of all available data.
+- Improved scalability for future model versions.
+- Reduced technical debt when introducing new features.
+
+### Version 1 Impact
+
+The Version 1 machine learning model remains unchanged.
+
+Only `results.csv` and `former_names.csv` are expected to contribute directly to the baseline model.
+
+`shootouts.csv` and `goalscorers.csv` have been prepared for future versions without affecting the Version 1 feature set.
+
+### Status
+
+✅ Completed
+
+---
+
+## Iteration 2
+
+**Date:** 2026-07-05
+
+### Stage
+
+Data Collection
+
+### Original Plan
+
+The original plan listed five data sources to be collected using "automated Python download" as the collection method for all external datasets. No specific source URLs, API endpoints, or technical constraints were documented.
+
+### Observations
+
+Several design decisions and technical issues were encountered during implementation.
+
+**FIFA Rankings — Akamai bot protection**
+
+The initial attempt used `pandas.read_html()` against the FIFA website. This failed for two reasons:
+
+1. `lxml` was not installed, causing an `ImportError`.
+2. Even after fixing the import, the FIFA rankings page is a Next.js client-rendered app. The `<tbody>` is empty in server-returned HTML. No ranking rows exist in the static page.
+
+Investigation of the page's network requests revealed that the browser calls a JSON API directly:
+
+`https://api.fifa.com/api/v3/rankings?gender=1`
+
+This endpoint returns structured JSON with all 211 men's teams. However, requests using the default `python-requests` User-Agent (`python-requests/2.34.2`) receive HTTP 403.
+
+Root cause: Akamai Bot Manager blocks requests whose TLS fingerprint matches the known `python-requests` signature. The fix is a session-level Chrome-like `User-Agent` — not cookies, not `Referer`, not `Origin` headers.
+
+**World Football Elo Ratings — direct TSV**
+
+The eloratings.net website is also JavaScript-rendered but serves its data as a plain tab-separated file:
+
+`https://www.eloratings.net/World.tsv`
+
+No authentication or bot protection was encountered. A minor parsing issue was found: `pandas.read_csv()` treated `NA` (Namibia's country code) as a null value. Fixed with `na_filter=False`.
+
+**World Cup History — women's data contamination**
+
+The Fjelstul World Cup Database was selected as the source for World Cup history features. The database contains both men's and women's tournaments under the same `WC-YYYY` ID scheme.
+
+Initial filtering used:
+
+```python
+series.str.contains("Men", case=False, na=False)
+```
+
+This accidentally matched `"Women's World Cup"` because `pandas` treats the pattern as regex by default, where `.` matches any character including the apostrophe in `"Women's"`.
+
+Fixed with:
+
+```python
+series.str.contains("FIFA Men's World Cup", case=False, na=False, regex=False)
+& ~series.str.contains("Women", case=False, na=False, regex=False)
+```
+
+After the fix, Brazil's appearances dropped from 30 to 22, which matches the correct historical record.
+
+**World Cup Fixtures — FIFA data centre API**
+
+The original plan did not specify a source for 2026 fixtures. Investigated the FIFA website and identified an undocumented internal API:
+
+`https://inside.fifa.com/api/data-centre/matches?gender=1&competitionClassificationCode=FWC&year=2026`
+
+This returns 90 matches with stage, date, teams, scores, and stadium. The `winner` field is a team ID string, not a team name — resolved by matching against `teamAId` / `teamBId` in the same record. The `stadiumName` field is a locale list — extracted using a shared helper function.
+
+### Decisions
+
+1. **FIFA Rankings** — collect from `api.fifa.com/api/v3/rankings?gender=1` using a `requests.Session()` with Chrome-like headers. Validate that the response is JSON and not an Akamai HTML block page before parsing.
+
+2. **Elo Ratings** — download `eloratings.net/World.tsv` directly. Use `na_filter=False` to prevent `NA` (Namibia) being treated as null.
+
+3. **World Cup History** — build from the Fjelstul World Cup Database using `team_appearances`, `tournament_standings`, and `tournaments` tables. Filter to men's tournaments with `regex=False`.
+
+4. **World Cup Fixtures** — collect from `inside.fifa.com/api/data-centre/matches`. Resolve team ID fields to readable names using the same match record.
+
+5. **Scope confirmed: Version 1 is men's only.** All datasets and filters were audited to confirm no women's data enters the processed pipeline.
+
+### Version 1 Impact
+
+Data collection is complete. All five datasets planned for Version 1 have been collected and saved to `data/processed/`.
+
+| Dataset | Processed File |
+|---------|---------------|
+| Match Results | `clean_results.csv` |
+| FIFA Rankings | `fifa_rankings.csv` |
+| Elo Ratings | `elo_ratings.csv` |
+| World Cup History | `world_cup_history.csv` |
+| World Cup Fixtures | `world_cup_fixtures.csv` |
+
+### Status
+
+✅ Completed
