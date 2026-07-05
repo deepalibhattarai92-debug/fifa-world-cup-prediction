@@ -17,12 +17,12 @@ Bracket structure (derived from the R32 pairing pattern):
   Final: SF1 winner vs SF2 winner
 
 Input:
-    data/processed/features.csv
+    data/processed/features_v2.csv
     data/processed/fifa_rankings.csv
     data/processed/elo_ratings.csv
     data/processed/world_cup_history.csv
-    data/raw/elo_code_map.csv
-    models/best_model.pkl
+    data/raw/elo_code_map_v2.csv
+    models/best_model_v2.pkl
 
 Output:
     data/processed/simulation_results.csv
@@ -43,12 +43,12 @@ import pandas as pd
 PROCESSED_DIR = Path("data/processed")
 MODELS_DIR    = Path("models")
 
-INPUT_FEATURES  = PROCESSED_DIR / "features.csv"
+INPUT_FEATURES  = PROCESSED_DIR / "features_v2.csv"
 INPUT_FIFA      = PROCESSED_DIR / "fifa_rankings.csv"
 INPUT_ELO       = PROCESSED_DIR / "elo_ratings.csv"
 INPUT_WC_HIST   = PROCESSED_DIR / "world_cup_history.csv"
-INPUT_ELO_MAP   = Path("data/raw/elo_code_map.csv")
-INPUT_MODEL     = MODELS_DIR / "best_model.pkl"
+INPUT_ELO_MAP   = Path("data/raw/elo_code_map_v2.csv")
+INPUT_MODEL     = MODELS_DIR / "best_model_v2.pkl"
 
 OUTPUT_RESULTS  = PROCESSED_DIR / "simulation_results.csv"
 
@@ -210,6 +210,9 @@ FEATURE_COLS = [
     "away_wc_appearances", "away_wc_titles", "away_wc_best_finish",
     "rank_diff", "points_diff", "elo_diff",
     "same_conf", "neutral",
+    "match_importance",   # V2 new
+    "h2h_win_rate",       # V2 new
+    "h2h_goal_diff",      # V2 new
 ]
 
 
@@ -249,7 +252,10 @@ def build_match_row(
         "points_diff":                h["fifa_points"] - a["fifa_points"],
         "elo_diff":                   h["elo_rating"] - a["elo_rating"],
         "same_conf":                  int(h["confederation"] == a["confederation"]),
-        "neutral":                    True,  # all knockout matches at neutral venues
+        "neutral":                    True,   # all knockout matches at neutral venues
+        "match_importance":           5,      # World Cup knockout = max importance
+        "h2h_win_rate":               np.nan, # no prior context for this specific matchup
+        "h2h_goal_diff":              np.nan,
     }
     return pd.DataFrame([row])[FEATURE_COLS]
 
