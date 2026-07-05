@@ -9,4 +9,4 @@
 | FIFA World Rankings | `api.fifa.com/api/v3/rankings` via `collect_fifa_rankings.py` | Official JSON API | ✅ Collected | ✅ Yes | FIFA rank and FIFA points |
 | World Football Elo Ratings | `eloratings.net/World.tsv` via `collect_elo_ratings.py` | Official TSV download | ✅ Collected | ✅ Yes | Dynamic team strength |
 | World Cup History | Fjelstul World Cup Database via `build_world_cup_history.py` | Curated aggregation (1930-2022) | ✅ Collected | ✅ Yes | Appearances, titles, best finish |
-| World Cup Fixtures | Official FIFA fixtures | Python collection | ⬜ Planned | ✅ Yes | Tournament simulation |
+| World Cup Fixtures | `inside.fifa.com/api/data-centre/matches` via `collect_world_cup_fixtures.py` | Official FIFA API | ✅ Collected | ✅ Yes | Tournament simulation |
