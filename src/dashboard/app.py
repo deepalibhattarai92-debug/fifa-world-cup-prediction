@@ -391,17 +391,6 @@ with st.sidebar:
         "ℹ️  About"],
         label_visibility="collapsed")
     st.divider()
-    v1c,v2c=load_model_comparisons()
-    v2b=v2c.loc[v2c["log_loss"].idxmin()]
-    v1b=v1c.loc[v1c["log_loss"].idxmin()]
-    st.markdown("**Algorithm**")
-    st.markdown("### XGBoost (Tuned)")
-    acc_d=(v2b["accuracy"]-v1b["accuracy"])*100
-    st.markdown(f"Accuracy: **{v2b['accuracy']*100:.1f}%** <span style='color:#00c853'>↑ {acc_d:.1f}pp vs baseline</span>",unsafe_allow_html=True)
-    ll_d=v1b["log_loss"]-v2b["log_loss"]
-    st.markdown(f"Log Loss: **{v2b['log_loss']:.3f}** <span style='color:#00c853'>↓ {ll_d:.3f} vs baseline</span>",unsafe_allow_html=True)
-    st.caption("Trained: 21,325 competitive matches\n30 engineered features\nTimeSeriesSplit CV")
-    st.divider()
     sim_sb=load_simulation()
     top=sim_sb.iloc[0]
     st.markdown("**Model's Champion Pick**")
