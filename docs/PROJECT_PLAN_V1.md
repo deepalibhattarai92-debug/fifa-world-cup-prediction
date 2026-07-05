@@ -578,3 +578,73 @@ Feature engineering is complete. `data/processed/features.csv` is ready for mode
 ### Status
 
 ✅ Completed
+
+---
+
+## Iteration 4
+
+**Date:** 2026-07-05
+
+### Stage
+
+Model Training
+
+### Original Plan
+
+The original plan listed three models to compare (Logistic Regression, Random Forest, XGBoost) and six evaluation metrics (Accuracy, Precision, Recall, F1, ROC-AUC, Log Loss). No implementation details were specified.
+
+### Observations
+
+**Train/test split strategy — temporal, not random**
+
+A random train/test split would leak future information into training: a model could learn from a 2022 match while being asked to predict a 2010 match in the test set. Football has temporal structure — team strength, styles, and rosters change over time. A temporal split was used instead: all matches before 2018-01-01 form the training set, all matches from 2018 onward form the test set.
+
+This gives 41,627 training rows (1872–2017) and 8,205 test rows (2018–2026), which includes the 2018, 2022, and 2026 World Cups in the evaluation window.
+
+**scikit-learn 1.7 removed `multi_class` argument from LogisticRegression**
+
+The `multi_class="multinomial"` argument was removed in scikit-learn 1.7 — multinomial output is now the default for `lbfgs`. The script raised a `TypeError` on first run. Fixed by removing the argument.
+
+**XGBoost 3.x removed `use_label_encoder`**
+
+The `use_label_encoder=False` argument was removed in XGBoost 3.x and the script produced a `UserWarning` on first run. Fixed by removing the argument.
+
+**Primary selection metric: log loss**
+
+Log loss measures how well-calibrated the predicted probabilities are, not just whether the top class is correct. This is the right metric for tournament simulation, where each match outcome probability feeds directly into the bracket progression logic. A model that correctly outputs 60% home win / 25% draw / 15% away win is more useful than one that is slightly more "accurate" in binary classification but poorly calibrated.
+
+### Results
+
+All three models were evaluated on the held-out test set (2018–2026).
+
+| Model | Accuracy | Precision | Recall | F1 | ROC-AUC | Log Loss |
+|---|---|---|---|---|---|---|
+| XGBoost | 0.5918 | 0.5332 | 0.5918 | 0.5185 | 0.7467 | **0.8863** |
+| Logistic Regression | 0.5905 | 0.5320 | 0.5905 | 0.5091 | 0.7419 | 0.8935 |
+| Random Forest | 0.5909 | 0.4587 | 0.5909 | 0.5046 | 0.7474 | 0.8959 |
+
+XGBoost achieved the best log loss (0.8863), accuracy (0.5918), and F1 (0.5185). All three models performed within a narrow band — football match outcomes are inherently uncertain and ~59% accuracy on a 3-class problem is a solid baseline.
+
+### Decisions
+
+1. **Temporal split at 2018-01-01** — train on 1872–2017, test on 2018–2026. Prevents future-data leakage and tests on the most recent tournament era.
+
+2. **Primary selection metric: log loss** — probability calibration matters more than accuracy for simulation.
+
+3. **XGBoost selected as best model** — lowest log loss, highest accuracy and F1. Saved to `models/best_model.pkl` for use in the simulation stage.
+
+4. **All models use median imputation** — handles null FIFA rank (13%) and Elo rating (70%) consistently across all three pipelines. XGBoost can handle nulls natively but was wrapped in the same imputer for consistency.
+
+### Version 1 Impact
+
+Model training is complete. All three models trained and compared. Best model saved to disk.
+
+| Output | Details |
+|--------|---------|
+| `data/processed/model_comparison.csv` | Metrics table for all three models |
+| `models/best_model.pkl` | XGBoost pipeline + feature list + label encoder |
+| `models/label_encoder.pkl` | LabelEncoder fitted on `away_win / draw / home_win` |
+
+### Status
+
+✅ Completed
