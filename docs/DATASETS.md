@@ -7,6 +7,6 @@
 | Shootouts | `data/raw/shootouts.csv` | Kaggle download | ✅ Collected + preprocessed | Future | Penalty shootout analysis |
 | Goalscorers | `data/raw/goalscorers.csv` | Kaggle download | ✅ Collected + preprocessed | Future | Player-level features |
 | FIFA World Rankings | `api.fifa.com/api/v3/rankings` via `collect_fifa_rankings.py` | Official JSON API | ✅ Collected | ✅ Yes | FIFA rank and FIFA points |
-| World Football Elo Ratings | World Football Elo Ratings | Python collection | ⬜ Planned | ✅ Yes | Dynamic team strength |
+| World Football Elo Ratings | `eloratings.net/World.tsv` via `collect_elo_ratings.py` | Official TSV download | ✅ Collected | ✅ Yes | Dynamic team strength |
 | World Cup History | Curated CSV | Manual build | ⬜ Planned | ✅ Yes | Appearances, titles, best finish |
 | World Cup Fixtures | Official FIFA fixtures | Python collection | ⬜ Planned | ✅ Yes | Tournament simulation |
