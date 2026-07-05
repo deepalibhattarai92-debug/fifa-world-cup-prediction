@@ -479,3 +479,102 @@ Data collection is complete. All five datasets planned for Version 1 have been c
 ### Status
 
 ✅ Completed
+
+---
+
+## Iteration 3
+
+**Date:** 2026-07-04
+
+### Stage
+
+Feature Engineering
+
+### Original Plan
+
+The original plan described feature engineering as a single step: "build rolling form, join rankings and history." No detail was given on how the five datasets would be joined, what the country code schemes were, or how defunct historical teams would be handled.
+
+### Observations
+
+**Elo country code system mismatch**
+
+The `elo_ratings.csv` file uses its own 2-letter country codes (e.g. `PT`, `CH`, `DE`) which are neither ISO 3166-1 alpha-2 nor FIFA's 3-letter codes. A naive approach of truncating the FIFA 3-letter code to 2 characters partially worked (181 of 211 teams matched) but produced four silent collisions:
+
+| Truncated code | Team A | Team B |
+|---|---|---|
+| `AU` | Australia | Austria |
+| `IR` | IR Iran | Iraq |
+| `PA` | Panama | Paraguay |
+| `CO` | Colombia | Congo DR |
+
+In each collision, the truncation maps two different teams to the same 2-letter code. One team gets the correct Elo rating; the other silently gets the wrong team's rating. This is worse than a null — it introduces incorrect data without any error.
+
+Eight additional teams have codes where truncation simply produces the wrong result (e.g. FIFA `POR` → truncated `PO`, but Elo uses `PT`; FIFA `SUI` → `SU`, but Elo uses `CH`).
+
+**Decision:** Build a curated `data/raw/elo_code_map.csv` — a one-time 48-row file covering all 2026 World Cup fixture teams with manually verified FIFA-to-Elo code mappings. All 48 codes were verified against the live Elo ratings file before saving.
+
+**Elo null rate in training data (70%) is expected**
+
+The `elo_code_map.csv` covers the 48 teams in the 2026 tournament. The training dataset spans matches from 1872 onwards and includes ~200+ distinct nations, many of which are now defunct (West Germany, Soviet Union, Czechoslovakia, Yugoslavia, Saarland, etc.). These teams have no entry in the current Elo ratings file and therefore get null Elo features in `features.csv`.
+
+This null rate (70%) is not a bug. It reflects a structural limitation: the current Elo ratings are a live snapshot, not a historical time series. For Version 1, this is acceptable — the model will learn from rows where Elo is available, and null rows can be imputed or filtered. A future version could use historical Elo snapshots to fill these gaps.
+
+**pandas 3.0 breaking change in `groupby().apply()`**
+
+The rolling form logic was initially written using `groupby("team").apply(func)`, which is the standard pattern in pandas 2.x. In pandas 3.0, the group-key column (`team`) is excluded from the DataFrame passed to the applied function. The `include_groups=True` argument that allowed restoring the old behaviour was fully removed in pandas 3.0 (not deprecated — hard removed).
+
+The fix was to rewrite the rolling form logic without `apply()` entirely:
+
+```python
+# Shift within group
+shifted = team_matches.groupby("team")[col].shift(1)
+
+# Roll on the shifted series
+team_matches[f"{col}_rolled"] = (
+    shifted.groupby(team_matches["team"])
+    .transform(lambda x: x.rolling(ROLLING_WINDOW, min_periods=1).mean())
+)
+```
+
+This approach is more explicit and forward-compatible with pandas 3+.
+
+**World Cup history — 7 name mismatches and 4 genuine first-timers**
+
+The fixture names used by the FIFA API do not always match the names used in the Fjelstul World Cup Database. Seven teams required a manual name map:
+
+| Fixture name | WC history name |
+|---|---|
+| Czechia | Czech Republic |
+| Korea Republic | South Korea |
+| USA | United States |
+| IR Iran | Iran |
+| Türkiye | Turkey |
+| Côte d'Ivoire | Ivory Coast |
+| Congo DR | DR Congo |
+
+Four teams (Cabo Verde, Curaçao, Uzbekistan, Jordan) have no WC history at all — they are genuine first-time qualifiers. These received default values: `appearances=0`, `titles=0`, `best_finish=8` (group stage).
+
+### Decisions
+
+1. **Elo code mapping** — build `data/raw/elo_code_map.csv` with manually verified FIFA-to-Elo code mappings for all 48 fixture teams. Do not use truncation, which causes silent data corruption via collisions.
+
+2. **70% Elo null rate in training data is accepted** — the Elo lookup only covers 48 current teams. Historical matches involving defunct nations are expected to have null Elo features. Version 1 model will impute or filter these at training time.
+
+3. **Rolling form rewritten for pandas 3.0** — use `groupby().shift()` and `groupby().transform()` instead of `groupby().apply()`. The old `apply()` pattern is incompatible with pandas 3.0.
+
+4. **WC history name map baked into `build_features.py`** — the `FIXTURE_TO_WC_NAME` dictionary maps FIFA fixture names to WC history names. First-time qualifiers are filled with zeros, not dropped.
+
+### Version 1 Impact
+
+Feature engineering is complete. `data/processed/features.csv` is ready for model training.
+
+| Output | Details |
+|--------|---------|
+| `features.csv` | 49,832 rows × 38 columns |
+| Features per team | 5 rolling form, 3 FIFA, 1 Elo, 3 WC history |
+| Derived features | `rank_diff`, `elo_diff`, `points_diff`, `same_conf` |
+| Target variable | `result` — `home_win` / `away_win` / `draw` |
+
+### Status
+
+✅ Completed
