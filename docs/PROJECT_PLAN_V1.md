@@ -65,7 +65,7 @@ The final Version 1 deliverables include:
 - GitHub repository
 - Project documentation
 
-# System Architecture
+## System Architecture
 
 The FIFA World Cup Prediction system will follow the pipeline below:
 
@@ -103,6 +103,7 @@ Version 1 will use five primary datasets.
 | World Football Elo Ratings | Measure dynamic team strength | Automated Python download | Daily |
 | FIFA World Cup Historical Records | Calculate tournament experience features | One-time download | Rarely |
 | FIFA World Cup Fixtures | Simulate the current tournament | Automated Python download | During the tournament |
+
 ## Feature Mapping
 
 The following table documents every feature used in the machine learning model, its source, how it is calculated, and whether it is included in Version 1.
