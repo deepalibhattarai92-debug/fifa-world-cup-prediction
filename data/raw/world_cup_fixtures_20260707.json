@@ -1,0 +1,5396 @@
+[
+    {
+        "idMatch": "400021529",
+        "idMatchIfes": "151700",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289288",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "Round of 16"
+            }
+        ],
+        "matchDate": "2026-07-06",
+        "teamAId": "43963",
+        "teamBId": "43969",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Portugal"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Spain"
+            }
+        ],
+        "teamACountryCode": "POR",
+        "teamBCountryCode": "ESP",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/POR",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/ESP",
+        "teamAScore": 0,
+        "teamBScore": 1,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43969",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Dallas Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021531",
+        "idMatchIfes": "151697",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289288",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "Round of 16"
+            }
+        ],
+        "matchDate": "2026-07-06",
+        "teamAId": "43911",
+        "teamBId": "43942",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Mexico"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "England"
+            }
+        ],
+        "teamACountryCode": "MEX",
+        "teamBCountryCode": "ENG",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/MEX",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/ENG",
+        "teamAScore": 2,
+        "teamBScore": 3,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43942",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Mexico City Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021532",
+        "idMatchIfes": "151698",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289288",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "Round of 16"
+            }
+        ],
+        "matchDate": "2026-07-05",
+        "teamAId": "43924",
+        "teamBId": "43961",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Brazil"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Norway"
+            }
+        ],
+        "teamACountryCode": "BRA",
+        "teamBCountryCode": "NOR",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/BRA",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/NOR",
+        "teamAScore": 1,
+        "teamBScore": 2,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43961",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "New York/New Jersey Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021533",
+        "idMatchIfes": "151696",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289288",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "Round of 16"
+            }
+        ],
+        "matchDate": "2026-07-04",
+        "teamAId": "43928",
+        "teamBId": "43946",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Paraguay"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "France"
+            }
+        ],
+        "teamACountryCode": "PAR",
+        "teamBCountryCode": "FRA",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/PAR",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/FRA",
+        "teamAScore": 0,
+        "teamBScore": 1,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43946",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Philadelphia Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021530",
+        "idMatchIfes": "151695",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289288",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "Round of 16"
+            }
+        ],
+        "matchDate": "2026-07-04",
+        "teamAId": "43899",
+        "teamBId": "43872",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Canada"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Morocco"
+            }
+        ],
+        "teamACountryCode": "CAN",
+        "teamBCountryCode": "MAR",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/CAN",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/MAR",
+        "teamAScore": 0,
+        "teamBScore": 3,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43872",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Houston Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021517",
+        "idMatchIfes": "151693",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289287",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "Round of 32"
+            }
+        ],
+        "matchDate": "2026-07-04",
+        "teamAId": "43926",
+        "teamBId": "43860",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Colombia"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Ghana"
+            }
+        ],
+        "teamACountryCode": "COL",
+        "teamBCountryCode": "GHA",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/COL",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/GHA",
+        "teamAScore": 1,
+        "teamBScore": 0,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43926",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Kansas City Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021521",
+        "idMatchIfes": "151694",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289287",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "Round of 32"
+            }
+        ],
+        "matchDate": "2026-07-03",
+        "teamAId": "43922",
+        "teamBId": "43850",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Argentina"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Cabo Verde"
+            }
+        ],
+        "teamACountryCode": "ARG",
+        "teamBCountryCode": "CPV",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/ARG",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/CPV",
+        "teamAScore": 3,
+        "teamBScore": 2,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 3,
+        "winner": "43922",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Miami Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021515",
+        "idMatchIfes": "151692",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289287",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "Round of 32"
+            }
+        ],
+        "matchDate": "2026-07-03",
+        "teamAId": "43976",
+        "teamBId": "43855",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Australia"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Egypt"
+            }
+        ],
+        "teamACountryCode": "AUS",
+        "teamBCountryCode": "EGY",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/AUS",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/EGY",
+        "teamAScore": 1,
+        "teamBScore": 1,
+        "teamAPenaltyScore": 2,
+        "teamBPenaltyScore": 4,
+        "resultType": 2,
+        "winner": "43855",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Dallas Stadium"
+            }
+        ],
+        "hasPenalties": true,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021527",
+        "idMatchIfes": "151689",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289287",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "Round of 32"
+            }
+        ],
+        "matchDate": "2026-07-03",
+        "teamAId": "43971",
+        "teamBId": "43843",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Switzerland"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Algeria"
+            }
+        ],
+        "teamACountryCode": "SUI",
+        "teamBCountryCode": "ALG",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/SUI",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/ALG",
+        "teamAScore": 2,
+        "teamBScore": 0,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43971",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "BC Place Vancouver"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021526",
+        "idMatchIfes": "151691",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289287",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "Round of 32"
+            }
+        ],
+        "matchDate": "2026-07-02",
+        "teamAId": "43963",
+        "teamBId": "43938",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Portugal"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Croatia"
+            }
+        ],
+        "teamACountryCode": "POR",
+        "teamBCountryCode": "CRO",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/POR",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/CRO",
+        "teamAScore": 2,
+        "teamBScore": 1,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43963",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Toronto Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021519",
+        "idMatchIfes": "151690",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289287",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "Round of 32"
+            }
+        ],
+        "matchDate": "2026-07-02",
+        "teamAId": "43969",
+        "teamBId": "43934",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Spain"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Austria"
+            }
+        ],
+        "teamACountryCode": "ESP",
+        "teamBCountryCode": "AUT",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/ESP",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/AUT",
+        "teamAScore": 3,
+        "teamBScore": 0,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43969",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Los Angeles Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021524",
+        "idMatchIfes": "151687",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289287",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "Round of 32"
+            }
+        ],
+        "matchDate": "2026-07-02",
+        "teamAId": "43921",
+        "teamBId": "44037",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "USA"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Bosnia and Herzegovina"
+            }
+        ],
+        "teamACountryCode": "USA",
+        "teamBCountryCode": "BIH",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/USA",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/BIH",
+        "teamAScore": 2,
+        "teamBScore": 0,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43921",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "San Francisco Bay Area Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021525",
+        "idMatchIfes": "151686",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289287",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "Round of 32"
+            }
+        ],
+        "matchDate": "2026-07-01",
+        "teamAId": "43935",
+        "teamBId": "43879",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Belgium"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Senegal"
+            }
+        ],
+        "teamACountryCode": "BEL",
+        "teamBCountryCode": "SEN",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/BEL",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/SEN",
+        "teamAScore": 3,
+        "teamBScore": 2,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 3,
+        "winner": "43935",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Seattle Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021512",
+        "idMatchIfes": "151688",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289287",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "Round of 32"
+            }
+        ],
+        "matchDate": "2026-07-01",
+        "teamAId": "43942",
+        "teamBId": "20014",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "England"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Congo DR"
+            }
+        ],
+        "teamACountryCode": "ENG",
+        "teamBCountryCode": "COD",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/ENG",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/COD",
+        "teamAScore": 2,
+        "teamBScore": 1,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43942",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Atlanta Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021520",
+        "idMatchIfes": "151683",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289287",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "Round of 32"
+            }
+        ],
+        "matchDate": "2026-07-01",
+        "teamAId": "43911",
+        "teamBId": "43927",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Mexico"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Ecuador"
+            }
+        ],
+        "teamACountryCode": "MEX",
+        "teamBCountryCode": "ECU",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/MEX",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/ECU",
+        "teamAScore": 2,
+        "teamBScore": 0,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43911",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Mexico City Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021523",
+        "idMatchIfes": "151685",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289287",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "Round of 32"
+            }
+        ],
+        "matchDate": "2026-06-30",
+        "teamAId": "43946",
+        "teamBId": "43970",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "France"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Sweden"
+            }
+        ],
+        "teamACountryCode": "FRA",
+        "teamBCountryCode": "SWE",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/FRA",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/SWE",
+        "teamAScore": 3,
+        "teamBScore": 0,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43946",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "New York/New Jersey Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021514",
+        "idMatchIfes": "151684",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289287",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "Round of 32"
+            }
+        ],
+        "matchDate": "2026-06-30",
+        "teamAId": "43854",
+        "teamBId": "43961",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "C\u00f4te d'Ivoire"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Norway"
+            }
+        ],
+        "teamACountryCode": "CIV",
+        "teamBCountryCode": "NOR",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/CIV",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/NOR",
+        "teamAScore": 1,
+        "teamBScore": 2,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43961",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Dallas Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021522",
+        "idMatchIfes": "151680",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289287",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "Round of 32"
+            }
+        ],
+        "matchDate": "2026-06-30",
+        "teamAId": "43960",
+        "teamBId": "43872",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Netherlands"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Morocco"
+            }
+        ],
+        "teamACountryCode": "NED",
+        "teamBCountryCode": "MAR",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/NED",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/MAR",
+        "teamAScore": 1,
+        "teamBScore": 1,
+        "teamAPenaltyScore": 2,
+        "teamBPenaltyScore": 3,
+        "resultType": 2,
+        "winner": "43872",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Monterrey Stadium"
+            }
+        ],
+        "hasPenalties": true,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021513",
+        "idMatchIfes": "151682",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289287",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "Round of 32"
+            }
+        ],
+        "matchDate": "2026-06-29",
+        "teamAId": "43948",
+        "teamBId": "43928",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Germany"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Paraguay"
+            }
+        ],
+        "teamACountryCode": "GER",
+        "teamBCountryCode": "PAR",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/GER",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/PAR",
+        "teamAScore": 1,
+        "teamBScore": 1,
+        "teamAPenaltyScore": 3,
+        "teamBPenaltyScore": 4,
+        "resultType": 2,
+        "winner": "43928",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Boston Stadium"
+            }
+        ],
+        "hasPenalties": true,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021516",
+        "idMatchIfes": "151681",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289287",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "Round of 32"
+            }
+        ],
+        "matchDate": "2026-06-29",
+        "teamAId": "43924",
+        "teamBId": "43819",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Brazil"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Japan"
+            }
+        ],
+        "teamACountryCode": "BRA",
+        "teamBCountryCode": "JPN",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/BRA",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/JPN",
+        "teamAScore": 2,
+        "teamBScore": 1,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43924",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Houston Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021518",
+        "idMatchIfes": "151679",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289287",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "Round of 32"
+            }
+        ],
+        "matchDate": "2026-06-28",
+        "teamAId": "43883",
+        "teamBId": "43899",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "South Africa"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Canada"
+            }
+        ],
+        "teamACountryCode": "RSA",
+        "teamBCountryCode": "CAN",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/RSA",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/CAN",
+        "teamAScore": 0,
+        "teamBScore": 1,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43899",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Los Angeles Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021497",
+        "idMatchIfes": "151666",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-28",
+        "teamAId": "43843",
+        "teamBId": "43934",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Algeria"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Austria"
+            }
+        ],
+        "teamACountryCode": "ALG",
+        "teamBCountryCode": "AUT",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/ALG",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/AUT",
+        "teamAScore": 3,
+        "teamBScore": 3,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Kansas City Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021495",
+        "idMatchIfes": "151665",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-28",
+        "teamAId": "43820",
+        "teamBId": "43922",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Jordan"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Argentina"
+            }
+        ],
+        "teamACountryCode": "JOR",
+        "teamBCountryCode": "ARG",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/JOR",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/ARG",
+        "teamAScore": 1,
+        "teamBScore": 3,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43922",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Dallas Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021500",
+        "idMatchIfes": "151671",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-27",
+        "teamAId": "20014",
+        "teamBId": "44005",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Congo DR"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Uzbekistan"
+            }
+        ],
+        "teamACountryCode": "COD",
+        "teamBCountryCode": "UZB",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/COD",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/UZB",
+        "teamAScore": 3,
+        "teamBScore": 1,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "20014",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Atlanta Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021505",
+        "idMatchIfes": "151672",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-27",
+        "teamAId": "43926",
+        "teamBId": "43963",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Colombia"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Portugal"
+            }
+        ],
+        "teamACountryCode": "COL",
+        "teamBCountryCode": "POR",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/COL",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/POR",
+        "teamAScore": 0,
+        "teamBScore": 0,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Miami Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021508",
+        "idMatchIfes": "151678",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-27",
+        "teamAId": "43914",
+        "teamBId": "43942",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Panama"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "England"
+            }
+        ],
+        "teamACountryCode": "PAN",
+        "teamBCountryCode": "ENG",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/PAN",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/ENG",
+        "teamAScore": 0,
+        "teamBScore": 2,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43942",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "New York/New Jersey Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021509",
+        "idMatchIfes": "151677",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-27",
+        "teamAId": "43938",
+        "teamBId": "43860",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Croatia"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Ghana"
+            }
+        ],
+        "teamACountryCode": "CRO",
+        "teamBCountryCode": "GHA",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/CRO",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/GHA",
+        "teamAScore": 2,
+        "teamBScore": 1,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43938",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Philadelphia Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021479",
+        "idMatchIfes": "151648",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-27",
+        "teamAId": "43855",
+        "teamBId": "43817",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Egypt"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "IR Iran"
+            }
+        ],
+        "teamACountryCode": "EGY",
+        "teamBCountryCode": "IRN",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/EGY",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/IRN",
+        "teamAScore": 1,
+        "teamBScore": 1,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Seattle Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021481",
+        "idMatchIfes": "151647",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-27",
+        "teamAId": "43978",
+        "teamBId": "43935",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "New Zealand"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Belgium"
+            }
+        ],
+        "teamACountryCode": "NZL",
+        "teamBCountryCode": "BEL",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/NZL",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/BEL",
+        "teamAScore": 1,
+        "teamBScore": 5,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43935",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "BC Place Vancouver"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021485",
+        "idMatchIfes": "151654",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-27",
+        "teamAId": "43850",
+        "teamBId": "43835",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Cabo Verde"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Saudi Arabia"
+            }
+        ],
+        "teamACountryCode": "CPV",
+        "teamBCountryCode": "KSA",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/CPV",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/KSA",
+        "teamAScore": 0,
+        "teamBScore": 0,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Houston Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021484",
+        "idMatchIfes": "151653",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-27",
+        "teamAId": "43930",
+        "teamBId": "43969",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Uruguay"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Spain"
+            }
+        ],
+        "teamACountryCode": "URU",
+        "teamBCountryCode": "ESP",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/URU",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/ESP",
+        "teamAScore": 0,
+        "teamBScore": 1,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43969",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Guadalajara Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021489",
+        "idMatchIfes": "151660",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-26",
+        "teamAId": "43961",
+        "teamBId": "43946",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Norway"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "France"
+            }
+        ],
+        "teamACountryCode": "NOR",
+        "teamBCountryCode": "FRA",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/NOR",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/FRA",
+        "teamAScore": 1,
+        "teamBScore": 4,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43946",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Boston Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021493",
+        "idMatchIfes": "151659",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-26",
+        "teamAId": "43879",
+        "teamBId": "43818",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Senegal"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Iraq"
+            }
+        ],
+        "teamACountryCode": "SEN",
+        "teamBCountryCode": "IRQ",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/SEN",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/IRQ",
+        "teamAScore": 5,
+        "teamBScore": 0,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43879",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Toronto Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021461",
+        "idMatchIfes": "151629",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-26",
+        "teamAId": "43928",
+        "teamBId": "43976",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Paraguay"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Australia"
+            }
+        ],
+        "teamACountryCode": "PAR",
+        "teamBCountryCode": "AUS",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/PAR",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/AUS",
+        "teamAScore": 0,
+        "teamBScore": 0,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "San Francisco Bay Area Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021459",
+        "idMatchIfes": "151630",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-26",
+        "teamAId": "43972",
+        "teamBId": "43921",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "T\u00fcrkiye"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "USA"
+            }
+        ],
+        "teamACountryCode": "TUR",
+        "teamBCountryCode": "USA",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/TUR",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/USA",
+        "teamAScore": 3,
+        "teamBScore": 2,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43972",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Los Angeles Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021473",
+        "idMatchIfes": "151642",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-25",
+        "teamAId": "43888",
+        "teamBId": "43960",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Tunisia"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Netherlands"
+            }
+        ],
+        "teamACountryCode": "TUN",
+        "teamBCountryCode": "NED",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/TUN",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/NED",
+        "teamAScore": 1,
+        "teamBScore": 3,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43960",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Kansas City Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021471",
+        "idMatchIfes": "151641",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-25",
+        "teamAId": "43819",
+        "teamBId": "43970",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Japan"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Sweden"
+            }
+        ],
+        "teamACountryCode": "JPN",
+        "teamBCountryCode": "SWE",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/JPN",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/SWE",
+        "teamAScore": 1,
+        "teamBScore": 1,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Dallas Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021468",
+        "idMatchIfes": "151635",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-25",
+        "teamAId": "1895293",
+        "teamBId": "43854",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Cura\u00e7ao"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "C\u00f4te d'Ivoire"
+            }
+        ],
+        "teamACountryCode": "CUW",
+        "teamBCountryCode": "CIV",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/CUW",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/CIV",
+        "teamAScore": 0,
+        "teamBScore": 2,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43854",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Philadelphia Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021466",
+        "idMatchIfes": "151636",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-25",
+        "teamAId": "43927",
+        "teamBId": "43948",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Ecuador"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Germany"
+            }
+        ],
+        "teamACountryCode": "ECU",
+        "teamBCountryCode": "GER",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/ECU",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/GER",
+        "teamAScore": 2,
+        "teamBScore": 1,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43927",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "New York/New Jersey Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021445",
+        "idMatchIfes": "151612",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-25",
+        "teamAId": "43883",
+        "teamBId": "43822",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "South Africa"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Korea Republic"
+            }
+        ],
+        "teamACountryCode": "RSA",
+        "teamBCountryCode": "KOR",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/RSA",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/KOR",
+        "teamAScore": 1,
+        "teamBScore": 0,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43883",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Monterrey Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021444",
+        "idMatchIfes": "151611",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-25",
+        "teamAId": "43995",
+        "teamBId": "43911",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Czechia"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Mexico"
+            }
+        ],
+        "teamACountryCode": "CZE",
+        "teamBCountryCode": "MEX",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/CZE",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/MEX",
+        "teamAScore": 0,
+        "teamBScore": 3,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43911",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Mexico City Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021455",
+        "idMatchIfes": "151624",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-24",
+        "teamAId": "43967",
+        "teamBId": "43924",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Scotland"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Brazil"
+            }
+        ],
+        "teamACountryCode": "SCO",
+        "teamBCountryCode": "BRA",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/SCO",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/BRA",
+        "teamAScore": 0,
+        "teamBScore": 3,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43924",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Miami Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021452",
+        "idMatchIfes": "151623",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-24",
+        "teamAId": "43872",
+        "teamBId": "43908",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Morocco"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Haiti"
+            }
+        ],
+        "teamACountryCode": "MAR",
+        "teamBCountryCode": "HAI",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/MAR",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/HAI",
+        "teamAScore": 4,
+        "teamBScore": 2,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43872",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Atlanta Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021451",
+        "idMatchIfes": "151617",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-24",
+        "teamAId": "43971",
+        "teamBId": "43899",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Switzerland"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Canada"
+            }
+        ],
+        "teamACountryCode": "SUI",
+        "teamBCountryCode": "CAN",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/SUI",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/CAN",
+        "teamAScore": 2,
+        "teamBScore": 1,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43971",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "BC Place Vancouver"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021448",
+        "idMatchIfes": "151618",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-24",
+        "teamAId": "44037",
+        "teamBId": "43834",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Bosnia and Herzegovina"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Qatar"
+            }
+        ],
+        "teamACountryCode": "BIH",
+        "teamBCountryCode": "QAT",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/BIH",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/QAT",
+        "teamAScore": 3,
+        "teamBScore": 1,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "44037",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Seattle Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021501",
+        "idMatchIfes": "151669",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-24",
+        "teamAId": "43926",
+        "teamBId": "20014",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Colombia"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Congo DR"
+            }
+        ],
+        "teamACountryCode": "COL",
+        "teamBCountryCode": "COD",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/COL",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/COD",
+        "teamAScore": 1,
+        "teamBScore": 0,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43926",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Guadalajara Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021511",
+        "idMatchIfes": "151675",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-23",
+        "teamAId": "43914",
+        "teamBId": "43938",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Panama"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Croatia"
+            }
+        ],
+        "teamACountryCode": "PAN",
+        "teamBCountryCode": "CRO",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/PAN",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/CRO",
+        "teamAScore": 0,
+        "teamBScore": 1,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43938",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Toronto Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021506",
+        "idMatchIfes": "151676",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-23",
+        "teamAId": "43942",
+        "teamBId": "43860",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "England"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Ghana"
+            }
+        ],
+        "teamACountryCode": "ENG",
+        "teamBCountryCode": "GHA",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/ENG",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/GHA",
+        "teamAScore": 0,
+        "teamBScore": 0,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Boston Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021503",
+        "idMatchIfes": "151670",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-23",
+        "teamAId": "43963",
+        "teamBId": "44005",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Portugal"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Uzbekistan"
+            }
+        ],
+        "teamACountryCode": "POR",
+        "teamBCountryCode": "UZB",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/POR",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/UZB",
+        "teamAScore": 5,
+        "teamBScore": 0,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43963",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Houston Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021499",
+        "idMatchIfes": "151663",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-23",
+        "teamAId": "43820",
+        "teamBId": "43843",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Jordan"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Algeria"
+            }
+        ],
+        "teamACountryCode": "JOR",
+        "teamBCountryCode": "ALG",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/JOR",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/ALG",
+        "teamAScore": 1,
+        "teamBScore": 2,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43843",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "San Francisco Bay Area Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021491",
+        "idMatchIfes": "151658",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-23",
+        "teamAId": "43961",
+        "teamBId": "43879",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Norway"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Senegal"
+            }
+        ],
+        "teamACountryCode": "NOR",
+        "teamBCountryCode": "SEN",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/NOR",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/SEN",
+        "teamAScore": 3,
+        "teamBScore": 2,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43961",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "New York/New Jersey Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021492",
+        "idMatchIfes": "151657",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-22",
+        "teamAId": "43946",
+        "teamBId": "43818",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "France"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Iraq"
+            }
+        ],
+        "teamACountryCode": "FRA",
+        "teamBCountryCode": "IRQ",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/FRA",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/IRQ",
+        "teamAScore": 3,
+        "teamBScore": 0,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43946",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Philadelphia Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021494",
+        "idMatchIfes": "151664",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-22",
+        "teamAId": "43922",
+        "teamBId": "43934",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Argentina"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Austria"
+            }
+        ],
+        "teamACountryCode": "ARG",
+        "teamBCountryCode": "AUT",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/ARG",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/AUT",
+        "teamAScore": 2,
+        "teamBScore": 0,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43922",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Dallas Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021480",
+        "idMatchIfes": "151645",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-22",
+        "teamAId": "43978",
+        "teamBId": "43855",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "New Zealand"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Egypt"
+            }
+        ],
+        "teamACountryCode": "NZL",
+        "teamBCountryCode": "EGY",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/NZL",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/EGY",
+        "teamAScore": 1,
+        "teamBScore": 3,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43855",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "BC Place Vancouver"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021487",
+        "idMatchIfes": "151652",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-21",
+        "teamAId": "43930",
+        "teamBId": "43850",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Uruguay"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Cabo Verde"
+            }
+        ],
+        "teamACountryCode": "URU",
+        "teamBCountryCode": "CPV",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/URU",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/CPV",
+        "teamAScore": 2,
+        "teamBScore": 2,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Miami Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021477",
+        "idMatchIfes": "151646",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-21",
+        "teamAId": "43935",
+        "teamBId": "43817",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Belgium"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "IR Iran"
+            }
+        ],
+        "teamACountryCode": "BEL",
+        "teamBCountryCode": "IRN",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/BEL",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/IRN",
+        "teamAScore": 0,
+        "teamBScore": 0,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Los Angeles Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021483",
+        "idMatchIfes": "151651",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-21",
+        "teamAId": "43969",
+        "teamBId": "43835",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Spain"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Saudi Arabia"
+            }
+        ],
+        "teamACountryCode": "ESP",
+        "teamBCountryCode": "KSA",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/ESP",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/KSA",
+        "teamAScore": 4,
+        "teamBScore": 0,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43969",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Atlanta Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021475",
+        "idMatchIfes": "151639",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-21",
+        "teamAId": "43888",
+        "teamBId": "43819",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Tunisia"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Japan"
+            }
+        ],
+        "teamACountryCode": "TUN",
+        "teamBCountryCode": "JPN",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/TUN",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/JPN",
+        "teamAScore": 0,
+        "teamBScore": 4,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43819",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Monterrey Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021465",
+        "idMatchIfes": "151633",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-21",
+        "teamAId": "43927",
+        "teamBId": "1895293",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Ecuador"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Cura\u00e7ao"
+            }
+        ],
+        "teamACountryCode": "ECU",
+        "teamBCountryCode": "CUW",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/ECU",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/CUW",
+        "teamAScore": 0,
+        "teamBScore": 0,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Kansas City Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021469",
+        "idMatchIfes": "151634",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-20",
+        "teamAId": "43948",
+        "teamBId": "43854",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Germany"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "C\u00f4te d'Ivoire"
+            }
+        ],
+        "teamACountryCode": "GER",
+        "teamBCountryCode": "CIV",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/GER",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/CIV",
+        "teamAScore": 2,
+        "teamBScore": 1,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43948",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Toronto Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021472",
+        "idMatchIfes": "151640",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-20",
+        "teamAId": "43960",
+        "teamBId": "43970",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Netherlands"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Sweden"
+            }
+        ],
+        "teamACountryCode": "NED",
+        "teamBCountryCode": "SWE",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/NED",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/SWE",
+        "teamAScore": 5,
+        "teamBScore": 1,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43960",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Houston Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021460",
+        "idMatchIfes": "151628",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-20",
+        "teamAId": "43972",
+        "teamBId": "43928",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "T\u00fcrkiye"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Paraguay"
+            }
+        ],
+        "teamACountryCode": "TUR",
+        "teamBCountryCode": "PAR",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/TUR",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/PAR",
+        "teamAScore": 0,
+        "teamBScore": 1,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43928",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "San Francisco Bay Area Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021457",
+        "idMatchIfes": "151622",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-20",
+        "teamAId": "43924",
+        "teamBId": "43908",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Brazil"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Haiti"
+            }
+        ],
+        "teamACountryCode": "BRA",
+        "teamBCountryCode": "HAI",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/BRA",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/HAI",
+        "teamAScore": 3,
+        "teamBScore": 0,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43924",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Philadelphia Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021454",
+        "idMatchIfes": "151621",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-19",
+        "teamAId": "43967",
+        "teamBId": "43872",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Scotland"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Morocco"
+            }
+        ],
+        "teamACountryCode": "SCO",
+        "teamBCountryCode": "MAR",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/SCO",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/MAR",
+        "teamAScore": 0,
+        "teamBScore": 1,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43872",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Boston Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021462",
+        "idMatchIfes": "151627",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-19",
+        "teamAId": "43921",
+        "teamBId": "43976",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "USA"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Australia"
+            }
+        ],
+        "teamACountryCode": "USA",
+        "teamBCountryCode": "AUS",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/USA",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/AUS",
+        "teamAScore": 2,
+        "teamBScore": 0,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43921",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Seattle Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021442",
+        "idMatchIfes": "151609",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-19",
+        "teamAId": "43911",
+        "teamBId": "43822",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Mexico"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Korea Republic"
+            }
+        ],
+        "teamACountryCode": "MEX",
+        "teamBCountryCode": "KOR",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/MEX",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/KOR",
+        "teamAScore": 1,
+        "teamBScore": 0,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43911",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Guadalajara Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021450",
+        "idMatchIfes": "151615",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-18",
+        "teamAId": "43899",
+        "teamBId": "43834",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Canada"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Qatar"
+            }
+        ],
+        "teamACountryCode": "CAN",
+        "teamBCountryCode": "QAT",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/CAN",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/QAT",
+        "teamAScore": 6,
+        "teamBScore": 0,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43899",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "BC Place Vancouver"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021446",
+        "idMatchIfes": "151616",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-18",
+        "teamAId": "43971",
+        "teamBId": "44037",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Switzerland"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Bosnia and Herzegovina"
+            }
+        ],
+        "teamACountryCode": "SUI",
+        "teamBCountryCode": "BIH",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/SUI",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/BIH",
+        "teamAScore": 4,
+        "teamBScore": 1,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43971",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Los Angeles Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021440",
+        "idMatchIfes": "151610",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-18",
+        "teamAId": "43995",
+        "teamBId": "43883",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Czechia"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "South Africa"
+            }
+        ],
+        "teamACountryCode": "CZE",
+        "teamBCountryCode": "RSA",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/CZE",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/RSA",
+        "teamAScore": 1,
+        "teamBScore": 1,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Atlanta Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021504",
+        "idMatchIfes": "151667",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-18",
+        "teamAId": "44005",
+        "teamBId": "43926",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Uzbekistan"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Colombia"
+            }
+        ],
+        "teamACountryCode": "UZB",
+        "teamBCountryCode": "COL",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/UZB",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/COL",
+        "teamAScore": 1,
+        "teamBScore": 3,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43926",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Mexico City Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021510",
+        "idMatchIfes": "151674",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-17",
+        "teamAId": "43860",
+        "teamBId": "43914",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Ghana"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Panama"
+            }
+        ],
+        "teamACountryCode": "GHA",
+        "teamBCountryCode": "PAN",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/GHA",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/PAN",
+        "teamAScore": 1,
+        "teamBScore": 0,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43860",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Toronto Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021507",
+        "idMatchIfes": "151673",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-17",
+        "teamAId": "43942",
+        "teamBId": "43938",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "England"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Croatia"
+            }
+        ],
+        "teamACountryCode": "ENG",
+        "teamBCountryCode": "CRO",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/ENG",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/CRO",
+        "teamAScore": 4,
+        "teamBScore": 2,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43942",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Dallas Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021502",
+        "idMatchIfes": "151668",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-17",
+        "teamAId": "43963",
+        "teamBId": "20014",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Portugal"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Congo DR"
+            }
+        ],
+        "teamACountryCode": "POR",
+        "teamBCountryCode": "COD",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/POR",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/COD",
+        "teamAScore": 1,
+        "teamBScore": 1,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Houston Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021498",
+        "idMatchIfes": "151661",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-17",
+        "teamAId": "43934",
+        "teamBId": "43820",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Austria"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Jordan"
+            }
+        ],
+        "teamACountryCode": "AUT",
+        "teamBCountryCode": "JOR",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/AUT",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/JOR",
+        "teamAScore": 3,
+        "teamBScore": 1,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43934",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "San Francisco Bay Area Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021496",
+        "idMatchIfes": "151662",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-17",
+        "teamAId": "43922",
+        "teamBId": "43843",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Argentina"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Algeria"
+            }
+        ],
+        "teamACountryCode": "ARG",
+        "teamBCountryCode": "ALG",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/ARG",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/ALG",
+        "teamAScore": 3,
+        "teamBScore": 0,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43922",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Kansas City Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021488",
+        "idMatchIfes": "151655",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-16",
+        "teamAId": "43818",
+        "teamBId": "43961",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Iraq"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Norway"
+            }
+        ],
+        "teamACountryCode": "IRQ",
+        "teamBCountryCode": "NOR",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/IRQ",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/NOR",
+        "teamAScore": 1,
+        "teamBScore": 4,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43961",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Boston Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021490",
+        "idMatchIfes": "151656",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-16",
+        "teamAId": "43946",
+        "teamBId": "43879",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "France"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Senegal"
+            }
+        ],
+        "teamACountryCode": "FRA",
+        "teamBCountryCode": "SEN",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/FRA",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/SEN",
+        "teamAScore": 3,
+        "teamBScore": 1,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43946",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "New York/New Jersey Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021476",
+        "idMatchIfes": "151644",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-16",
+        "teamAId": "43817",
+        "teamBId": "43978",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "IR Iran"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "New Zealand"
+            }
+        ],
+        "teamACountryCode": "IRN",
+        "teamBCountryCode": "NZL",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/IRN",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/NZL",
+        "teamAScore": 2,
+        "teamBScore": 2,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Los Angeles Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021486",
+        "idMatchIfes": "151650",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-15",
+        "teamAId": "43835",
+        "teamBId": "43930",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Saudi Arabia"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Uruguay"
+            }
+        ],
+        "teamACountryCode": "KSA",
+        "teamBCountryCode": "URU",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/KSA",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/URU",
+        "teamAScore": 1,
+        "teamBScore": 1,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Miami Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021478",
+        "idMatchIfes": "151643",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-15",
+        "teamAId": "43935",
+        "teamBId": "43855",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Belgium"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Egypt"
+            }
+        ],
+        "teamACountryCode": "BEL",
+        "teamBCountryCode": "EGY",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/BEL",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/EGY",
+        "teamAScore": 1,
+        "teamBScore": 1,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Seattle Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021482",
+        "idMatchIfes": "151649",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-15",
+        "teamAId": "43969",
+        "teamBId": "43850",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Spain"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Cabo Verde"
+            }
+        ],
+        "teamACountryCode": "ESP",
+        "teamBCountryCode": "CPV",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/ESP",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/CPV",
+        "teamAScore": 0,
+        "teamBScore": 0,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Atlanta Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021474",
+        "idMatchIfes": "151637",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-15",
+        "teamAId": "43970",
+        "teamBId": "43888",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Sweden"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Tunisia"
+            }
+        ],
+        "teamACountryCode": "SWE",
+        "teamBCountryCode": "TUN",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/SWE",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/TUN",
+        "teamAScore": 5,
+        "teamBScore": 1,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43970",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Monterrey Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021467",
+        "idMatchIfes": "151632",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-14",
+        "teamAId": "43854",
+        "teamBId": "43927",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "C\u00f4te d'Ivoire"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Ecuador"
+            }
+        ],
+        "teamACountryCode": "CIV",
+        "teamBCountryCode": "ECU",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/CIV",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/ECU",
+        "teamAScore": 1,
+        "teamBScore": 0,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43854",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Philadelphia Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021470",
+        "idMatchIfes": "151638",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-14",
+        "teamAId": "43960",
+        "teamBId": "43819",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Netherlands"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Japan"
+            }
+        ],
+        "teamACountryCode": "NED",
+        "teamBCountryCode": "JPN",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/NED",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/JPN",
+        "teamAScore": 2,
+        "teamBScore": 2,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Dallas Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021464",
+        "idMatchIfes": "151631",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-14",
+        "teamAId": "43948",
+        "teamBId": "1895293",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Germany"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Cura\u00e7ao"
+            }
+        ],
+        "teamACountryCode": "GER",
+        "teamBCountryCode": "CUW",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/GER",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/CUW",
+        "teamAScore": 7,
+        "teamBScore": 1,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43948",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Houston Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021463",
+        "idMatchIfes": "151626",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-14",
+        "teamAId": "43976",
+        "teamBId": "43972",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Australia"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "T\u00fcrkiye"
+            }
+        ],
+        "teamACountryCode": "AUS",
+        "teamBCountryCode": "TUR",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/AUS",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/TUR",
+        "teamAScore": 2,
+        "teamBScore": 0,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43976",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "BC Place Vancouver"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021453",
+        "idMatchIfes": "151619",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-14",
+        "teamAId": "43908",
+        "teamBId": "43967",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Haiti"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Scotland"
+            }
+        ],
+        "teamACountryCode": "HAI",
+        "teamBCountryCode": "SCO",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/HAI",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/SCO",
+        "teamAScore": 0,
+        "teamBScore": 1,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43967",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Boston Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021456",
+        "idMatchIfes": "151620",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-13",
+        "teamAId": "43924",
+        "teamBId": "43872",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Brazil"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Morocco"
+            }
+        ],
+        "teamACountryCode": "BRA",
+        "teamBCountryCode": "MAR",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/BRA",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/MAR",
+        "teamAScore": 1,
+        "teamBScore": 1,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "New York/New Jersey Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021447",
+        "idMatchIfes": "151613",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-13",
+        "teamAId": "43834",
+        "teamBId": "43971",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Qatar"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Switzerland"
+            }
+        ],
+        "teamACountryCode": "QAT",
+        "teamBCountryCode": "SUI",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/QAT",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/SUI",
+        "teamAScore": 1,
+        "teamBScore": 1,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "San Francisco Bay Area Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021458",
+        "idMatchIfes": "151625",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-13",
+        "teamAId": "43921",
+        "teamBId": "43928",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "USA"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Paraguay"
+            }
+        ],
+        "teamACountryCode": "USA",
+        "teamBCountryCode": "PAR",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/USA",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/PAR",
+        "teamAScore": 4,
+        "teamBScore": 1,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43921",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Los Angeles Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021449",
+        "idMatchIfes": "151614",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-12",
+        "teamAId": "43899",
+        "teamBId": "44037",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Canada"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Bosnia and Herzegovina"
+            }
+        ],
+        "teamACountryCode": "CAN",
+        "teamBCountryCode": "BIH",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/CAN",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/BIH",
+        "teamAScore": 1,
+        "teamBScore": 1,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Toronto Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021441",
+        "idMatchIfes": "151608",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-12",
+        "teamAId": "43822",
+        "teamBId": "43995",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Korea Republic"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Czechia"
+            }
+        ],
+        "teamACountryCode": "KOR",
+        "teamBCountryCode": "CZE",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/KOR",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/CZE",
+        "teamAScore": 2,
+        "teamBScore": 1,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43822",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Guadalajara Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
+        "idMatch": "400021443",
+        "idMatchIfes": "151600",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289273",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "First Stage"
+            }
+        ],
+        "matchDate": "2026-06-11",
+        "teamAId": "43911",
+        "teamBId": "43883",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Mexico"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "South Africa"
+            }
+        ],
+        "teamACountryCode": "MEX",
+        "teamBCountryCode": "RSA",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/MEX",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/RSA",
+        "teamAScore": 2,
+        "teamBScore": 0,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43911",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Mexico City Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    }
+]
