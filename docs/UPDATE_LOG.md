@@ -13,6 +13,35 @@ snapshots for documentation.
 
 ---
 
+## 2026-07-07 — automated refresh
+
+*Generated 2026-07-07 14:47 UTC by `run_daily_update.py`.*
+
+**Archive:** [`archive/2026-07-07/`](../archive/2026-07-07/)
+
+**Knockout results detected (10 teams still alive):**
+  - R16_1: France vs Paraguay → **France**
+  - R16_2: Morocco vs Canada → **Morocco**
+  - R16_3: Norway vs Brazil → **Norway**
+  - R16_4: England vs Mexico → **England**
+  - R16_5: Spain vs Portugal → **Spain**
+  - R16_6: USA vs Belgium → **Belgium**
+
+**Model:** XGBoost (tuned) — accuracy 0.6215, log loss 0.8511, ROC-AUC 0.7751
+
+**Champion odds (top 5, 10,000 simulations):**
+
+| Rank | Team | Win % |
+|------|------|-------|
+| 1 | France | 18.8 |
+| 2 | England | 16.6 |
+| 3 | Spain | 16.3 |
+| 4 | Argentina | 13.5 |
+| 5 | Belgium | 11.6 |
+
+---
+
+
 ## 2026-07-06 — Round of 16 in progress (first real bracket + retrain)
 
 **Archive:** [`archive/2026-07-06/`](../archive/2026-07-06/)
