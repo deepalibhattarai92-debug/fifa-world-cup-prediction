@@ -184,7 +184,7 @@ FLAGS = {
     "France":"🇫🇷","Morocco":"🇲🇦","Spain":"🇪🇸","Argentina":"🇦🇷",
     "Portugal":"🇵🇹","Brazil":"🇧🇷","Belgium":"🇧🇪","Mexico":"🇲🇽",
     "England":"🏴󠁧󠁢󠁥󠁮󠁧󠁿","Colombia":"🇨🇴","USA":"🇺🇸","Switzerland":"🇨🇭",
-    "Norway":"🇳🇴","Egypt":"🇪🇬",
+    "Norway":"🇳🇴","Egypt":"🇪🇬","Paraguay":"🇵🇾","Canada":"🇨🇦",
 }
 CONF_COLORS = {
     "UEFA":"#1565c0","CONMEBOL":"#00838f","CONCACAF":"#e65100",
@@ -223,6 +223,63 @@ def load_simulation():
     df["ci_high"]=(df["win_pct"]+1.96*np.sqrt(df["win_pct"]/100*(1-df["win_pct"]/100)/n)*100).round(1)
     df["ci_str"]=df.apply(lambda r:f"{r.ci_low:.1f}%–{r.ci_high:.1f}%",axis=1)
     return df
+
+@st.cache_data
+def load_bracket():
+    """Derive the live knockout bracket from the fixtures feed (single source of truth)."""
+    from src.simulation.simulate_tournament_v2 import (
+        BRACKET_2026, MATCH_ORDER, _resolve_source, derive_bracket_state,
+    )
+    fx = pd.read_csv(PROCESSED/"world_cup_fixtures.csv").copy()
+    real = derive_bracket_state(fx)
+
+    fx["_date"] = pd.to_datetime(fx["match_date"], errors="coerce")
+    date_by_pair = {
+        frozenset((str(r["home_team"]), str(r["away_team"]))): r["_date"]
+        for _, r in fx.iterrows()
+    }
+
+    def label(source):
+        if isinstance(source, str):
+            return source
+        _, mid = source
+        if mid in real:
+            return real[mid]
+        return f"{label(BRACKET_2026[mid][0])}/{label(BRACKET_2026[mid][1])}"
+
+    def match_date(a, b):
+        d = date_by_pair.get(frozenset((a, b))) if (a and b) else None
+        return d.strftime("%b %-d") if (d is not None and pd.notna(d)) else ""
+
+    matches = {}
+    for mid in MATCH_ORDER:
+        a = _resolve_source(BRACKET_2026[mid][0], real)
+        b = _resolve_source(BRACKET_2026[mid][1], real)
+        matches[mid] = {
+            "a": a, "b": b,
+            "a_label": label(BRACKET_2026[mid][0]),
+            "b_label": label(BRACKET_2026[mid][1]),
+            "winner": real.get(mid),
+            "played": mid in real,
+            "date": match_date(a, b),
+        }
+
+    collected = pd.to_datetime(fx["collected_at"], errors="coerce").max()
+    date_str = collected.strftime("%B %-d, %Y") if pd.notna(collected) else "—"
+
+    r16 = sum(f"R16_{i}" in real for i in range(1, 9))
+    qf  = sum(f"QF_{i}" in real for i in range(1, 5))
+    sf  = int("SF_1" in real) + int("SF_2" in real)
+    if "FINAL" in real:   status = "🏆 Champion decided"
+    elif sf > 0:          status = "Semi-finals in progress"
+    elif qf == 4:         status = "Quarter-finals complete"
+    elif qf > 0:          status = "Quarter-finals in progress"
+    elif r16 == 8:        status = "Round of 16 complete"
+    elif r16 > 0:         status = f"Round of 16 · {r16}/8 played"
+    else:                 status = "Knockouts starting"
+
+    return matches, date_str, status
+
 
 @st.cache_data
 def load_model_comparisons():
@@ -399,15 +456,17 @@ with st.sidebar:
     st.caption(f"95% CI: {top['ci_str']}")
     st.divider()
     st.link_button("⭐ View on GitHub", "https://github.com/deepalibhattarai92-debug/fifa-world-cup-prediction")
-    st.caption("Data: July 5, 2026 · R16 Complete")
+    _bm, _bdate, _bstatus = load_bracket()
+    st.caption(f"Data: {_bdate} · {_bstatus}")
 
 
 # ===========================================================================
 # OVERVIEW
 # ===========================================================================
 if page=="🏠  Overview":
+    matches, bracket_date, bracket_status = load_bracket()
     # FIFA 2026 branding banner
-    st.markdown("""<div class="wc-banner">
+    st.markdown(f"""<div class="wc-banner">
       <span style="font-size:2.2rem">🏆</span>
       <div>
         <div class="wc-title">FIFA WORLD CUP 2026™</div>
@@ -415,26 +474,38 @@ if page=="🏠  Overview":
       </div>
       <div style="margin-left:auto;text-align:right">
         <div style="font-size:.72rem;color:rgba(255,255,255,.5)">Data as of</div>
-        <div style="font-size:.9rem;color:#fff;font-weight:700">July 5, 2026</div>
-        <div class="anim-blink" style="font-size:.68rem;color:#EE3124">⚡ Round of 16 Complete</div>
+        <div style="font-size:.9rem;color:#fff;font-weight:700">{bracket_date}</div>
+        <div class="anim-blink" style="font-size:.68rem;color:#EE3124">⚡ {bracket_status}</div>
       </div>
     </div>""",unsafe_allow_html=True)
 
-    # KPI row
+    # Sports stat row — derived live from the bracket
+    sim=load_simulation()
+    fav=sim.iloc[0]
+    r16_ids=[f"R16_{i}" for i in range(1,9)]
+    qf_ids=[f"QF_{i}" for i in range(1,5)]
+    r16_played=sum(matches[m]["played"] for m in r16_ids)
+    qf_set=sum(1 for m in qf_ids if matches[m]["a"] and matches[m]["b"])
+    r16_teams=[t for m in r16_ids for t in (matches[m]["a"],matches[m]["b"])]
+    losers=set()
+    for m in matches.values():
+        if m["played"] and m["a"] and m["b"]:
+            losers.add(m["a"] if m["winner"]==m["b"] else m["b"])
+    alive=[t for t in r16_teams if t not in losers]
+
     k1,k2,k3,k4,k5=st.columns(5)
     for col,(lbl,val,sub,cls) in zip([k1,k2,k3,k4,k5],[
-        ("Model Accuracy","62.1%","↑ 2.9pp vs baseline","kpi-g"),
-        ("Log Loss","0.851","↓ 0.035 vs baseline","kpi-b"),
-        ("Training Matches","21,325","Competitive only","kpi-au"),
-        ("Simulations","10,000","Monte Carlo","kpi-p"),
-        ("WC Matches","90","R16 → Final","kpi-t"),
+        ("Teams Remaining",f"{len(alive)}","of 16 in the knockouts","kpi-g"),
+        ("Round of 16",f"{r16_played} / 8","matches played","kpi-b"),
+        ("Quarter-finals",f"{qf_set} / 4","matchups confirmed","kpi-au"),
+        ("Title Favorite",f"{FLAGS.get(fav['team'],'')} {fav['team']}",f"{fav['win_pct']:.1f}% to lift the trophy","kpi-p"),
+        ("The Final","Jul 19","MetLife Stadium, NY","kpi-t"),
     ]):
         col.markdown(f'<div class="kpi {cls}"><div class="kpi-l">{lbl}</div><div class="kpi-v">{val}</div><div class="kpi-dp">{sub}</div></div>',unsafe_allow_html=True)
 
     st.markdown("<br>",unsafe_allow_html=True)
 
     # Champion podium
-    sim=load_simulation()
     st.markdown('<div class="sh">🏅 Predicted Championship Podium</div>',unsafe_allow_html=True)
     pod1,pod2,pod3=st.columns(3)
 
@@ -445,66 +516,40 @@ if page=="🏠  Overview":
 
     st.divider()
 
-    # BRACKET — full width
+    # BRACKET — full width (derived live from the fixtures feed)
+    def _fl(name):
+        return f'{FLAGS.get(name,"")} {name}'.strip()
+
+    def render_r16(col, mid):
+        m=matches[mid]
+        date=f'<span class="bm-date">{m["date"]}</span>' if m["date"] else ""
+        if m["played"]:
+            col.markdown(f'<div class="bm bm-ok">🟢 <strong style="color:#e0ead8">{_fl(m["a"])} vs {_fl(m["b"])}</strong> → <span style="color:#00c853;font-weight:700">{_fl(m["winner"])} ✅</span>{date}</div>',unsafe_allow_html=True)
+        else:
+            col.markdown(f'<div class="bm bm-live"><span class="anim-blink" style="color:#EE3124">🔴</span> <span style="color:#c0ccd8">{_fl(m["a"])} vs {_fl(m["b"])}</span>{date}</div>',unsafe_allow_html=True)
+
+    def render_slot(col, mid):
+        m=matches[mid]
+        date=f'<span class="bm-date">{m["date"]}</span>' if m["date"] else ""
+        if m["played"]:
+            col.markdown(f'<div class="bm bm-ok">🟢 <strong style="color:#ffd700">{_fl(m["a"])} vs {_fl(m["b"])}</strong> → <span style="color:#00c853;font-weight:700">{_fl(m["winner"])} ✅</span>{date}</div>',unsafe_allow_html=True)
+        elif m["a"] and m["b"]:
+            col.markdown(f'<div class="bm bm-ok">🟢 <strong style="color:#ffd700">{_fl(m["a"])}</strong> <span style="color:#445566">vs</span> <strong style="color:#ffd700">{_fl(m["b"])}</strong>{date}</div>',unsafe_allow_html=True)
+        else:
+            col.markdown(f'<div class="bm">⏳ <span style="color:#7a8fa0">{m["a_label"]}</span> <span style="color:#445566">vs</span> <span style="color:#7a8fa0">{m["b_label"]}</span></div>',unsafe_allow_html=True)
+
     st.markdown('<div class="sh">⚽ Tournament Bracket — Round of 16</div>',unsafe_allow_html=True)
     b1,b2=st.columns(2)
-    r16_left=[
-        ("🇫🇷 France","🇵🇾 Paraguay","France","Jul 3","done"),
-        ("🇧🇷 Brazil","🏴󠁧󠁢󠁥󠁮󠁧󠁿 England","TBD","Jul 5","live"),
-        ("🇳🇴 Norway","🇧🇪 Belgium","TBD","Jul 5","live"),
-        ("🇲🇽 Mexico","🇪🇬 Egypt","TBD","Jul 5","live"),
-    ]
-    r16_right=[
-        ("🇲🇦 Morocco","🇨🇦 Canada","Morocco","Jul 3","done"),
-        ("🇵🇹 Portugal","🇺🇸 USA","TBD","Jul 4","live"),
-        ("🇪🇸 Spain","🇨🇭 Switzerland","TBD","Jul 4","live"),
-        ("🇦🇷 Argentina","🇨🇴 Colombia","TBD","Jul 5","live"),
-    ]
-    for col,rows in [(b1,r16_left),(b2,r16_right)]:
-        for h,a,winner,date,status in rows:
-            if status=="done":
-                col.markdown(f'<div class="bm bm-ok">🟢 <strong style="color:#e0ead8">{h} vs {a}</strong> → <span style="color:#00c853;font-weight:700">{winner} ✅</span><span class="bm-date">{date}</span></div>',unsafe_allow_html=True)
-            else:
-                col.markdown(f'<div class="bm bm-live"><span class="anim-blink" style="color:#EE3124">🔴</span> <span style="color:#c0ccd8">{h} vs {a}</span><span class="bm-date">{date}</span></div>',unsafe_allow_html=True)
+    for col,mids in [(b1,["R16_1","R16_2","R16_5","R16_6"]),(b2,["R16_3","R16_4","R16_7","R16_8"])]:
+        for mid in mids:
+            render_r16(col,mid)
 
     st.markdown('<div class="sh" style="margin-top:14px">🏟️ Quarter-finals & Final</div>',unsafe_allow_html=True)
     qf1,qf2=st.columns(2)
-    qf_left=[("🇫🇷 France","🇲🇦 Morocco","Jul 4","confirmed"),("Mexico/Egypt","Portugal/USA","Jul 6","pending")]
-    qf_right=[("Brazil/England","Norway/Belgium","Jul 5","pending"),("Spain/Switzerland","Argentina/Colombia","Jul 6","pending")]
-    for col,rows in [(qf1,qf_left),(qf2,qf_right)]:
-        for t1s,t2s,date,status in rows:
-            if status=="confirmed":
-                col.markdown(f'<div class="bm bm-ok">🟢 <strong style="color:#ffd700">{t1s}</strong> <span style="color:#445566">vs</span> <strong style="color:#ffd700">{t2s}</strong><span class="bm-date">{date}</span></div>',unsafe_allow_html=True)
-            else:
-                col.markdown(f'<div class="bm">⏳ <span style="color:#7a8fa0">{t1s}</span> <span style="color:#445566">vs</span> <span style="color:#7a8fa0">{t2s}</span><span class="bm-date">{date}</span></div>',unsafe_allow_html=True)
+    for col,mids in [(qf1,["QF_1","QF_2"]),(qf2,["QF_3","QF_4"])]:
+        for mid in mids:
+            render_slot(col,mid)
     st.markdown(f'<div class="bm" style="border-left:3px solid #f9a825;background:linear-gradient(90deg,#1a1200,#111d30);margin-top:6px">🏆 <strong style="color:#f9a825">Final</strong> — <strong style="color:#ffd700">July 19, 2026</strong> · MetLife Stadium, New York</div>',unsafe_allow_html=True)
-
-    st.divider()
-    fi_col,why_col=st.columns(2)
-
-    fi_col.markdown('<div class="sh">📈 Top Feature Importance (XGBoost)</div>',unsafe_allow_html=True)
-    _,_,_,fi,_,_=load_eval()
-    top10=fi.head(10)
-    fc2=["#ffd700" if i==0 else "#00c853" if i<3 else "#1565c0" if i<7 else "#2a3a4a" for i in range(10)]
-    fig_fi=go.Figure(go.Bar(x=top10["importance"],y=top10["display_name"],orientation="h",
-        marker_color=fc2,text=top10["importance"].apply(lambda x:f"{x:.3f}"),textposition="outside"))
-    fig_fi.update_layout(height=310,yaxis=dict(autorange="reversed",tickfont=dict(size=11)),
-                         xaxis=dict(title="Importance",gridcolor="#1c2a3e"),**PLOTLY_LAYOUT,margin=dict(l=10,r=60,t=10,b=10))
-    fi_col.plotly_chart(fig_fi,use_container_width=True)
-
-    why_col.markdown('<div class="sh">🤔 Why France? — Model Reasoning</div>',unsafe_allow_html=True)
-    sim_teams=list(load_simulation()["team"])
-    tl_ov=build_team_lookup(sim_teams)
-    fr=tl_ov.get("France",{})
-    for icon,title,detail in [
-        ("🏆","World Cup Pedigree",f"2 titles · {int(fr.get('wc_appearances',0))} WC appearances (1930–2022)"),
-        ("📊","Highest FIFA Points",f"{int(fr.get('fifa_points',0)):,} pts · Ranked #{int(fr.get('fifa_rank',0))} globally"),
-        ("⚡","Elite Elo Rating",f"{int(fr.get('elo_rating',0)):,} — highest among remaining teams"),
-        ("📈","Recent Competitive Form",f"{fr.get('form_win_pct',0):.0%} win rate in last 10 competitive matches"),
-        ("🎯","QF Confirmed","Already through — 3 wins separate France from the trophy"),
-    ]:
-        why_col.markdown(f'<div class="wc"><span style="font-size:1.1rem">{icon}</span> <span class="wt">{title}</span><div class="wd">{detail}</div></div>',unsafe_allow_html=True)
-    why_col.caption("Model features only — no player, injury or squad data")
 
     st.markdown('<div class="ft">⚡ Human curiosity. AI execution. Built by Deepali using Cursor and ChatGPT as engineering partners.</div>',unsafe_allow_html=True)
 
@@ -570,7 +615,8 @@ elif page=="🎯  Match Predictor":
 # SIMULATION
 # ===========================================================================
 elif page=="🏆  Simulation":
-    st.markdown('<div class="wc-banner"><span style="font-size:2rem">🏆</span><div><div class="wc-title">Tournament Simulation</div><div class="wc-sub">10,000 Monte Carlo simulations · XGBoost (Tuned) · July 5, 2026</div></div></div>',unsafe_allow_html=True)
+    _sm, _sdate, _sstatus = load_bracket()
+    st.markdown(f'<div class="wc-banner"><span style="font-size:2rem">🏆</span><div><div class="wc-title">Tournament Simulation</div><div class="wc-sub">10,000 Monte Carlo simulations · XGBoost (Tuned) · {_sdate}</div></div></div>',unsafe_allow_html=True)
 
     sim=load_simulation()
     tab1,tab2,tab3=st.tabs(["🥇 Championship Odds","📈 Stage Progression","🔄 V1 vs V2 Shift"])
@@ -600,6 +646,20 @@ elif page=="🏆  Simulation":
                                "QF%":st.column_config.NumberColumn(format="%.1f%%"),"SF%":st.column_config.NumberColumn(format="%.1f%%"),
                                "Final%":st.column_config.NumberColumn(format="%.1f%%")})
             st.info(f"Top 5 cumulative: **{sim.head(5)['win_pct'].sum():.1f}%**")
+
+        # Why the model favours the top pick — reasoning from model features
+        fav_team=sim.iloc[0]["team"]
+        st.markdown(f'<div class="sh" style="margin-top:10px">🤔 Why {fav_team}? — Model Reasoning</div>',unsafe_allow_html=True)
+        fr=build_team_lookup([fav_team]).get(fav_team,{})
+        why_cols=st.columns(4)
+        for col,(icon,title,detail) in zip(why_cols,[
+            ("🏆","World Cup Pedigree",f"{int(fr.get('wc_titles',0))} titles · {int(fr.get('wc_appearances',0))} appearances"),
+            ("📊","FIFA Ranking",f"{int(fr.get('fifa_points',0)):,} pts · #{int(fr.get('fifa_rank',0))} globally"),
+            ("⚡","Elo Rating",f"{int(fr.get('elo_rating',0)):,} — among the highest remaining"),
+            ("📈","Recent Form",f"{fr.get('form_win_pct',0):.0%} win rate · last 10 competitive"),
+        ]):
+            col.markdown(f'<div class="wc"><span style="font-size:1.1rem">{icon}</span> <span class="wt">{title}</span><div class="wd">{detail}</div></div>',unsafe_allow_html=True)
+        st.caption("Model features only — no player, injury or squad data")
 
     with tab2:
         stages=["qf_pct","sf_pct","final_pct","win_pct"]
