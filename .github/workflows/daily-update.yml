@@ -1,0 +1,47 @@
+name: Daily prediction refresh
+
+# Runs the light-refresh pipeline once a day and pushes the updated
+# predictions, which triggers a fresh Streamlit Cloud deploy.
+#
+# NOTE: the FIFA fixtures/rankings APIs sit behind Akamai bot protection and may
+# return HTTP 403 from GitHub's shared runners. The runner is resilient — if a
+# live pull fails it keeps the last committed data and still re-simulates — but
+# for guaranteed daily fixture updates, the local cron option (see docs/AUTOMATION.md)
+# is more reliable. Use "Run workflow" (workflow_dispatch) to trigger on demand.
+
+on:
+  schedule:
+    - cron: "0 12 * * *"   # 12:00 UTC daily (~8am ET)
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run daily refresh
+        run: python src/pipeline/run_daily_update.py
+
+      - name: Commit and push updated predictions
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git commit -m "Daily prediction refresh $(date +%F)"; then
+            git push
+          else
+            echo "No changes to commit."
+          fi

@@ -1,20 +1,12 @@
 """
-Monte Carlo simulation of the 2026 FIFA World Cup from current bracket state.
+Monte Carlo simulation of the 2026 FIFA World Cup.
 
-Current state (as of 2026-07-04):
-  - Round of 16: France beat Paraguay, Morocco beat Canada
-  - 6 remaining Round of 16 matches to simulate
-  - Quarter-finals, Semi-finals, and Final to simulate
-
-Bracket structure (derived from the R32 pairing pattern):
-  QF1 slot:  Morocco vs France         (both already through)
-  QF2 slot:  Brazil vs England winner  vs  Norway vs Belgium winner
-  QF3 slot:  Mexico vs Egypt winner    vs  Portugal vs USA winner
-  QF4 slot:  Spain vs Switzerland win  vs  Argentina vs Colombia winner
-
-  SF1: QF1 winner vs QF2 winner
-  SF2: QF3 winner vs QF4 winner
-  Final: SF1 winner vs SF2 winner
+The knockout bracket TREE is defined once in BRACKET_2026 (Round-of-16 matchups
+and how winners feed the later rounds). The live STATE — which matches have been
+played and who won — is read automatically from the fixtures feed every run via
+derive_bracket_state(), so this script never needs manual editing as results come
+in. Already-played matches are locked to their real winners; everything still
+undecided is simulated.
 
 Input:
     data/processed/features_v2.csv
@@ -48,6 +40,7 @@ INPUT_FIFA      = PROCESSED_DIR / "fifa_rankings.csv"
 INPUT_ELO       = PROCESSED_DIR / "elo_ratings.csv"
 INPUT_WC_HIST   = PROCESSED_DIR / "world_cup_history.csv"
 INPUT_ELO_MAP   = Path("data/raw/elo_code_map_v2.csv")
+INPUT_FIXTURES  = PROCESSED_DIR / "world_cup_fixtures.csv"
 INPUT_MODEL     = MODELS_DIR / "best_model_v2.pkl"
 
 OUTPUT_RESULTS  = PROCESSED_DIR / "simulation_results.csv"
@@ -78,32 +71,121 @@ FIXTURE_TO_WC_NAME: dict[str, str] = {
 WC_HISTORY_DEFAULTS = {"appearances": 0, "titles": 0, "best_finish": 8}
 
 # ---------------------------------------------------------------------------
-# Bracket — current tournament state
+# Bracket — static structure, live state derived from the fixtures feed
 # ---------------------------------------------------------------------------
+#
+# The knockout bracket TREE is fixed for the whole tournament (the Round-of-16
+# matchups and how winners feed the quarter-finals, semi-finals, and final).
+# The current STATE (who has already won) is read automatically from
+# data/processed/world_cup_fixtures.csv every run — so this file never needs to
+# be hand-edited as results come in.
+#
+# Each match maps to a pair of "sources". A source is either:
+#   - a literal team name (str)                → a Round-of-16 participant
+#   - ("W", "<match_id>")                      → the winner of an earlier match
+#
+# Official 2026 bracket (Round of 16 → Final):
+BRACKET_2026: dict[str, tuple] = {
+    "R16_1": ("France",      "Paraguay"),
+    "R16_2": ("Morocco",     "Canada"),
+    "R16_3": ("Norway",      "Brazil"),
+    "R16_4": ("England",     "Mexico"),
+    "R16_5": ("Spain",       "Portugal"),
+    "R16_6": ("USA",         "Belgium"),
+    "R16_7": ("Argentina",   "Egypt"),
+    "R16_8": ("Switzerland", "Colombia"),
+    "QF_1":  (("W", "R16_1"), ("W", "R16_2")),
+    "QF_2":  (("W", "R16_5"), ("W", "R16_6")),
+    "QF_3":  (("W", "R16_3"), ("W", "R16_4")),
+    "QF_4":  (("W", "R16_7"), ("W", "R16_8")),
+    "SF_1":  (("W", "QF_1"),  ("W", "QF_2")),
+    "SF_2":  (("W", "QF_3"),  ("W", "QF_4")),
+    "FINAL": (("W", "SF_1"),  ("W", "SF_2")),
+}
 
-# Teams already confirmed through to the QF (from actual Round of 16 results)
-QF_CONFIRMED: list[str] = ["France", "Morocco"]
-
-# Remaining Round of 16 matches (6 matches, 12 teams)
-R16_REMAINING: list[tuple[str, str]] = [
-    ("Brazil",    "England"),
-    ("Norway",    "Belgium"),
-    ("Mexico",    "Egypt"),
-    ("Portugal",  "USA"),
-    ("Spain",     "Switzerland"),
-    ("Argentina", "Colombia"),
+# Topological order (feeders before dependents) for resolving/simulating.
+MATCH_ORDER: list[str] = [
+    "R16_1", "R16_2", "R16_3", "R16_4", "R16_5", "R16_6", "R16_7", "R16_8",
+    "QF_1", "QF_2", "QF_3", "QF_4", "SF_1", "SF_2", "FINAL",
 ]
 
-# QF bracket slots — each tuple is (R16 match A, R16 match B).
-# France and Morocco occupy slot 0 directly (already in QF).
-# For slots 1-3: (index into R16_REMAINING for left, index for right)
-# QF1: France vs Morocco  (both confirmed)
-# QF2: winner R16[0] vs winner R16[1]   (Brazil/England vs Norway/Belgium)
-# QF3: winner R16[2] vs winner R16[3]   (Mexico/Egypt vs Portugal/USA)
-# QF4: winner R16[4] vs winner R16[5]   (Spain/Switzerland vs Argentina/Colombia)
-# SF1: QF1 winner vs QF2 winner
-# SF2: QF3 winner vs QF4 winner
-# Final: SF1 winner vs SF2 winner
+# The elimination stage assigned to the LOSER of each match.
+STAGE_OF_LOSS: dict[str, str] = {
+    **{f"R16_{i}": "Round of 16"    for i in range(1, 9)},
+    **{f"QF_{i}":  "Quarter-finals" for i in range(1, 5)},
+    "SF_1": "Semi-finals", "SF_2": "Semi-finals",
+    "FINAL": "Runner-up",
+}
+
+# Progress ranking used to compute cumulative reach percentages.
+STAGE_RANK: dict[str, int] = {
+    "Round of 16": 1,
+    "Quarter-finals": 2,
+    "Semi-finals": 3,
+    "Runner-up": 4,
+    "Champion": 5,
+}
+
+# The 16 Round-of-16 participants (bracket literals).
+BRACKET_TEAMS: list[str] = [
+    team for mid in MATCH_ORDER if mid.startswith("R16_")
+    for team in BRACKET_2026[mid]
+]
+
+
+def _resolve_source(source, winners: dict[str, str]) -> str | None:
+    """Resolve a bracket source to a concrete team name, or None if undecided."""
+    if isinstance(source, str):
+        return source
+    _, match_id = source  # ("W", match_id)
+    return winners.get(match_id)
+
+
+def derive_bracket_state(fixtures: pd.DataFrame) -> dict[str, str]:
+    """
+    Read completed knockout results from the fixtures feed and map them onto the
+    bracket tree. Returns {match_id: winning_team} for every match already played.
+
+    A match is considered played when the feed contains a completed row whose two
+    teams match the (resolved) participants of that bracket slot. Higher rounds
+    resolve automatically once their feeder matches have real winners, so quarter-
+    finals, semi-finals, and the final get picked up with no code changes.
+    """
+    played = fixtures[
+        fixtures["winner"].notna()
+        & (fixtures["winner"].astype(str).str.strip() != "")
+        & (fixtures["winner"].astype(str).str.lower() != "nan")
+    ]
+
+    result_by_pair: dict[frozenset, str] = {}
+    for _, row in played.iterrows():
+        home, away = str(row["home_team"]), str(row["away_team"])
+        result_by_pair[frozenset((home, away))] = str(row["winner"])
+
+    real_winners: dict[str, str] = {}
+    for match_id in MATCH_ORDER:
+        src_a, src_b = BRACKET_2026[match_id]
+        team_a = _resolve_source(src_a, real_winners)
+        team_b = _resolve_source(src_b, real_winners)
+        if team_a is None or team_b is None:
+            continue  # participants not decided yet → not played
+        winner = result_by_pair.get(frozenset((team_a, team_b)))
+        if winner is not None:
+            real_winners[match_id] = winner
+
+    return real_winners
+
+
+def alive_teams_from_state(real_winners: dict[str, str]) -> list[str]:
+    """Return bracket teams that have not lost a completed knockout match."""
+    eliminated: set[str] = set()
+    for match_id, winner in real_winners.items():
+        src_a, src_b = BRACKET_2026[match_id]
+        team_a = _resolve_source(src_a, real_winners)
+        team_b = _resolve_source(src_b, real_winners)
+        loser = team_b if winner == team_a else team_a
+        eliminated.add(loser)
+    return [t for t in BRACKET_TEAMS if t not in eliminated]
 
 
 # ---------------------------------------------------------------------------
@@ -317,54 +399,31 @@ def sim_match(
 def simulate_once(
     win_probs: dict[tuple[str, str], float],
     rng: np.random.Generator,
+    real_winners: dict[str, str],
 ) -> dict[str, str]:
     """
-    Run one complete simulation of the remaining bracket.
-    Returns a dict: team → furthest_stage_reached.
+    Run one complete simulation of the bracket, honouring matches that have
+    already been played (real_winners) and simulating the rest.
+    Returns a dict: team → furthest stage reached.
     """
+    winners: dict[str, str] = dict(real_winners)  # seed with actual results
     stages: dict[str, str] = {}
 
-    # --- Round of 16 ---
-    r16_winners: list[str] = list(QF_CONFIRMED)  # France and Morocco already through
+    for match_id in MATCH_ORDER:
+        src_a, src_b = BRACKET_2026[match_id]
+        team_a = _resolve_source(src_a, winners)
+        team_b = _resolve_source(src_b, winners)
 
-    for home, away in R16_REMAINING:
-        winner = sim_match(home, away, win_probs, rng)
-        loser  = away if winner == home else home
-        r16_winners.append(winner)
-        stages[loser] = "Round of 16"
+        if match_id in winners:
+            winner = winners[match_id]           # real, already-played result
+        else:
+            winner = sim_match(team_a, team_b, win_probs, rng)
+            winners[match_id] = winner
 
-    # --- Quarter-finals ---
-    # QF1: France (idx 0) vs Morocco (idx 1)
-    # QF2: r16_winners[2] vs r16_winners[3]
-    # QF3: r16_winners[4] vs r16_winners[5]
-    # QF4: r16_winners[6] vs r16_winners[7]
-    qf_winners: list[str] = []
-    for i in range(0, 8, 2):
-        home = r16_winners[i]
-        away = r16_winners[i + 1]
-        winner = sim_match(home, away, win_probs, rng)
-        loser  = away if winner == home else home
-        qf_winners.append(winner)
-        stages[loser] = "Quarter-finals"
+        loser = team_b if winner == team_a else team_a
+        stages[loser] = STAGE_OF_LOSS[match_id]
 
-    # --- Semi-finals ---
-    sf_winners: list[str] = []
-    for i in range(0, 4, 2):
-        home = qf_winners[i]
-        away = qf_winners[i + 1]
-        winner = sim_match(home, away, win_probs, rng)
-        loser  = away if winner == home else home
-        sf_winners.append(winner)
-        stages[loser] = "Semi-finals"
-
-    # --- Final ---
-    finalist_a, finalist_b = sf_winners[0], sf_winners[1]
-    champion  = sim_match(finalist_a, finalist_b, win_probs, rng)
-    runner_up = finalist_b if champion == finalist_a else finalist_a
-
-    stages[runner_up] = "Runner-up"
-    stages[champion]  = "Champion"
-
+    stages[winners["FINAL"]] = "Champion"
     return stages
 
 
@@ -374,58 +433,35 @@ def simulate_once(
 
 def run_simulation(
     win_probs: dict[tuple[str, str], float],
+    real_winners: dict[str, str],
+    alive_teams: list[str],
     n: int = N_SIMULATIONS,
 ) -> pd.DataFrame:
-    """Run N simulations and return a dataframe of probabilities per stage."""
+    """Run N simulations and return a dataframe of reach probabilities per team."""
     print(f"Running {n:,} simulations...")
 
-    all_teams = list(QF_CONFIRMED) + [t for pair in R16_REMAINING for t in pair]
-    stage_counts: dict[str, dict[str, int]] = {
-        team: {
-            "Round of 16": 0,
-            "Quarter-finals": 0,
-            "Semi-finals": 0,
-            "Runner-up": 0,
-            "Champion": 0,
-        }
-        for team in all_teams
-    }
-
+    counts = {team: {"qf": 0, "sf": 0, "final": 0, "win": 0} for team in alive_teams}
     rng = np.random.default_rng(seed=42)
 
     for _ in range(n):
-        result = simulate_once(win_probs, rng)
-        for team, stage in result.items():
-            if team not in stage_counts:
-                continue
-            # Cumulative — if you reach a later stage you also reached earlier stages
-            if stage in ("Champion", "Runner-up", "Semi-finals", "Quarter-finals", "Round of 16"):
-                if team not in QF_CONFIRMED:
-                    stage_counts[team]["Round of 16"] += 1
-            if stage in ("Champion", "Runner-up", "Semi-finals", "Quarter-finals"):
-                stage_counts[team]["Quarter-finals"] += 1
-            if stage in ("Champion", "Runner-up", "Semi-finals"):
-                stage_counts[team]["Semi-finals"] += 1
-            if stage in ("Champion", "Runner-up"):
-                stage_counts[team]["Runner-up"] += 1
-            if stage == "Champion":
-                stage_counts[team]["Champion"] += 1
+        stages = simulate_once(win_probs, rng, real_winners)
+        for team in alive_teams:
+            rank = STAGE_RANK[stages[team]]
+            if rank >= 2:  counts[team]["qf"]    += 1  # lost in QF or later ⇒ reached QF
+            if rank >= 3:  counts[team]["sf"]    += 1
+            if rank >= 4:  counts[team]["final"] += 1
+            if rank == 5:  counts[team]["win"]   += 1
 
-    # QF_CONFIRMED teams always reach QF
-    for team in QF_CONFIRMED:
-        stage_counts[team]["Quarter-finals"] = n
-        stage_counts[team]["Round of 16"]    = n
-
-    rows = []
-    for team in all_teams:
-        counts = stage_counts[team]
-        rows.append({
-            "team":       team,
-            "qf_pct":    round(counts["Quarter-finals"] / n * 100, 1),
-            "sf_pct":    round(counts["Semi-finals"]    / n * 100, 1),
-            "final_pct": round(counts["Runner-up"]      / n * 100, 1),
-            "win_pct":   round(counts["Champion"]       / n * 100, 1),
-        })
+    rows = [
+        {
+            "team":      team,
+            "qf_pct":    round(counts[team]["qf"]    / n * 100, 1),
+            "sf_pct":    round(counts[team]["sf"]    / n * 100, 1),
+            "final_pct": round(counts[team]["final"] / n * 100, 1),
+            "win_pct":   round(counts[team]["win"]   / n * 100, 1),
+        }
+        for team in alive_teams
+    ]
 
     df = pd.DataFrame(rows).sort_values("win_pct", ascending=False).reset_index(drop=True)
     return df
@@ -450,24 +486,40 @@ def simulate_tournament() -> None:
     label_encoder = model_payload["label_encoder"]
     print(f"  Model: {model_payload['model_name']}")
 
-    all_teams = list(QF_CONFIRMED) + [t for pair in R16_REMAINING for t in pair]
-    print(f"  Teams in simulation: {len(all_teams)}")
+    # --- Derive live bracket state from the fixtures feed ---
+    fixtures     = pd.read_csv(INPUT_FIXTURES)
+    real_winners = derive_bracket_state(fixtures)
+    alive_teams  = alive_teams_from_state(real_winners)
 
-    print("Building team feature lookup...")
-    team_lookup = build_team_lookup(features, fifa, elo, wc_history, elo_map, all_teams)
+    print("\nBracket state (auto-derived from fixtures feed):")
+    for match_id in MATCH_ORDER:
+        src_a, src_b = BRACKET_2026[match_id]
+        team_a = _resolve_source(src_a, real_winners) or "TBD"
+        team_b = _resolve_source(src_b, real_winners) or "TBD"
+        if match_id in real_winners:
+            status = f"played → {real_winners[match_id]}"
+        elif team_a != "TBD" and team_b != "TBD":
+            status = "to simulate"
+        else:
+            status = "awaiting feeders"
+        print(f"  {match_id:6} {team_a:14} vs {team_b:14} | {status}")
+    print(f"  Teams still alive: {len(alive_teams)}")
+
+    print("\nBuilding team feature lookup...")
+    team_lookup = build_team_lookup(features, fifa, elo, wc_history, elo_map, alive_teams)
 
     # Print team strengths for verification
     print("\nTeam feature snapshot:")
     print(f"  {'Team':25} {'FIFA Rank':>10} {'Elo':>8} {'WC Titles':>10} {'Form Win%':>10}")
-    for team in sorted(all_teams):
+    for team in sorted(alive_teams):
         t = team_lookup[team]
         print(f"  {team:25} {t['fifa_rank']:>10.0f} {t['elo_rating']:>8.0f} {t['wc_titles']:>10.0f} {t['form_win_pct']:>10.2f}")
 
-    print(f"\nPre-computing pairwise win probabilities ({len(all_teams)} teams)...")
-    win_probs = precompute_win_probs(all_teams, team_lookup, pipeline, label_encoder)
+    print(f"\nPre-computing pairwise win probabilities ({len(alive_teams)} teams)...")
+    win_probs = precompute_win_probs(alive_teams, team_lookup, pipeline, label_encoder)
     print(f"  {len(win_probs)} ordered pairs computed.")
 
-    results = run_simulation(win_probs)
+    results = run_simulation(win_probs, real_winners, alive_teams)
 
     PROCESSED_DIR.mkdir(parents=True, exist_ok=True)
     results.to_csv(OUTPUT_RESULTS, index=False)
