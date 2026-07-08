@@ -123,7 +123,12 @@ section[data-testid="stSidebar"] * { color:#d0dce8 !important; }
 }
 .bm-ok { border-left:3px solid #00c853; background:linear-gradient(90deg,#081a0a,#111d30); }
 .bm-live { border-left:3px solid #EE3124; }
+.bm-pending { border-left:3px solid #f9a825; background:linear-gradient(90deg,#141008,#111d30); }
 .bm-date { font-size:.68rem; color:#4a6080; margin-left:auto; white-space:nowrap; }
+.bm-out { color:#4a5568; text-decoration:line-through; opacity:.5; }
+.bm-win { color:#00c853; font-weight:700; }
+.bm-tbd { color:#8a9bb0; font-size:.78rem; font-style:italic; }
+.bm-sub { font-size:.65rem; color:#4a6080; text-transform:uppercase; letter-spacing:.08em; margin:10px 0 4px; }
 
 /* podium */
 .pod {
@@ -239,14 +244,6 @@ def load_bracket():
         for _, r in fx.iterrows()
     }
 
-    def label(source):
-        if isinstance(source, str):
-            return source
-        _, mid = source
-        if mid in real:
-            return real[mid]
-        return f"{label(BRACKET_2026[mid][0])}/{label(BRACKET_2026[mid][1])}"
-
     def match_date(a, b):
         d = date_by_pair.get(frozenset((a, b))) if (a and b) else None
         return d.strftime("%b %-d") if (d is not None and pd.notna(d)) else ""
@@ -257,12 +254,39 @@ def load_bracket():
         b = _resolve_source(BRACKET_2026[mid][1], real)
         matches[mid] = {
             "a": a, "b": b,
-            "a_label": label(BRACKET_2026[mid][0]),
-            "b_label": label(BRACKET_2026[mid][1]),
             "winner": real.get(mid),
             "played": mid in real,
             "date": match_date(a, b),
         }
+
+    eliminated = set()
+    for mid, winner in real.items():
+        a = _resolve_source(BRACKET_2026[mid][0], real)
+        b = _resolve_source(BRACKET_2026[mid][1], real)
+        if a and b and winner:
+            eliminated.add(a if winner == b else b)
+
+    def possible_teams(source):
+        """Alive teams that could still fill an unplayed bracket slot."""
+        if isinstance(source, str):
+            return [] if source in eliminated else [source]
+        _, mid = source
+        if mid in real:
+            return [real[mid]]
+        return possible_teams(BRACKET_2026[mid][0]) + possible_teams(BRACKET_2026[mid][1])
+
+    def pending_slot_label(source):
+        teams = possible_teams(source)
+        if not teams:
+            return "TBD"
+        if len(teams) == 1:
+            return teams[0]
+        return " / ".join(teams)
+
+    for mid in MATCH_ORDER:
+        m = matches[mid]
+        m["a_pending"] = pending_slot_label(BRACKET_2026[mid][0]) if not m["a"] else None
+        m["b_pending"] = pending_slot_label(BRACKET_2026[mid][1]) if not m["b"] else None
 
     collected = pd.to_datetime(fx["collected_at"], errors="coerce").max()
     date_str = collected.strftime("%B %-d, %Y") if pd.notna(collected) else "—"
@@ -278,7 +302,7 @@ def load_bracket():
     elif r16 > 0:         status = f"Round of 16 · {r16}/8 played"
     else:                 status = "Knockouts starting"
 
-    return matches, date_str, status
+    return matches, date_str, status, eliminated
 
 
 @st.cache_data
@@ -456,7 +480,7 @@ with st.sidebar:
     st.caption(f"95% CI: {top['ci_str']}")
     st.divider()
     st.link_button("⭐ View on GitHub", "https://github.com/deepalibhattarai92-debug/fifa-world-cup-prediction")
-    _bm, _bdate, _bstatus = load_bracket()
+    _bm, _bdate, _bstatus, _ = load_bracket()
     st.caption(f"Data: {_bdate} · {_bstatus}")
 
 
@@ -464,7 +488,7 @@ with st.sidebar:
 # OVERVIEW
 # ===========================================================================
 if page=="🏠  Overview":
-    matches, bracket_date, bracket_status = load_bracket()
+    matches, bracket_date, bracket_status, eliminated = load_bracket()
     # FIFA 2026 branding banner
     st.markdown(f"""<div class="wc-banner">
       <span style="font-size:2.2rem">🏆</span>
@@ -486,16 +510,11 @@ if page=="🏠  Overview":
     qf_ids=[f"QF_{i}" for i in range(1,5)]
     r16_played=sum(matches[m]["played"] for m in r16_ids)
     qf_set=sum(1 for m in qf_ids if matches[m]["a"] and matches[m]["b"])
-    r16_teams=[t for m in r16_ids for t in (matches[m]["a"],matches[m]["b"])]
-    losers=set()
-    for m in matches.values():
-        if m["played"] and m["a"] and m["b"]:
-            losers.add(m["a"] if m["winner"]==m["b"] else m["b"])
-    alive=[t for t in r16_teams if t not in losers]
+    alive_count=16-len(eliminated)
 
     k1,k2,k3,k4,k5=st.columns(5)
     for col,(lbl,val,sub,cls) in zip([k1,k2,k3,k4,k5],[
-        ("Teams Remaining",f"{len(alive)}","of 16 in the knockouts","kpi-g"),
+        ("Teams Remaining",f"{alive_count}","of 16 in the knockouts","kpi-g"),
         ("Round of 16",f"{r16_played} / 8","matches played","kpi-b"),
         ("Quarter-finals",f"{qf_set} / 4","matchups confirmed","kpi-au"),
         ("Title Favorite",f"{FLAGS.get(fav['team'],'')} {fav['team']}",f"{fav['win_pct']:.1f}% to lift the trophy","kpi-p"),
@@ -516,39 +535,79 @@ if page=="🏠  Overview":
 
     st.divider()
 
-    # BRACKET — full width (derived live from the fixtures feed)
+    # BRACKET — survivors only in later rounds; losers struck through in results
     def _fl(name):
         return f'{FLAGS.get(name,"")} {name}'.strip()
 
-    def render_r16(col, mid):
-        m=matches[mid]
-        date=f'<span class="bm-date">{m["date"]}</span>' if m["date"] else ""
-        if m["played"]:
-            col.markdown(f'<div class="bm bm-ok">🟢 <strong style="color:#e0ead8">{_fl(m["a"])} vs {_fl(m["b"])}</strong> → <span style="color:#00c853;font-weight:700">{_fl(m["winner"])} ✅</span>{date}</div>',unsafe_allow_html=True)
-        else:
-            col.markdown(f'<div class="bm bm-live"><span class="anim-blink" style="color:#EE3124">🔴</span> <span style="color:#c0ccd8">{_fl(m["a"])} vs {_fl(m["b"])}</span>{date}</div>',unsafe_allow_html=True)
+    def _fmt_pending(label):
+        if label == "TBD":
+            return '<span class="bm-tbd">TBD</span>'
+        parts = [f'<span class="bm-tbd">{_fl(t.strip())}</span>' for t in label.split(" / ")]
+        return " / ".join(parts)
 
-    def render_slot(col, mid):
+    def render_r16_done(col, mid):
+        m=matches[mid]
+        loser=m["b"] if m["winner"]==m["a"] else m["a"]
+        date=f'<span class="bm-date">{m["date"]}</span>' if m["date"] else ""
+        col.markdown(
+            f'<div class="bm bm-ok">✅ <span class="bm-win">{_fl(m["winner"])}</span>'
+            f' <span style="color:#445566">def.</span> <span class="bm-out">{_fl(loser)}</span>{date}</div>',
+            unsafe_allow_html=True)
+
+    def render_r16_upcoming(col, mid):
+        m=matches[mid]
+        date=f'<span class="bm-date">{m["date"]}</span>' if m["date"] else ""
+        col.markdown(
+            f'<div class="bm bm-live"><span class="anim-blink" style="color:#EE3124">🔴</span>'
+            f' <span style="color:#c0ccd8">{_fl(m["a"])} vs {_fl(m["b"])}</span>{date}</div>',
+            unsafe_allow_html=True)
+
+    def render_knockout(col, mid):
         m=matches[mid]
         date=f'<span class="bm-date">{m["date"]}</span>' if m["date"] else ""
         if m["played"]:
-            col.markdown(f'<div class="bm bm-ok">🟢 <strong style="color:#ffd700">{_fl(m["a"])} vs {_fl(m["b"])}</strong> → <span style="color:#00c853;font-weight:700">{_fl(m["winner"])} ✅</span>{date}</div>',unsafe_allow_html=True)
+            col.markdown(
+                f'<div class="bm bm-ok">✅ <span class="bm-win">{_fl(m["winner"])}</span>'
+                f' <span style="color:#445566">advances</span>{date}</div>',
+                unsafe_allow_html=True)
         elif m["a"] and m["b"]:
-            col.markdown(f'<div class="bm bm-ok">🟢 <strong style="color:#ffd700">{_fl(m["a"])}</strong> <span style="color:#445566">vs</span> <strong style="color:#ffd700">{_fl(m["b"])}</strong>{date}</div>',unsafe_allow_html=True)
+            col.markdown(
+                f'<div class="bm bm-pending">⚔️ <strong style="color:#ffd700">{_fl(m["a"])}</strong>'
+                f' <span style="color:#445566">vs</span> <strong style="color:#ffd700">{_fl(m["b"])}</strong>{date}</div>',
+                unsafe_allow_html=True)
         else:
-            col.markdown(f'<div class="bm">⏳ <span style="color:#7a8fa0">{m["a_label"]}</span> <span style="color:#445566">vs</span> <span style="color:#7a8fa0">{m["b_label"]}</span></div>',unsafe_allow_html=True)
+            left=_fl(m["a"]) if m["a"] else _fmt_pending(m["a_pending"])
+            right=_fl(m["b"]) if m["b"] else _fmt_pending(m["b_pending"])
+            col.markdown(
+                f'<div class="bm bm-pending">⏳ {left} <span style="color:#445566">vs</span> {right}</div>',
+                unsafe_allow_html=True)
 
-    st.markdown('<div class="sh">⚽ Tournament Bracket — Round of 16</div>',unsafe_allow_html=True)
-    b1,b2=st.columns(2)
-    for col,mids in [(b1,["R16_1","R16_2","R16_5","R16_6"]),(b2,["R16_3","R16_4","R16_7","R16_8"])]:
-        for mid in mids:
-            render_r16(col,mid)
+    r16_done=[m for m in [f"R16_{i}" for i in range(1,9)] if matches[m]["played"]]
+    r16_upcoming=[m for m in [f"R16_{i}" for i in range(1,9)] if not matches[m]["played"]]
 
-    st.markdown('<div class="sh" style="margin-top:14px">🏟️ Quarter-finals & Final</div>',unsafe_allow_html=True)
+    st.markdown('<div class="sh">⚽ Knockout Bracket</div>',unsafe_allow_html=True)
+
+    if r16_done:
+        st.markdown('<div class="bm-sub">Round of 16 — Results</div>',unsafe_allow_html=True)
+        d1,d2=st.columns(2)
+        half=(len(r16_done)+1)//2
+        for col,mids in [(d1,r16_done[:half]),(d2,r16_done[half:])]:
+            for mid in mids:
+                render_r16_done(col,mid)
+
+    if r16_upcoming:
+        st.markdown('<div class="bm-sub">Round of 16 — Still to play</div>',unsafe_allow_html=True)
+        u1,u2=st.columns(2)
+        half=(len(r16_upcoming)+1)//2
+        for col,mids in [(u1,r16_upcoming[:half]),(u2,r16_upcoming[half:])]:
+            for mid in mids:
+                render_r16_upcoming(col,mid)
+
+    st.markdown('<div class="bm-sub" style="margin-top:14px">Quarter-finals</div>',unsafe_allow_html=True)
     qf1,qf2=st.columns(2)
     for col,mids in [(qf1,["QF_1","QF_2"]),(qf2,["QF_3","QF_4"])]:
         for mid in mids:
-            render_slot(col,mid)
+            render_knockout(col,mid)
     st.markdown(f'<div class="bm" style="border-left:3px solid #f9a825;background:linear-gradient(90deg,#1a1200,#111d30);margin-top:6px">🏆 <strong style="color:#f9a825">Final</strong> — <strong style="color:#ffd700">July 19, 2026</strong> · MetLife Stadium, New York</div>',unsafe_allow_html=True)
 
     st.markdown('<div class="ft">⚡ Human curiosity. AI execution. Built by Deepali using Cursor and ChatGPT as engineering partners.</div>',unsafe_allow_html=True)
@@ -615,7 +674,7 @@ elif page=="🎯  Match Predictor":
 # SIMULATION
 # ===========================================================================
 elif page=="🏆  Simulation":
-    _sm, _sdate, _sstatus = load_bracket()
+    _sm, _sdate, _sstatus, _ = load_bracket()
     st.markdown(f'<div class="wc-banner"><span style="font-size:2rem">🏆</span><div><div class="wc-title">Tournament Simulation</div><div class="wc-sub">10,000 Monte Carlo simulations · XGBoost (Tuned) · {_sdate}</div></div></div>',unsafe_allow_html=True)
 
     sim=load_simulation()
