@@ -220,8 +220,14 @@ V1_SIM = pd.DataFrame({
 })
 
 
+def _live_data_version() -> str:
+    """Cache-bust key — changes whenever fixtures or simulation outputs are refreshed."""
+    paths = [PROCESSED / "world_cup_fixtures.csv", PROCESSED / "simulation_results.csv"]
+    return "|".join(f"{p.name}:{p.stat().st_mtime_ns}" for p in paths if p.exists())
+
+
 @st.cache_data
-def load_simulation():
+def load_simulation(_data_version: str):
     df = pd.read_csv(PROCESSED/"simulation_results.csv")
     n=10_000
     df["ci_low"]=(df["win_pct"]-1.96*np.sqrt(df["win_pct"]/100*(1-df["win_pct"]/100)/n)*100).round(1)
@@ -230,7 +236,7 @@ def load_simulation():
     return df
 
 @st.cache_data
-def load_bracket():
+def load_bracket(_data_version: str):
     """Derive the live knockout bracket from the fixtures feed (single source of truth)."""
     from src.simulation.simulate_tournament_v2 import (
         BRACKET_2026, MATCH_ORDER, _resolve_source, derive_bracket_state,
@@ -472,7 +478,11 @@ with st.sidebar:
         "ℹ️  About"],
         label_visibility="collapsed")
     st.divider()
-    sim_sb=load_simulation()
+    if st.button("🔄 Refresh data", use_container_width=True):
+        st.cache_data.clear()
+        st.rerun()
+    _dv = _live_data_version()
+    sim_sb=load_simulation(_dv)
     top=sim_sb.iloc[0]
     st.markdown("**Model's Champion Pick**")
     st.markdown(f"## {FLAGS.get(top['team'],'')} {top['team']}")
@@ -480,7 +490,7 @@ with st.sidebar:
     st.caption(f"95% CI: {top['ci_str']}")
     st.divider()
     st.link_button("⭐ View on GitHub", "https://github.com/deepalibhattarai92-debug/fifa-world-cup-prediction")
-    _bm, _bdate, _bstatus, _ = load_bracket()
+    _bm, _bdate, _bstatus, _ = load_bracket(_dv)
     st.caption(f"Data: {_bdate} · {_bstatus}")
 
 
@@ -488,7 +498,8 @@ with st.sidebar:
 # OVERVIEW
 # ===========================================================================
 if page=="🏠  Overview":
-    matches, bracket_date, bracket_status, eliminated = load_bracket()
+    _dv = _live_data_version()
+    matches, bracket_date, bracket_status, eliminated = load_bracket(_dv)
     # FIFA 2026 branding banner
     st.markdown(f"""<div class="wc-banner">
       <span style="font-size:2.2rem">🏆</span>
@@ -504,7 +515,7 @@ if page=="🏠  Overview":
     </div>""",unsafe_allow_html=True)
 
     # Sports stat row — derived live from the bracket
-    sim=load_simulation()
+    sim=load_simulation(_dv)
     fav=sim.iloc[0]
     r16_ids=[f"R16_{i}" for i in range(1,9)]
     qf_ids=[f"QF_{i}" for i in range(1,5)]
@@ -674,10 +685,10 @@ elif page=="🎯  Match Predictor":
 # SIMULATION
 # ===========================================================================
 elif page=="🏆  Simulation":
-    _sm, _sdate, _sstatus, _ = load_bracket()
+    _sm, _sdate, _sstatus, _ = load_bracket(_dv)
     st.markdown(f'<div class="wc-banner"><span style="font-size:2rem">🏆</span><div><div class="wc-title">Tournament Simulation</div><div class="wc-sub">10,000 Monte Carlo simulations · XGBoost (Tuned) · {_sdate}</div></div></div>',unsafe_allow_html=True)
 
-    sim=load_simulation()
+    sim=load_simulation(_dv)
     tab1,tab2,tab3=st.tabs(["🥇 Championship Odds","📈 Stage Progression","🔄 V1 vs V2 Shift"])
 
     with tab1:
