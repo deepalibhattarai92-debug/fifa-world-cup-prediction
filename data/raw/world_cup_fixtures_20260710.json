@@ -1,5 +1,63 @@
 [
     {
+        "idMatch": "400021538",
+        "idMatchIfes": "151704",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289289",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "Quarter-final"
+            }
+        ],
+        "matchDate": "2026-07-10",
+        "teamAId": "43969",
+        "teamBId": "43935",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Spain"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Belgium"
+            }
+        ],
+        "teamACountryCode": "ESP",
+        "teamBCountryCode": "BEL",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/ESP",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/BEL",
+        "teamAScore": 2,
+        "teamBScore": 1,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 1,
+        "winner": "43969",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "Los Angeles Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
         "idMatch": "400021536",
         "idMatchIfes": "151703",
         "idCompetition": "17",
