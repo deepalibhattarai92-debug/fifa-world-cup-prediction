@@ -310,18 +310,9 @@ def load_bracket(_data_version: str):
 @st.cache_data
 def load_sf_predictions(_data_version: str) -> list[dict]:
     """Model win probabilities for upcoming semi-finals (path-dependent features)."""
-    from src.simulation.simulate_tournament_v2 import (
-        BRACKET_2026,
-        INPUT_ELO,
-        INPUT_ELO_MAP,
-        INPUT_FEATURES,
-        INPUT_FIFA,
-        INPUT_FIXTURES,
-        INPUT_WC_HIST,
-        _resolve_source,
+    from src.simulation.match_prediction import (
         build_h2h_lookup,
         build_team_lookup,
-        derive_bracket_state,
         predict_home_win_prob,
     )
     from src.simulation.tournament_state import (
@@ -344,17 +335,27 @@ def load_sf_predictions(_data_version: str) -> list[dict]:
     elo_map = pd.read_csv(RAW / "elo_code_map_v2.csv")
     fixtures = pd.read_csv(PROCESSED / "world_cup_fixtures.csv")
 
-    real = derive_bracket_state(fixtures)
-    alive = []
-    for mid in ("SF_1", "SF_2"):
-        if mid in real:
-            continue
-        a = _resolve_source(BRACKET_2026[mid][0], real)
-        b = _resolve_source(BRACKET_2026[mid][1], real)
-        if a and b:
-            alive.extend([a, b])
+    # Upcoming semi-finals — use bracket matchups directly (no simulate_tournament import).
+    upcoming = [
+        ("SF_1", "France", "Spain"),
+        ("SF_2", "England", "Argentina"),
+    ]
+    played_pairs = set()
+    played = fixtures[
+        fixtures["winner"].notna()
+        & (fixtures["winner"].astype(str).str.strip() != "")
+    ]
+    for _, row in played.iterrows():
+        played_pairs.add(frozenset((str(row["home_team"]), str(row["away_team"]))))
 
-    if not alive:
+    alive: list[str] = []
+    slots: list[tuple[str, str, str]] = []
+    for mid, home, away in upcoming:
+        if frozenset((home, away)) not in played_pairs:
+            slots.append((mid, home, away))
+            alive.extend([home, away])
+
+    if not slots:
         return []
 
     team_lookup = build_team_lookup(
@@ -364,18 +365,11 @@ def load_sf_predictions(_data_version: str) -> list[dict]:
     base_state = init_state_from_fixtures(fixtures, bracket_teams_from_fixtures(fixtures))
 
     preds: list[dict] = []
-    for mid in ("SF_1", "SF_2"):
-        if mid in real:
-            continue
-        home = _resolve_source(BRACKET_2026[mid][0], real)
-        away = _resolve_source(BRACKET_2026[mid][1], real)
-        if not home or not away:
-            continue
-
-        match_date, stadium, is_knockout = match_meta_from_fixtures(fixtures, home, away)
+    for mid, home, away in slots:
+        match_date, _, is_knockout = match_meta_from_fixtures(fixtures, home, away)
         p_home = predict_home_win_prob(
             home, away, team_lookup, base_state,
-            pipeline, label_encoder, match_date, stadium, is_knockout,
+            pipeline, label_encoder, match_date, is_knockout,
             feature_cols, h2h_lookup,
         )
         p_home_pct = round(p_home * 100, 1)
