@@ -68,27 +68,7 @@ COMPETITIVE_KEYWORDS = [
     "CONCACAF",
 ]
 
-FEATURE_COLS = [
-    # Rolling form
-    "home_form_win_pct", "home_form_goals_scored", "home_form_goals_conceded",
-    "home_form_goal_diff", "home_form_clean_sheet_pct",
-    "away_form_win_pct", "away_form_goals_scored", "away_form_goals_conceded",
-    "away_form_goal_diff", "away_form_clean_sheet_pct",
-    # FIFA rankings
-    "home_fifa_rank", "home_fifa_points",
-    "away_fifa_rank", "away_fifa_points",
-    # Elo
-    "home_elo_rating", "away_elo_rating",
-    # WC history
-    "home_wc_appearances", "home_wc_titles", "home_wc_best_finish",
-    "away_wc_appearances", "away_wc_titles", "away_wc_best_finish",
-    # Derived
-    "rank_diff", "points_diff", "elo_diff", "same_conf",
-    # Match context
-    "neutral", "match_importance",
-    # Head-to-head (V2 new)
-    "h2h_win_rate", "h2h_goal_diff",
-]
+from src.models.feature_cols import FEATURE_COLS
 
 TARGET_COL     = "result"
 PRIMARY_METRIC = "log_loss"

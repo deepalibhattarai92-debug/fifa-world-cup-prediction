@@ -24,6 +24,8 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
+from src.feature_engineering.tournament_path import build_tournament_path_features
+
 
 # ---------------------------------------------------------------------------
 # Paths
@@ -397,6 +399,12 @@ def build_features_v2() -> None:
 
     print("\nAdding match importance scores...")
     results = add_match_importance(results)
+
+    print("\nBuilding tournament-path features (FIFA World Cup editions)...")
+    results = build_tournament_path_features(results)
+    wc_rows = results["tournament"].str.contains("FIFA World Cup", case=False, na=False).sum()
+    ko_rows = int(results["is_knockout"].sum())
+    print(f"  WC rows: {wc_rows:,}  knockout-flagged: {ko_rows:,}")
 
     form_features = build_form_features(results)
     h2h_features  = build_h2h_features(results)

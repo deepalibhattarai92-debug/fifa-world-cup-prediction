@@ -27,6 +27,17 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
+from src.models.feature_cols import FEATURE_COLS
+from src.simulation.tournament_state import (
+    TournamentStateTracker,
+    bracket_teams_from_fixtures,
+    build_tournament_match_features,
+    init_state_from_fixtures,
+    match_meta_from_fixtures,
+    record_simulated_result,
+)
+from src.utils.team_names import FIXTURE_TO_RESULTS_NAME, fixture_to_results
+
 
 # ---------------------------------------------------------------------------
 # Paths
@@ -51,11 +62,7 @@ OUTPUT_RESULTS  = PROCESSED_DIR / "simulation_results.csv"
 
 N_SIMULATIONS = 10_000
 
-# Maps fixture/FIFA team names to historical results team names.
-# Used to look up rolling form from features.csv.
-FIXTURE_TO_RESULTS_NAME: dict[str, str] = {
-    "USA": "United States",
-}
+# Maps fixture/FIFA team names to historical results team names (shared module).
 
 # Maps fixture/FIFA team names to world_cup_history.csv team names.
 FIXTURE_TO_WC_NAME: dict[str, str] = {
@@ -280,32 +287,19 @@ def build_team_lookup(
 # Step 2 — Build match feature row
 # ---------------------------------------------------------------------------
 
-FEATURE_COLS = [
-    "home_form_win_pct", "home_form_goals_scored", "home_form_goals_conceded",
-    "home_form_goal_diff", "home_form_clean_sheet_pct",
-    "away_form_win_pct", "away_form_goals_scored", "away_form_goals_conceded",
-    "away_form_goal_diff", "away_form_clean_sheet_pct",
-    "home_fifa_rank", "home_fifa_points",
-    "away_fifa_rank", "away_fifa_points",
-    "home_elo_rating", "away_elo_rating",
-    "home_wc_appearances", "home_wc_titles", "home_wc_best_finish",
-    "away_wc_appearances", "away_wc_titles", "away_wc_best_finish",
-    "rank_diff", "points_diff", "elo_diff",
-    "same_conf", "neutral",
-    "match_importance",   # V2 new
-    "h2h_win_rate",       # V2 new
-    "h2h_goal_diff",      # V2 new
-]
-
-
 def build_match_row(
     home: str,
     away: str,
     team_lookup: dict[str, dict],
+    tournament_feats: dict[str, float] | None = None,
+    h2h: dict[str, float] | None = None,
+    feature_cols: list[str] | None = None,
 ) -> pd.DataFrame:
     """Build a single feature row for a match between home and away teams."""
+    cols = feature_cols or FEATURE_COLS
     h = team_lookup[home]
     a = team_lookup[away]
+    t = tournament_feats or {}
 
     row = {
         "home_form_win_pct":          h["form_win_pct"],
@@ -334,12 +328,56 @@ def build_match_row(
         "points_diff":                h["fifa_points"] - a["fifa_points"],
         "elo_diff":                   h["elo_rating"] - a["elo_rating"],
         "same_conf":                  int(h["confederation"] == a["confederation"]),
-        "neutral":                    True,   # all knockout matches at neutral venues
-        "match_importance":           5,      # World Cup knockout = max importance
-        "h2h_win_rate":               np.nan, # no prior context for this specific matchup
-        "h2h_goal_diff":              np.nan,
+        "neutral":                    True,
+        "match_importance":           5,
+        "h2h_win_rate":               (h2h or {}).get("h2h_win_rate", np.nan),
+        "h2h_goal_diff":              (h2h or {}).get("h2h_goal_diff", np.nan),
+        # Tournament-path features (V3)
+        "home_tournament_matches":    t.get("home_tournament_matches", 0),
+        "away_tournament_matches":    t.get("away_tournament_matches", 0),
+        "home_tournament_win_pct":    t.get("home_tournament_win_pct", 0.5),
+        "away_tournament_win_pct":    t.get("away_tournament_win_pct", 0.5),
+        "home_tournament_goal_diff":  t.get("home_tournament_goal_diff", 0.0),
+        "away_tournament_goal_diff":  t.get("away_tournament_goal_diff", 0.0),
+        "home_days_rest":             t.get("home_days_rest", 7.0),
+        "away_days_rest":             t.get("away_days_rest", 7.0),
+        "is_knockout":                t.get("is_knockout", 1.0),
+        "tournament_matches_diff":    t.get("tournament_matches_diff", 0.0),
+        "days_rest_diff":             t.get("days_rest_diff", 0.0),
     }
-    return pd.DataFrame([row])[FEATURE_COLS]
+    return pd.DataFrame([row])[cols]
+
+
+def build_h2h_lookup(
+    features: pd.DataFrame,
+    teams: list[str],
+) -> dict[tuple[str, str], dict]:
+    """Latest head-to-head features from features_v2 for fixture team pairs."""
+    lookup: dict[tuple[str, str], dict] = {}
+    for home in teams:
+        hname = FIXTURE_TO_RESULTS_NAME.get(home, home)
+        for away in teams:
+            if home == away:
+                continue
+            aname = FIXTURE_TO_RESULTS_NAME.get(away, away)
+            rows = features[
+                ((features["home_team"] == hname) & (features["away_team"] == aname))
+                | ((features["home_team"] == aname) & (features["away_team"] == hname))
+            ].sort_values("date")
+            if len(rows):
+                last = rows.iloc[-1]
+                if last["home_team"] == hname:
+                    lookup[(home, away)] = {
+                        "h2h_win_rate": last["h2h_win_rate"],
+                        "h2h_goal_diff": last["h2h_goal_diff"],
+                    }
+                else:
+                    wr = last["h2h_win_rate"]
+                    lookup[(home, away)] = {
+                        "h2h_win_rate": 1.0 - wr if pd.notna(wr) else wr,
+                        "h2h_goal_diff": -last["h2h_goal_diff"] if pd.notna(last["h2h_goal_diff"]) else last["h2h_goal_diff"],
+                    }
+    return lookup
 
 
 # ---------------------------------------------------------------------------
@@ -392,21 +430,43 @@ def sim_match(
     return home if rng.random() < p_home else away
 
 
+def predict_home_win_prob(
+    home: str,
+    away: str,
+    team_lookup: dict[str, dict],
+    state: TournamentStateTracker,
+    pipeline,
+    label_encoder,
+    match_date: pd.Timestamp,
+    stadium: str,
+    is_knockout: int,
+    feature_cols: list[str],
+    h2h_lookup: dict[tuple[str, str], dict] | None = None,
+) -> float:
+    """Path-dependent P(home wins) using trained tournament-path features."""
+    t_feats = build_tournament_match_features(state, home, away, match_date, is_knockout)
+    h2h = (h2h_lookup or {}).get((home, away))
+    row = build_match_row(home, away, team_lookup, t_feats, h2h, feature_cols)
+
+    classes = list(label_encoder.classes_)
+    p = pipeline.predict_proba(row)[0]
+    p_home = p[classes.index("home_win")] + p[classes.index("draw")] * 0.5
+    p_away = p[classes.index("away_win")] + p[classes.index("draw")] * 0.5
+    total = p_home + p_away
+    return p_home / total if total else 0.5
+
+
 # ---------------------------------------------------------------------------
 # Step 5 — Single tournament simulation
 # ---------------------------------------------------------------------------
 
-def simulate_once(
+def simulate_once_static(
     win_probs: dict[tuple[str, str], float],
     rng: np.random.Generator,
     real_winners: dict[str, str],
 ) -> dict[str, str]:
-    """
-    Run one complete simulation of the bracket, honouring matches that have
-    already been played (real_winners) and simulating the rest.
-    Returns a dict: team → furthest stage reached.
-    """
-    winners: dict[str, str] = dict(real_winners)  # seed with actual results
+    """Static pairwise probabilities (legacy path)."""
+    winners: dict[str, str] = dict(real_winners)
     stages: dict[str, str] = {}
 
     for match_id in MATCH_ORDER:
@@ -415,10 +475,65 @@ def simulate_once(
         team_b = _resolve_source(src_b, winners)
 
         if match_id in winners:
-            winner = winners[match_id]           # real, already-played result
+            winner = winners[match_id]
         else:
             winner = sim_match(team_a, team_b, win_probs, rng)
             winners[match_id] = winner
+
+        loser = team_b if winner == team_a else team_a
+        stages[loser] = STAGE_OF_LOSS[match_id]
+
+    stages[winners["FINAL"]] = "Champion"
+    return stages
+
+
+def remaining_match_order(real_winners: dict[str, str]) -> list[str]:
+    """Bracket slots not yet decided in the live feed."""
+    return [mid for mid in MATCH_ORDER if mid not in real_winners]
+
+
+def simulate_once_dynamic(
+    team_lookup: dict[str, dict],
+    pipeline,
+    label_encoder,
+    base_state: TournamentStateTracker,
+    fixtures: pd.DataFrame,
+    rng: np.random.Generator,
+    real_winners: dict[str, str],
+    feature_cols: list[str],
+    h2h_lookup: dict[tuple[str, str], dict] | None = None,
+) -> dict[str, str]:
+    """
+    Monte Carlo branch with sequential tournament-state updates.
+    Win probabilities are recomputed after each simulated knockout.
+    """
+    winners: dict[str, str] = dict(real_winners)
+    stages: dict[str, str] = {}
+    state = base_state.copy()
+
+    # Only simulate undecided knockouts; earlier results are in base_state.
+    for match_id in remaining_match_order(real_winners):
+        src_a, src_b = BRACKET_2026[match_id]
+        team_a = _resolve_source(src_a, winners)
+        team_b = _resolve_source(src_b, winners)
+        if team_a is None or team_b is None:
+            continue
+
+        match_date, stadium, is_knockout = match_meta_from_fixtures(fixtures, team_a, team_b)
+
+        if match_id in winners:
+            winner = winners[match_id]
+        else:
+            p_home = predict_home_win_prob(
+                team_a, team_b, team_lookup, state,
+                pipeline, label_encoder, match_date, stadium, is_knockout,
+                feature_cols, h2h_lookup,
+            )
+            winner = team_a if rng.random() < p_home else team_b
+            winners[match_id] = winner
+            record_simulated_result(
+                state, team_a, team_b, winner, match_date, stadium,
+            )
 
         loser = team_b if winner == team_a else team_a
         stages[loser] = STAGE_OF_LOSS[match_id]
@@ -432,19 +547,36 @@ def simulate_once(
 # ---------------------------------------------------------------------------
 
 def run_simulation(
-    win_probs: dict[tuple[str, str], float],
     real_winners: dict[str, str],
     alive_teams: list[str],
+    *,
+    win_probs: dict[tuple[str, str], float] | None = None,
+    team_lookup: dict[str, dict] | None = None,
+    pipeline=None,
+    label_encoder=None,
+    base_state: TournamentStateTracker | None = None,
+    fixtures: pd.DataFrame | None = None,
+    feature_cols: list[str] | None = None,
+    h2h_lookup: dict[tuple[str, str], dict] | None = None,
+    dynamic: bool = True,
     n: int = N_SIMULATIONS,
 ) -> pd.DataFrame:
     """Run N simulations and return a dataframe of reach probabilities per team."""
-    print(f"Running {n:,} simulations...")
+    mode = "dynamic (sequential tournament state)" if dynamic else "static pairwise cache"
+    print(f"Running {n:,} simulations — {mode}...")
 
     counts = {team: {"qf": 0, "sf": 0, "final": 0, "win": 0} for team in alive_teams}
     rng = np.random.default_rng(seed=42)
 
     for _ in range(n):
-        stages = simulate_once(win_probs, rng, real_winners)
+        if dynamic:
+            stages = simulate_once_dynamic(
+                team_lookup, pipeline, label_encoder,
+                base_state, fixtures, rng, real_winners,
+                feature_cols or FEATURE_COLS, h2h_lookup,
+            )
+        else:
+            stages = simulate_once_static(win_probs, rng, real_winners)
         for team in alive_teams:
             rank = STAGE_RANK[stages[team]]
             if rank >= 2:  counts[team]["qf"]    += 1  # lost in QF or later ⇒ reached QF
@@ -484,7 +616,8 @@ def simulate_tournament() -> None:
 
     pipeline      = model_payload["pipeline"]
     label_encoder = model_payload["label_encoder"]
-    print(f"  Model: {model_payload['model_name']}")
+    feature_cols  = model_payload.get("feature_cols", FEATURE_COLS)
+    print(f"  Model: {model_payload['model_name']}  ({len(feature_cols)} features)")
 
     # --- Derive live bracket state from the fixtures feed ---
     fixtures     = pd.read_csv(INPUT_FIXTURES)
@@ -507,6 +640,7 @@ def simulate_tournament() -> None:
 
     print("\nBuilding team feature lookup...")
     team_lookup = build_team_lookup(features, fifa, elo, wc_history, elo_map, alive_teams)
+    h2h_lookup  = build_h2h_lookup(features, alive_teams)
 
     # Print team strengths for verification
     print("\nTeam feature snapshot:")
@@ -515,11 +649,30 @@ def simulate_tournament() -> None:
         t = team_lookup[team]
         print(f"  {team:25} {t['fifa_rank']:>10.0f} {t['elo_rating']:>8.0f} {t['wc_titles']:>10.0f} {t['form_win_pct']:>10.2f}")
 
-    print(f"\nPre-computing pairwise win probabilities ({len(alive_teams)} teams)...")
-    win_probs = precompute_win_probs(alive_teams, team_lookup, pipeline, label_encoder)
-    print(f"  {len(win_probs)} ordered pairs computed.")
+    # Sequential tournament state from all completed 2026 matches in the feed.
+    wc_teams = bracket_teams_from_fixtures(fixtures)
+    base_state = init_state_from_fixtures(fixtures, wc_teams)
+    print("\nSequential tournament state (2026 path):")
+    for team in sorted(alive_teams):
+        tf = base_state.tournament_snapshot(team)
+        rest = base_state.days_until_match(team, pd.Timestamp("2026-07-15"))
+        print(
+            f"  {team:14}  wc_matches={tf['matches']:2}  "
+            f"wc_win%={tf['win_pct']:.2f}  rest_days={rest:.0f}"
+        )
 
-    results = run_simulation(win_probs, real_winners, alive_teams)
+    results = run_simulation(
+        real_winners,
+        alive_teams,
+        team_lookup=team_lookup,
+        pipeline=pipeline,
+        label_encoder=label_encoder,
+        base_state=base_state,
+        fixtures=fixtures,
+        feature_cols=feature_cols,
+        h2h_lookup=h2h_lookup,
+        dynamic=True,
+    )
 
     PROCESSED_DIR.mkdir(parents=True, exist_ok=True)
     results.to_csv(OUTPUT_RESULTS, index=False)

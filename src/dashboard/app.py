@@ -14,6 +14,8 @@ import plotly.graph_objects as go
 import streamlit as st
 from plotly.subplots import make_subplots
 
+from src.models.feature_cols import FEATURE_COLS as MODEL_FEATURE_COLS
+
 ROOT = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(ROOT))
 
@@ -202,18 +204,6 @@ FIXTURE_TO_WC_NAME = {
     "Türkiye":"Turkey","Côte d'Ivoire":"Ivory Coast","Congo DR":"DR Congo",
 }
 WC_DEFAULTS = {"appearances":0,"titles":0,"best_finish":8}
-FEATURE_COLS = [
-    "home_form_win_pct","home_form_goals_scored","home_form_goals_conceded",
-    "home_form_goal_diff","home_form_clean_sheet_pct",
-    "away_form_win_pct","away_form_goals_scored","away_form_goals_conceded",
-    "away_form_goal_diff","away_form_clean_sheet_pct",
-    "home_fifa_rank","home_fifa_points","away_fifa_rank","away_fifa_points",
-    "home_elo_rating","away_elo_rating",
-    "home_wc_appearances","home_wc_titles","home_wc_best_finish",
-    "away_wc_appearances","away_wc_titles","away_wc_best_finish",
-    "rank_diff","points_diff","elo_diff",
-    "same_conf","neutral","match_importance","h2h_win_rate","h2h_goal_diff",
-]
 V1_SIM = pd.DataFrame({
     "team":["France","Morocco","Spain","Argentina","Portugal","Brazil","Belgium","Mexico","England","Colombia","USA","Switzerland","Norway","Egypt"],
     "win_pct_v1":[21.8,7.6,13.4,11.3,7.0,13.5,7.1,4.8,7.1,2.2,1.3,1.2,0.9,0.9],
@@ -221,14 +211,20 @@ V1_SIM = pd.DataFrame({
 
 
 def _live_data_version() -> str:
-    """Cache-bust key — changes whenever fixtures or simulation outputs are refreshed."""
-    paths = [PROCESSED / "world_cup_fixtures.csv", PROCESSED / "simulation_results.csv"]
+    """Cache-bust key — changes whenever fixtures, sim outputs, or model refresh."""
+    paths = [
+        PROCESSED / "world_cup_fixtures.csv",
+        PROCESSED / "simulation_results.csv",
+        PROCESSED / "features_v2.csv",
+        MODELS_DIR / "best_model_v2.pkl",
+    ]
     return "|".join(f"{p.name}:{p.stat().st_mtime_ns}" for p in paths if p.exists())
 
 
 @st.cache_data
 def load_simulation(_data_version: str):
     df = pd.read_csv(PROCESSED/"simulation_results.csv")
+    df = df.sort_values("win_pct", ascending=False).reset_index(drop=True)
     n=10_000
     df["ci_low"]=(df["win_pct"]-1.96*np.sqrt(df["win_pct"]/100*(1-df["win_pct"]/100)/n)*100).round(1)
     df["ci_high"]=(df["win_pct"]+1.96*np.sqrt(df["win_pct"]/100*(1-df["win_pct"]/100)/n)*100).round(1)
@@ -312,6 +308,93 @@ def load_bracket(_data_version: str):
 
 
 @st.cache_data
+def load_sf_predictions(_data_version: str) -> list[dict]:
+    """Model win probabilities for upcoming semi-finals (path-dependent features)."""
+    from src.simulation.simulate_tournament_v2 import (
+        BRACKET_2026,
+        INPUT_ELO,
+        INPUT_ELO_MAP,
+        INPUT_FEATURES,
+        INPUT_FIFA,
+        INPUT_FIXTURES,
+        INPUT_WC_HIST,
+        _resolve_source,
+        build_h2h_lookup,
+        build_team_lookup,
+        derive_bracket_state,
+        predict_home_win_prob,
+    )
+    from src.simulation.tournament_state import (
+        bracket_teams_from_fixtures,
+        init_state_from_fixtures,
+        match_meta_from_fixtures,
+    )
+
+    with open(MODELS_DIR / "best_model_v2.pkl", "rb") as f:
+        payload = pickle.load(f)
+
+    pipeline = payload["pipeline"]
+    label_encoder = payload["label_encoder"]
+    feature_cols = payload.get("feature_cols", MODEL_FEATURE_COLS)
+
+    features = pd.read_csv(PROCESSED / "features_v2.csv", parse_dates=["date"])
+    fifa = pd.read_csv(PROCESSED / "fifa_rankings.csv")
+    elo = pd.read_csv(PROCESSED / "elo_ratings.csv")
+    wc_history = pd.read_csv(PROCESSED / "world_cup_history.csv")
+    elo_map = pd.read_csv(RAW / "elo_code_map_v2.csv")
+    fixtures = pd.read_csv(PROCESSED / "world_cup_fixtures.csv")
+
+    real = derive_bracket_state(fixtures)
+    alive = []
+    for mid in ("SF_1", "SF_2"):
+        if mid in real:
+            continue
+        a = _resolve_source(BRACKET_2026[mid][0], real)
+        b = _resolve_source(BRACKET_2026[mid][1], real)
+        if a and b:
+            alive.extend([a, b])
+
+    if not alive:
+        return []
+
+    team_lookup = build_team_lookup(
+        features, fifa, elo, wc_history, elo_map, list(set(alive)),
+    )
+    h2h_lookup = build_h2h_lookup(features, list(set(alive)))
+    base_state = init_state_from_fixtures(fixtures, bracket_teams_from_fixtures(fixtures))
+
+    preds: list[dict] = []
+    for mid in ("SF_1", "SF_2"):
+        if mid in real:
+            continue
+        home = _resolve_source(BRACKET_2026[mid][0], real)
+        away = _resolve_source(BRACKET_2026[mid][1], real)
+        if not home or not away:
+            continue
+
+        match_date, stadium, is_knockout = match_meta_from_fixtures(fixtures, home, away)
+        p_home = predict_home_win_prob(
+            home, away, team_lookup, base_state,
+            pipeline, label_encoder, match_date, stadium, is_knockout,
+            feature_cols, h2h_lookup,
+        )
+        p_home_pct = round(p_home * 100, 1)
+        p_away_pct = round((1 - p_home) * 100, 1)
+        preds.append({
+            "match_id": mid,
+            "home": home,
+            "away": away,
+            "p_home": p_home_pct,
+            "p_away": p_away_pct,
+            "pick": home if p_home >= 0.5 else away,
+            "pick_pct": max(p_home_pct, p_away_pct),
+            "date": match_date.strftime("%b %-d") if pd.notna(match_date) else "",
+        })
+
+    return preds
+
+
+@st.cache_data
 def load_model_comparisons():
     return pd.read_csv(PROCESSED/"model_comparison.csv"),pd.read_csv(PROCESSED/"model_comparison_v2.csv")
 
@@ -339,7 +422,7 @@ def load_lookup_data():
 def load_model():
     with open(MODELS_DIR/"best_model_v2.pkl","rb") as f:
         p=pickle.load(f)
-    return p["pipeline"],p["label_encoder"]
+    return p["pipeline"],p["label_encoder"],p.get("feature_cols",MODEL_FEATURE_COLS)
 
 
 def build_team_lookup(teams):
@@ -397,13 +480,13 @@ def build_match_row(home,away,tl):
         "same_conf":int(h["confederation"]==a["confederation"]),
         "neutral":True,"match_importance":5,"h2h_win_rate":np.nan,"h2h_goal_diff":np.nan,
     }
-    return pd.DataFrame([row])[FEATURE_COLS]
+    return pd.DataFrame([row])[MODEL_FEATURE_COLS[:30]]  # legacy quick-sim path
 
 
 def quick_sim(qf_bracket, n=2000):
     """Run a fast simulation given 4 QF matchups [(t1,t2),(t3,t4),(t5,t6),(t7,t8)]."""
     all_teams=list(set(t for pair in qf_bracket for t in pair))
-    pipeline,label_encoder=load_model()
+    pipeline, label_encoder, _ = load_model()
     tl=build_team_lookup(all_teams)
     classes=list(label_encoder.classes_)
     ai,di,hi=classes.index("away_win"),classes.index("draw"),classes.index("home_win")
@@ -480,6 +563,7 @@ with st.sidebar:
     st.divider()
     if st.button("🔄 Refresh data", use_container_width=True):
         st.cache_data.clear()
+        st.cache_resource.clear()
         st.rerun()
     _dv = _live_data_version()
     sim_sb=load_simulation(_dv)
@@ -500,6 +584,10 @@ with st.sidebar:
 if page=="🏠  Overview":
     _dv = _live_data_version()
     matches, bracket_date, bracket_status, eliminated = load_bracket(_dv)
+
+    def _fl(name):
+        return f'{FLAGS.get(name,"")} {name}'.strip()
+
     # FIFA 2026 branding banner
     st.markdown(f"""<div class="wc-banner">
       <span style="font-size:2.2rem">🏆</span>
@@ -544,12 +632,57 @@ if page=="🏠  Overview":
     pod2.markdown(f'<div class="pod pod-2"><div class="pod-rank">🥈</div><div style="font-size:1.4rem">{FLAGS.get(t2s["team"],"")}</div><div class="pod-name">{t2s["team"]}</div><div class="pod-pct" style="color:#aaaaaa">{t2s["win_pct"]:.1f}%</div><div class="pod-ci">{t2s["ci_str"]}</div><div style="color:#555;font-size:.7rem;margin-top:4px">Runner-up</div></div>',unsafe_allow_html=True)
     pod3.markdown(f'<div class="pod pod-3"><div class="pod-rank">🥉</div><div style="font-size:1.4rem">{FLAGS.get(t3s["team"],"")}</div><div class="pod-name">{t3s["team"]}</div><div class="pod-pct" style="color:#cd7f32">{t3s["win_pct"]:.1f}%</div><div class="pod-ci">{t3s["ci_str"]}</div><div style="color:#4a3010;font-size:.7rem;margin-top:4px">2nd Runner-up</div></div>',unsafe_allow_html=True)
 
+    # Semi-final predictions — prominent placement before the full bracket tree
+    try:
+        sf_preds = {p["match_id"]: p for p in load_sf_predictions(_dv)}
+    except Exception as exc:
+        sf_preds = {}
+        st.warning(f"Semi-final predictions unavailable: {exc}")
+
+    sf_upcoming = [
+        m for m in ("SF_1", "SF_2")
+        if not matches[m]["played"] and matches[m]["a"] and matches[m]["b"]
+    ]
+    if sf_upcoming:
+        st.markdown('<div class="sh" style="margin-top:8px">🔮 Semi-final Predictions</div>',unsafe_allow_html=True)
+        st.caption("Path-dependent win probabilities · tournament form, rest & travel · XGBoost (41 features)")
+        sf_c1, sf_c2 = st.columns(2)
+        for col, mid in zip([sf_c1, sf_c2], sf_upcoming):
+            m = matches[mid]
+            p = sf_preds.get(mid)
+            if p:
+                date = f'<span class="bm-date">{p["date"] or m["date"]}</span>' if (p.get("date") or m["date"]) else ""
+                col.markdown(
+                    f'<div class="cc" style="border-left:3px solid #EE3124;padding:14px 16px">'
+                    f'<div style="font-size:.68rem;color:#EE3124;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px">'
+                    f'Semi-final · {mid.replace("_", " ")}</div>'
+                    f'<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">'
+                    f'<span style="color:#fff;font-weight:700">{_fl(p["home"])}</span>'
+                    f'<span style="color:#00c853;font-weight:800;font-size:1.1rem">{p["p_home"]}%</span></div>'
+                    f'<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">'
+                    f'<span style="color:#fff;font-weight:700">{_fl(p["away"])}</span>'
+                    f'<span style="color:#00c853;font-weight:800;font-size:1.1rem">{p["p_away"]}%</span></div>'
+                    f'<div style="background:#1a2030;border-radius:6px;padding:8px 10px;font-size:.8rem">'
+                    f'<span style="color:#7a8fa0">Model pick:</span> '
+                    f'<strong style="color:#ffd700">{_fl(p["pick"])}</strong> '
+                    f'<span style="color:#00c853">({p["pick_pct"]:.1f}%)</span></div>'
+                    f'{date}</div>',
+                    unsafe_allow_html=True,
+                )
+            else:
+                col.markdown(
+                    f'<div class="cc" style="border-left:3px solid #EE3124;padding:14px 16px">'
+                    f'<div style="font-size:.68rem;color:#EE3124;font-weight:700;margin-bottom:8px">Semi-final · {mid.replace("_", " ")}</div>'
+                    f'<strong style="color:#ffd700">{_fl(m["a"])}</strong>'
+                    f' <span style="color:#445566">vs</span> '
+                    f'<strong style="color:#ffd700">{_fl(m["b"])}</strong>'
+                    f'<div style="color:#7a8fa0;font-size:.78rem;margin-top:6px">Predictions loading…</div></div>',
+                    unsafe_allow_html=True,
+                )
+
     st.divider()
 
     # BRACKET — survivors only in later rounds; losers struck through in results
-    def _fl(name):
-        return f'{FLAGS.get(name,"")} {name}'.strip()
-
     def _fmt_pending(label):
         if label == "TBD":
             return '<span class="bm-tbd">TBD</span>'
@@ -619,6 +752,26 @@ if page=="🏠  Overview":
     for col,mids in [(qf1,["QF_1","QF_2"]),(qf2,["QF_3","QF_4"])]:
         for mid in mids:
             render_knockout(col,mid)
+
+    st.markdown('<div class="bm-sub" style="margin-top:14px">Semi-finals</div>',unsafe_allow_html=True)
+    sf1, sf2 = st.columns(2)
+    for col, mids in [(sf1, ["SF_1"]), (sf2, ["SF_2"])]:
+        for mid in mids:
+            if mid in sf_preds and not matches[mid]["played"]:
+                p = sf_preds[mid]
+                m = matches[mid]
+                date = f'<span class="bm-date">{m["date"]}</span>' if m["date"] else ""
+                col.markdown(
+                    f'<div class="bm bm-live"><span class="anim-blink" style="color:#EE3124">🔴</span>'
+                    f' <strong style="color:#ffd700">{_fl(p["home"])}</strong>'
+                    f' <span style="color:#445566">vs</span>'
+                    f' <strong style="color:#ffd700">{_fl(p["away"])}</strong>'
+                    f' <span style="color:#00c853;font-size:.78rem">({p["p_home"]}%–{p["p_away"]}%)</span>{date}</div>',
+                    unsafe_allow_html=True,
+                )
+            else:
+                render_knockout(col, mid)
+
     st.markdown(f'<div class="bm" style="border-left:3px solid #f9a825;background:linear-gradient(90deg,#1a1200,#111d30);margin-top:6px">🏆 <strong style="color:#f9a825">Final</strong> — <strong style="color:#ffd700">July 19, 2026</strong> · MetLife Stadium, New York</div>',unsafe_allow_html=True)
 
     st.markdown('<div class="ft">⚡ Human curiosity. AI execution. Built by Deepali using Cursor and ChatGPT as engineering partners.</div>',unsafe_allow_html=True)
@@ -631,7 +784,7 @@ elif page=="🎯  Match Predictor":
     st.markdown('<div class="wc-banner"><span style="font-size:2rem">🎯</span><div><div class="wc-title">Match Predictor</div><div class="wc-sub">Select any two international teams · XGBoost (Tuned) · V2 features</div></div></div>',unsafe_allow_html=True)
 
     fifa,_,_,_=load_lookup_data()
-    pipeline,label_encoder=load_model()
+    pipeline, label_encoder, _ = load_model()
     all_teams=sorted(fifa["team"].tolist())
 
     c1,vs_c,c2=st.columns([2,.4,2])
@@ -986,7 +1139,7 @@ elif page=="ℹ️  About":
     c1,c2=st.columns(2)
     with c1:
         st.markdown("### Methodology")
-        st.markdown('<div class="cc" style="font-size:.87rem;line-height:1.8;color:#b0bfcc"><strong style="color:#fff">Algorithm:</strong> XGBoost (Tuned) via RandomizedSearchCV<br><strong style="color:#fff">Target:</strong> home_win · draw · away_win<br><strong style="color:#fff">Train:</strong> 16,294 competitive matches (1916–2017)<br><strong style="color:#fff">Test:</strong> 5,925 competitive matches (2018–2026)<br><strong style="color:#fff">Split:</strong> Temporal — strict no-leakage policy<br><strong style="color:#fff">CV:</strong> TimeSeriesSplit (5 folds)<br><strong style="color:#fff">Primary metric:</strong> Log Loss (probability calibration)<br><strong style="color:#fff">Simulation:</strong> 10,000 Monte Carlo runs · pre-computed pairwise win probabilities · draws split 50/50 in knockout rounds</div>',unsafe_allow_html=True)
+        st.markdown('<div class="cc" style="font-size:.87rem;line-height:1.8;color:#b0bfcc"><strong style="color:#fff">Algorithm:</strong> XGBoost (Tuned) via RandomizedSearchCV<br><strong style="color:#fff">Target:</strong> home_win · draw · away_win<br><strong style="color:#fff">Train:</strong> 16,294 competitive matches (1916–2017)<br><strong style="color:#fff">Test:</strong> 5,925 competitive matches (2018–2026)<br><strong style="color:#fff">Split:</strong> Temporal — strict no-leakage policy<br><strong style="color:#fff">CV:</strong> TimeSeriesSplit (5 folds)<br><strong style="color:#fff">Primary metric:</strong> Log Loss (probability calibration)<br><strong style="color:#fff">Simulation:</strong> 10,000 Monte Carlo runs · path-dependent win probs (tournament form, rest, travel) · draws split 50/50 in knockout rounds</div>',unsafe_allow_html=True)
 
         st.markdown("### Data Sources")
         for icon,name,source,note in [
@@ -1027,7 +1180,7 @@ elif page=="ℹ️  About":
         ("🧹","Preprocessing","Name standardisation · former-name alias table · 108-team Elo code map","#1565c0"),
         ("⚙️","Feature Engineering","30 features · rolling form · FIFA · Elo · WC history · match importance · H2H","#00838f"),
         ("🤖","Model Training","XGBoost Tuned · RandomizedSearchCV 40×5-fold TimeSeriesSplit · competitive matches only","#6a1b9a"),
-        ("🎲","Simulation","10,000 Monte Carlo runs · 182 pre-computed pairwise win probabilities","#e65100"),
+        ("🎲","Simulation","10,000 Monte Carlo runs · sequential tournament state (form, fatigue, travel)","#e65100"),
         ("📊","Dashboard","Streamlit · Plotly · 6 pages · all eval artifacts pre-computed","#f9a825"),
     ]
     pipe_cols=st.columns(len(steps))

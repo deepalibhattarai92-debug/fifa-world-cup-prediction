@@ -45,22 +45,7 @@ EVAL_DIR.mkdir(parents=True, exist_ok=True)
 # ---------------------------------------------------------------------------
 
 TRAIN_CUTOFF = 2018   # matches from 2018 onwards = test set
-FEATURE_COLS = [
-    "home_form_win_pct", "home_form_goals_scored", "home_form_goals_conceded",
-    "home_form_goal_diff", "home_form_clean_sheet_pct",
-    "away_form_win_pct", "away_form_goals_scored", "away_form_goals_conceded",
-    "away_form_goal_diff", "away_form_clean_sheet_pct",
-    "home_fifa_rank", "home_fifa_points",
-    "away_fifa_rank", "away_fifa_points",
-    "home_elo_rating", "away_elo_rating",
-    "home_wc_appearances", "home_wc_titles", "home_wc_best_finish",
-    "away_wc_appearances", "away_wc_titles", "away_wc_best_finish",
-    "rank_diff", "points_diff", "elo_diff",
-    "same_conf", "neutral",
-    "match_importance",
-    "h2h_win_rate",
-    "h2h_goal_diff",
-]
+from src.models.feature_cols import FEATURE_COLS
 
 FEATURE_DISPLAY_NAMES = {
     "elo_diff":                    "Elo Rating Difference",

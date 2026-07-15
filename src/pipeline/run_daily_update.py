@@ -3,11 +3,12 @@ One-command daily refresh of the 2026 World Cup prediction.
 
 Runs the light-refresh pipeline end to end:
   1. Pull fresh data   — World Cup fixtures, FIFA rankings, Elo ratings
-  2. Rebuild features  — build_features_v2
-  3. (optional) retrain the model  — train_model_v2  [--retrain]
-  4. Simulate          — simulate_tournament_v2 (bracket auto-derived from fixtures)
-  5. Archive           — freeze dated snapshots under archive/<date>/
-  6. Document          — prepend a dated entry to docs/UPDATE_LOG.md
+  2. Sync fixtures     — merge completed 2026 knockouts into results feed
+  3. Rebuild features  — build_features_v2 (incl. tournament-path features)
+  4. (optional) retrain the model  — train_model_v2  [--retrain]
+  5. Simulate          — simulate_tournament_v2 (trained tournament-path features)
+  6. Archive           — freeze dated snapshots under archive/<date>/
+  7. Document          — prepend a dated entry to docs/UPDATE_LOG.md
 
 The simulation reads the live bracket state straight from the fixtures feed, so no
 file ever needs hand-editing as results come in.
@@ -49,7 +50,14 @@ PY = sys.executable
 def run_step(label: str, script: str, required: bool) -> bool:
     """Run a pipeline script as a subprocess. Returns True on success."""
     print(f"\n{'=' * 70}\n▶ {label}\n{'=' * 70}")
-    result = subprocess.run([PY, str(PROJECT_ROOT / script)], cwd=PROJECT_ROOT)
+    script_path = PROJECT_ROOT / script
+    # Module path for scripts under src/ that import the package.
+    if script_path.parts[-3:-1] == ("src",) or "src/" in script:
+        module = script.replace("/", ".").replace(".py", "")
+        cmd = [PY, "-m", module]
+    else:
+        cmd = [PY, str(script_path)]
+    result = subprocess.run(cmd, cwd=PROJECT_ROOT)
     ok = result.returncode == 0
     if not ok:
         msg = f"  ✗ {label} failed (exit {result.returncode})."
@@ -168,8 +176,11 @@ def main() -> None:
 
     if not args.no_pull:
         run_step("Pull World Cup fixtures", "src/data_collection/collect_world_cup_fixtures.py", required=False)
+        run_step("Sync fixtures → results",  "src/data_processing/sync_fixtures_to_results.py", required=True)
         run_step("Pull FIFA rankings",     "src/data_collection/collect_fifa_rankings.py",       required=False)
         run_step("Pull Elo ratings",       "src/data_collection/collect_elo_ratings.py",         required=False)
+    else:
+        run_step("Sync fixtures → results (offline)", "src/data_processing/sync_fixtures_to_results.py", required=True)
 
     run_step("Rebuild V2 features", "src/feature_engineering/build_features_v2.py", required=True)
 

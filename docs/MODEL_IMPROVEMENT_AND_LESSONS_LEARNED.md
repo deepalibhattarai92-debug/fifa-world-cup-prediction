@@ -182,6 +182,10 @@ RandomizedSearchCV with `n_jobs=-1` failed in the sandbox environment because mu
 
 The first simulation implementation made one `predict_proba()` call per match per simulation. With 10,000 simulations and up to 7 rounds each, this was 70,000+ model calls and took ~90 seconds. Precomputing all 182 pairwise win probabilities once and sampling from them during simulation reduced this to 4 seconds. For anything with repeated inference, batch once and index many.
 
+### Sequential Tournament State (Live Knockout Phase)
+
+As of the semi-final stage, the simulation no longer uses a static pairwise cache for remaining knockouts. `TournamentStateTracker` (`src/simulation/tournament_state.py`) rebuilds each team's 2026 path from completed fixtures and updates it along every Monte Carlo branch. Tournament win rate, goals, rest days, and stadium-region changes feed into the existing `form_*` and `elo_rating` columns at inference time — no retrain required. Trade-off: ~2–3 model calls per simulation when only a few rounds remain (~2.5 min for 10k runs); early tournament still benefits from static precompute when many teams are alive.
+
 ---
 
 ## What Would Make V3 Better
