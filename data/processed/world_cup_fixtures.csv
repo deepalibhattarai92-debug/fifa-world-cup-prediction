@@ -1,102 +1,102 @@
 match_id,stage,match_date,home_team,away_team,home_country_code,away_country_code,home_score,away_score,winner,stadium,collected_at
-400021541,Semi-final,2026-07-14,France,Spain,FRA,ESP,0,2,Spain,Dallas Stadium,2026-07-15T03:28:36.154064+00:00
-400021537,Quarter-final,2026-07-12,Argentina,Switzerland,ARG,SUI,3,1,Argentina,Kansas City Stadium,2026-07-15T03:28:36.154064+00:00
-400021539,Quarter-final,2026-07-11,Norway,England,NOR,ENG,1,2,England,Miami Stadium,2026-07-15T03:28:36.154064+00:00
-400021538,Quarter-final,2026-07-10,Spain,Belgium,ESP,BEL,2,1,Spain,Los Angeles Stadium,2026-07-15T03:28:36.154064+00:00
-400021536,Quarter-final,2026-07-09,France,Morocco,FRA,MAR,2,0,France,Boston Stadium,2026-07-15T03:28:36.154064+00:00
-400021535,Round of 16,2026-07-07,Switzerland,Colombia,SUI,COL,0,0,Switzerland,BC Place Vancouver,2026-07-15T03:28:36.154064+00:00
-400021528,Round of 16,2026-07-07,Argentina,Egypt,ARG,EGY,3,2,Argentina,Atlanta Stadium,2026-07-15T03:28:36.154064+00:00
-400021534,Round of 16,2026-07-07,USA,Belgium,USA,BEL,1,4,Belgium,Seattle Stadium,2026-07-15T03:28:36.154064+00:00
-400021529,Round of 16,2026-07-06,Portugal,Spain,POR,ESP,0,1,Spain,Dallas Stadium,2026-07-15T03:28:36.154064+00:00
-400021531,Round of 16,2026-07-06,Mexico,England,MEX,ENG,2,3,England,Mexico City Stadium,2026-07-15T03:28:36.154064+00:00
-400021532,Round of 16,2026-07-05,Brazil,Norway,BRA,NOR,1,2,Norway,New York/New Jersey Stadium,2026-07-15T03:28:36.154064+00:00
-400021533,Round of 16,2026-07-04,Paraguay,France,PAR,FRA,0,1,France,Philadelphia Stadium,2026-07-15T03:28:36.154064+00:00
-400021530,Round of 16,2026-07-04,Canada,Morocco,CAN,MAR,0,3,Morocco,Houston Stadium,2026-07-15T03:28:36.154064+00:00
-400021517,Round of 32,2026-07-04,Colombia,Ghana,COL,GHA,1,0,Colombia,Kansas City Stadium,2026-07-15T03:28:36.154064+00:00
-400021521,Round of 32,2026-07-03,Argentina,Cabo Verde,ARG,CPV,3,2,Argentina,Miami Stadium,2026-07-15T03:28:36.154064+00:00
-400021515,Round of 32,2026-07-03,Australia,Egypt,AUS,EGY,1,1,Egypt,Dallas Stadium,2026-07-15T03:28:36.154064+00:00
-400021527,Round of 32,2026-07-03,Switzerland,Algeria,SUI,ALG,2,0,Switzerland,BC Place Vancouver,2026-07-15T03:28:36.154064+00:00
-400021526,Round of 32,2026-07-02,Portugal,Croatia,POR,CRO,2,1,Portugal,Toronto Stadium,2026-07-15T03:28:36.154064+00:00
-400021519,Round of 32,2026-07-02,Spain,Austria,ESP,AUT,3,0,Spain,Los Angeles Stadium,2026-07-15T03:28:36.154064+00:00
-400021524,Round of 32,2026-07-02,USA,Bosnia and Herzegovina,USA,BIH,2,0,USA,San Francisco Bay Area Stadium,2026-07-15T03:28:36.154064+00:00
-400021525,Round of 32,2026-07-01,Belgium,Senegal,BEL,SEN,3,2,Belgium,Seattle Stadium,2026-07-15T03:28:36.154064+00:00
-400021512,Round of 32,2026-07-01,England,Congo DR,ENG,COD,2,1,England,Atlanta Stadium,2026-07-15T03:28:36.154064+00:00
-400021520,Round of 32,2026-07-01,Mexico,Ecuador,MEX,ECU,2,0,Mexico,Mexico City Stadium,2026-07-15T03:28:36.154064+00:00
-400021523,Round of 32,2026-06-30,France,Sweden,FRA,SWE,3,0,France,New York/New Jersey Stadium,2026-07-15T03:28:36.154064+00:00
-400021514,Round of 32,2026-06-30,Côte d'Ivoire,Norway,CIV,NOR,1,2,Norway,Dallas Stadium,2026-07-15T03:28:36.154064+00:00
-400021522,Round of 32,2026-06-30,Netherlands,Morocco,NED,MAR,1,1,Morocco,Monterrey Stadium,2026-07-15T03:28:36.154064+00:00
-400021513,Round of 32,2026-06-29,Germany,Paraguay,GER,PAR,1,1,Paraguay,Boston Stadium,2026-07-15T03:28:36.154064+00:00
-400021516,Round of 32,2026-06-29,Brazil,Japan,BRA,JPN,2,1,Brazil,Houston Stadium,2026-07-15T03:28:36.154064+00:00
-400021518,Round of 32,2026-06-28,South Africa,Canada,RSA,CAN,0,1,Canada,Los Angeles Stadium,2026-07-15T03:28:36.154064+00:00
-400021497,First Stage,2026-06-28,Algeria,Austria,ALG,AUT,3,3,,Kansas City Stadium,2026-07-15T03:28:36.154064+00:00
-400021495,First Stage,2026-06-28,Jordan,Argentina,JOR,ARG,1,3,Argentina,Dallas Stadium,2026-07-15T03:28:36.154064+00:00
-400021500,First Stage,2026-06-27,Congo DR,Uzbekistan,COD,UZB,3,1,Congo DR,Atlanta Stadium,2026-07-15T03:28:36.154064+00:00
-400021505,First Stage,2026-06-27,Colombia,Portugal,COL,POR,0,0,,Miami Stadium,2026-07-15T03:28:36.154064+00:00
-400021508,First Stage,2026-06-27,Panama,England,PAN,ENG,0,2,England,New York/New Jersey Stadium,2026-07-15T03:28:36.154064+00:00
-400021509,First Stage,2026-06-27,Croatia,Ghana,CRO,GHA,2,1,Croatia,Philadelphia Stadium,2026-07-15T03:28:36.154064+00:00
-400021479,First Stage,2026-06-27,Egypt,IR Iran,EGY,IRN,1,1,,Seattle Stadium,2026-07-15T03:28:36.154064+00:00
-400021481,First Stage,2026-06-27,New Zealand,Belgium,NZL,BEL,1,5,Belgium,BC Place Vancouver,2026-07-15T03:28:36.154064+00:00
-400021485,First Stage,2026-06-27,Cabo Verde,Saudi Arabia,CPV,KSA,0,0,,Houston Stadium,2026-07-15T03:28:36.154064+00:00
-400021484,First Stage,2026-06-27,Uruguay,Spain,URU,ESP,0,1,Spain,Guadalajara Stadium,2026-07-15T03:28:36.154064+00:00
-400021489,First Stage,2026-06-26,Norway,France,NOR,FRA,1,4,France,Boston Stadium,2026-07-15T03:28:36.154064+00:00
-400021493,First Stage,2026-06-26,Senegal,Iraq,SEN,IRQ,5,0,Senegal,Toronto Stadium,2026-07-15T03:28:36.154064+00:00
-400021461,First Stage,2026-06-26,Paraguay,Australia,PAR,AUS,0,0,,San Francisco Bay Area Stadium,2026-07-15T03:28:36.154064+00:00
-400021459,First Stage,2026-06-26,Türkiye,USA,TUR,USA,3,2,Türkiye,Los Angeles Stadium,2026-07-15T03:28:36.154064+00:00
-400021473,First Stage,2026-06-25,Tunisia,Netherlands,TUN,NED,1,3,Netherlands,Kansas City Stadium,2026-07-15T03:28:36.154064+00:00
-400021471,First Stage,2026-06-25,Japan,Sweden,JPN,SWE,1,1,,Dallas Stadium,2026-07-15T03:28:36.154064+00:00
-400021468,First Stage,2026-06-25,Curaçao,Côte d'Ivoire,CUW,CIV,0,2,Côte d'Ivoire,Philadelphia Stadium,2026-07-15T03:28:36.154064+00:00
-400021466,First Stage,2026-06-25,Ecuador,Germany,ECU,GER,2,1,Ecuador,New York/New Jersey Stadium,2026-07-15T03:28:36.154064+00:00
-400021445,First Stage,2026-06-25,South Africa,Korea Republic,RSA,KOR,1,0,South Africa,Monterrey Stadium,2026-07-15T03:28:36.154064+00:00
-400021444,First Stage,2026-06-25,Czechia,Mexico,CZE,MEX,0,3,Mexico,Mexico City Stadium,2026-07-15T03:28:36.154064+00:00
-400021455,First Stage,2026-06-24,Scotland,Brazil,SCO,BRA,0,3,Brazil,Miami Stadium,2026-07-15T03:28:36.154064+00:00
-400021452,First Stage,2026-06-24,Morocco,Haiti,MAR,HAI,4,2,Morocco,Atlanta Stadium,2026-07-15T03:28:36.154064+00:00
-400021451,First Stage,2026-06-24,Switzerland,Canada,SUI,CAN,2,1,Switzerland,BC Place Vancouver,2026-07-15T03:28:36.154064+00:00
-400021448,First Stage,2026-06-24,Bosnia and Herzegovina,Qatar,BIH,QAT,3,1,Bosnia and Herzegovina,Seattle Stadium,2026-07-15T03:28:36.154064+00:00
-400021501,First Stage,2026-06-24,Colombia,Congo DR,COL,COD,1,0,Colombia,Guadalajara Stadium,2026-07-15T03:28:36.154064+00:00
-400021511,First Stage,2026-06-23,Panama,Croatia,PAN,CRO,0,1,Croatia,Toronto Stadium,2026-07-15T03:28:36.154064+00:00
-400021506,First Stage,2026-06-23,England,Ghana,ENG,GHA,0,0,,Boston Stadium,2026-07-15T03:28:36.154064+00:00
-400021503,First Stage,2026-06-23,Portugal,Uzbekistan,POR,UZB,5,0,Portugal,Houston Stadium,2026-07-15T03:28:36.154064+00:00
-400021499,First Stage,2026-06-23,Jordan,Algeria,JOR,ALG,1,2,Algeria,San Francisco Bay Area Stadium,2026-07-15T03:28:36.154064+00:00
-400021491,First Stage,2026-06-23,Norway,Senegal,NOR,SEN,3,2,Norway,New York/New Jersey Stadium,2026-07-15T03:28:36.154064+00:00
-400021492,First Stage,2026-06-22,France,Iraq,FRA,IRQ,3,0,France,Philadelphia Stadium,2026-07-15T03:28:36.154064+00:00
-400021494,First Stage,2026-06-22,Argentina,Austria,ARG,AUT,2,0,Argentina,Dallas Stadium,2026-07-15T03:28:36.154064+00:00
-400021480,First Stage,2026-06-22,New Zealand,Egypt,NZL,EGY,1,3,Egypt,BC Place Vancouver,2026-07-15T03:28:36.154064+00:00
-400021487,First Stage,2026-06-21,Uruguay,Cabo Verde,URU,CPV,2,2,,Miami Stadium,2026-07-15T03:28:36.154064+00:00
-400021477,First Stage,2026-06-21,Belgium,IR Iran,BEL,IRN,0,0,,Los Angeles Stadium,2026-07-15T03:28:36.154064+00:00
-400021483,First Stage,2026-06-21,Spain,Saudi Arabia,ESP,KSA,4,0,Spain,Atlanta Stadium,2026-07-15T03:28:36.154064+00:00
-400021475,First Stage,2026-06-21,Tunisia,Japan,TUN,JPN,0,4,Japan,Monterrey Stadium,2026-07-15T03:28:36.154064+00:00
-400021465,First Stage,2026-06-21,Ecuador,Curaçao,ECU,CUW,0,0,,Kansas City Stadium,2026-07-15T03:28:36.154064+00:00
-400021469,First Stage,2026-06-20,Germany,Côte d'Ivoire,GER,CIV,2,1,Germany,Toronto Stadium,2026-07-15T03:28:36.154064+00:00
-400021472,First Stage,2026-06-20,Netherlands,Sweden,NED,SWE,5,1,Netherlands,Houston Stadium,2026-07-15T03:28:36.154064+00:00
-400021460,First Stage,2026-06-20,Türkiye,Paraguay,TUR,PAR,0,1,Paraguay,San Francisco Bay Area Stadium,2026-07-15T03:28:36.154064+00:00
-400021457,First Stage,2026-06-20,Brazil,Haiti,BRA,HAI,3,0,Brazil,Philadelphia Stadium,2026-07-15T03:28:36.154064+00:00
-400021454,First Stage,2026-06-19,Scotland,Morocco,SCO,MAR,0,1,Morocco,Boston Stadium,2026-07-15T03:28:36.154064+00:00
-400021462,First Stage,2026-06-19,USA,Australia,USA,AUS,2,0,USA,Seattle Stadium,2026-07-15T03:28:36.154064+00:00
-400021442,First Stage,2026-06-19,Mexico,Korea Republic,MEX,KOR,1,0,Mexico,Guadalajara Stadium,2026-07-15T03:28:36.154064+00:00
-400021450,First Stage,2026-06-18,Canada,Qatar,CAN,QAT,6,0,Canada,BC Place Vancouver,2026-07-15T03:28:36.154064+00:00
-400021446,First Stage,2026-06-18,Switzerland,Bosnia and Herzegovina,SUI,BIH,4,1,Switzerland,Los Angeles Stadium,2026-07-15T03:28:36.154064+00:00
-400021440,First Stage,2026-06-18,Czechia,South Africa,CZE,RSA,1,1,,Atlanta Stadium,2026-07-15T03:28:36.154064+00:00
-400021504,First Stage,2026-06-18,Uzbekistan,Colombia,UZB,COL,1,3,Colombia,Mexico City Stadium,2026-07-15T03:28:36.154064+00:00
-400021510,First Stage,2026-06-17,Ghana,Panama,GHA,PAN,1,0,Ghana,Toronto Stadium,2026-07-15T03:28:36.154064+00:00
-400021507,First Stage,2026-06-17,England,Croatia,ENG,CRO,4,2,England,Dallas Stadium,2026-07-15T03:28:36.154064+00:00
-400021502,First Stage,2026-06-17,Portugal,Congo DR,POR,COD,1,1,,Houston Stadium,2026-07-15T03:28:36.154064+00:00
-400021498,First Stage,2026-06-17,Austria,Jordan,AUT,JOR,3,1,Austria,San Francisco Bay Area Stadium,2026-07-15T03:28:36.154064+00:00
-400021496,First Stage,2026-06-17,Argentina,Algeria,ARG,ALG,3,0,Argentina,Kansas City Stadium,2026-07-15T03:28:36.154064+00:00
-400021488,First Stage,2026-06-16,Iraq,Norway,IRQ,NOR,1,4,Norway,Boston Stadium,2026-07-15T03:28:36.154064+00:00
-400021490,First Stage,2026-06-16,France,Senegal,FRA,SEN,3,1,France,New York/New Jersey Stadium,2026-07-15T03:28:36.154064+00:00
-400021476,First Stage,2026-06-16,IR Iran,New Zealand,IRN,NZL,2,2,,Los Angeles Stadium,2026-07-15T03:28:36.154064+00:00
-400021486,First Stage,2026-06-15,Saudi Arabia,Uruguay,KSA,URU,1,1,,Miami Stadium,2026-07-15T03:28:36.154064+00:00
-400021478,First Stage,2026-06-15,Belgium,Egypt,BEL,EGY,1,1,,Seattle Stadium,2026-07-15T03:28:36.154064+00:00
-400021482,First Stage,2026-06-15,Spain,Cabo Verde,ESP,CPV,0,0,,Atlanta Stadium,2026-07-15T03:28:36.154064+00:00
-400021474,First Stage,2026-06-15,Sweden,Tunisia,SWE,TUN,5,1,Sweden,Monterrey Stadium,2026-07-15T03:28:36.154064+00:00
-400021467,First Stage,2026-06-14,Côte d'Ivoire,Ecuador,CIV,ECU,1,0,Côte d'Ivoire,Philadelphia Stadium,2026-07-15T03:28:36.154064+00:00
-400021470,First Stage,2026-06-14,Netherlands,Japan,NED,JPN,2,2,,Dallas Stadium,2026-07-15T03:28:36.154064+00:00
-400021464,First Stage,2026-06-14,Germany,Curaçao,GER,CUW,7,1,Germany,Houston Stadium,2026-07-15T03:28:36.154064+00:00
-400021463,First Stage,2026-06-14,Australia,Türkiye,AUS,TUR,2,0,Australia,BC Place Vancouver,2026-07-15T03:28:36.154064+00:00
-400021453,First Stage,2026-06-14,Haiti,Scotland,HAI,SCO,0,1,Scotland,Boston Stadium,2026-07-15T03:28:36.154064+00:00
-400021456,First Stage,2026-06-13,Brazil,Morocco,BRA,MAR,1,1,,New York/New Jersey Stadium,2026-07-15T03:28:36.154064+00:00
-400021447,First Stage,2026-06-13,Qatar,Switzerland,QAT,SUI,1,1,,San Francisco Bay Area Stadium,2026-07-15T03:28:36.154064+00:00
-400021458,First Stage,2026-06-13,USA,Paraguay,USA,PAR,4,1,USA,Los Angeles Stadium,2026-07-15T03:28:36.154064+00:00
-400021449,First Stage,2026-06-12,Canada,Bosnia and Herzegovina,CAN,BIH,1,1,,Toronto Stadium,2026-07-15T03:28:36.154064+00:00
-400021441,First Stage,2026-06-12,Korea Republic,Czechia,KOR,CZE,2,1,Korea Republic,Guadalajara Stadium,2026-07-15T03:28:36.154064+00:00
-400021443,First Stage,2026-06-11,Mexico,South Africa,MEX,RSA,2,0,Mexico,Mexico City Stadium,2026-07-15T03:28:36.154064+00:00
+400021541,Semi-final,2026-07-14,France,Spain,FRA,ESP,0,2,Spain,Dallas Stadium,2026-07-15T13:50:16.984927+00:00
+400021537,Quarter-final,2026-07-12,Argentina,Switzerland,ARG,SUI,3,1,Argentina,Kansas City Stadium,2026-07-15T13:50:16.984927+00:00
+400021539,Quarter-final,2026-07-11,Norway,England,NOR,ENG,1,2,England,Miami Stadium,2026-07-15T13:50:16.984927+00:00
+400021538,Quarter-final,2026-07-10,Spain,Belgium,ESP,BEL,2,1,Spain,Los Angeles Stadium,2026-07-15T13:50:16.984927+00:00
+400021536,Quarter-final,2026-07-09,France,Morocco,FRA,MAR,2,0,France,Boston Stadium,2026-07-15T13:50:16.984927+00:00
+400021535,Round of 16,2026-07-07,Switzerland,Colombia,SUI,COL,0,0,Switzerland,BC Place Vancouver,2026-07-15T13:50:16.984927+00:00
+400021528,Round of 16,2026-07-07,Argentina,Egypt,ARG,EGY,3,2,Argentina,Atlanta Stadium,2026-07-15T13:50:16.984927+00:00
+400021534,Round of 16,2026-07-07,USA,Belgium,USA,BEL,1,4,Belgium,Seattle Stadium,2026-07-15T13:50:16.984927+00:00
+400021529,Round of 16,2026-07-06,Portugal,Spain,POR,ESP,0,1,Spain,Dallas Stadium,2026-07-15T13:50:16.984927+00:00
+400021531,Round of 16,2026-07-06,Mexico,England,MEX,ENG,2,3,England,Mexico City Stadium,2026-07-15T13:50:16.984927+00:00
+400021532,Round of 16,2026-07-05,Brazil,Norway,BRA,NOR,1,2,Norway,New York/New Jersey Stadium,2026-07-15T13:50:16.984927+00:00
+400021533,Round of 16,2026-07-04,Paraguay,France,PAR,FRA,0,1,France,Philadelphia Stadium,2026-07-15T13:50:16.984927+00:00
+400021530,Round of 16,2026-07-04,Canada,Morocco,CAN,MAR,0,3,Morocco,Houston Stadium,2026-07-15T13:50:16.984927+00:00
+400021517,Round of 32,2026-07-04,Colombia,Ghana,COL,GHA,1,0,Colombia,Kansas City Stadium,2026-07-15T13:50:16.984927+00:00
+400021521,Round of 32,2026-07-03,Argentina,Cabo Verde,ARG,CPV,3,2,Argentina,Miami Stadium,2026-07-15T13:50:16.984927+00:00
+400021515,Round of 32,2026-07-03,Australia,Egypt,AUS,EGY,1,1,Egypt,Dallas Stadium,2026-07-15T13:50:16.984927+00:00
+400021527,Round of 32,2026-07-03,Switzerland,Algeria,SUI,ALG,2,0,Switzerland,BC Place Vancouver,2026-07-15T13:50:16.984927+00:00
+400021526,Round of 32,2026-07-02,Portugal,Croatia,POR,CRO,2,1,Portugal,Toronto Stadium,2026-07-15T13:50:16.984927+00:00
+400021519,Round of 32,2026-07-02,Spain,Austria,ESP,AUT,3,0,Spain,Los Angeles Stadium,2026-07-15T13:50:16.984927+00:00
+400021524,Round of 32,2026-07-02,USA,Bosnia and Herzegovina,USA,BIH,2,0,USA,San Francisco Bay Area Stadium,2026-07-15T13:50:16.984927+00:00
+400021525,Round of 32,2026-07-01,Belgium,Senegal,BEL,SEN,3,2,Belgium,Seattle Stadium,2026-07-15T13:50:16.984927+00:00
+400021512,Round of 32,2026-07-01,England,Congo DR,ENG,COD,2,1,England,Atlanta Stadium,2026-07-15T13:50:16.984927+00:00
+400021520,Round of 32,2026-07-01,Mexico,Ecuador,MEX,ECU,2,0,Mexico,Mexico City Stadium,2026-07-15T13:50:16.984927+00:00
+400021523,Round of 32,2026-06-30,France,Sweden,FRA,SWE,3,0,France,New York/New Jersey Stadium,2026-07-15T13:50:16.984927+00:00
+400021514,Round of 32,2026-06-30,Côte d'Ivoire,Norway,CIV,NOR,1,2,Norway,Dallas Stadium,2026-07-15T13:50:16.984927+00:00
+400021522,Round of 32,2026-06-30,Netherlands,Morocco,NED,MAR,1,1,Morocco,Monterrey Stadium,2026-07-15T13:50:16.984927+00:00
+400021513,Round of 32,2026-06-29,Germany,Paraguay,GER,PAR,1,1,Paraguay,Boston Stadium,2026-07-15T13:50:16.984927+00:00
+400021516,Round of 32,2026-06-29,Brazil,Japan,BRA,JPN,2,1,Brazil,Houston Stadium,2026-07-15T13:50:16.984927+00:00
+400021518,Round of 32,2026-06-28,South Africa,Canada,RSA,CAN,0,1,Canada,Los Angeles Stadium,2026-07-15T13:50:16.984927+00:00
+400021497,First Stage,2026-06-28,Algeria,Austria,ALG,AUT,3,3,,Kansas City Stadium,2026-07-15T13:50:16.984927+00:00
+400021495,First Stage,2026-06-28,Jordan,Argentina,JOR,ARG,1,3,Argentina,Dallas Stadium,2026-07-15T13:50:16.984927+00:00
+400021500,First Stage,2026-06-27,Congo DR,Uzbekistan,COD,UZB,3,1,Congo DR,Atlanta Stadium,2026-07-15T13:50:16.984927+00:00
+400021505,First Stage,2026-06-27,Colombia,Portugal,COL,POR,0,0,,Miami Stadium,2026-07-15T13:50:16.984927+00:00
+400021508,First Stage,2026-06-27,Panama,England,PAN,ENG,0,2,England,New York/New Jersey Stadium,2026-07-15T13:50:16.984927+00:00
+400021509,First Stage,2026-06-27,Croatia,Ghana,CRO,GHA,2,1,Croatia,Philadelphia Stadium,2026-07-15T13:50:16.984927+00:00
+400021479,First Stage,2026-06-27,Egypt,IR Iran,EGY,IRN,1,1,,Seattle Stadium,2026-07-15T13:50:16.984927+00:00
+400021481,First Stage,2026-06-27,New Zealand,Belgium,NZL,BEL,1,5,Belgium,BC Place Vancouver,2026-07-15T13:50:16.984927+00:00
+400021485,First Stage,2026-06-27,Cabo Verde,Saudi Arabia,CPV,KSA,0,0,,Houston Stadium,2026-07-15T13:50:16.984927+00:00
+400021484,First Stage,2026-06-27,Uruguay,Spain,URU,ESP,0,1,Spain,Guadalajara Stadium,2026-07-15T13:50:16.984927+00:00
+400021489,First Stage,2026-06-26,Norway,France,NOR,FRA,1,4,France,Boston Stadium,2026-07-15T13:50:16.984927+00:00
+400021493,First Stage,2026-06-26,Senegal,Iraq,SEN,IRQ,5,0,Senegal,Toronto Stadium,2026-07-15T13:50:16.984927+00:00
+400021461,First Stage,2026-06-26,Paraguay,Australia,PAR,AUS,0,0,,San Francisco Bay Area Stadium,2026-07-15T13:50:16.984927+00:00
+400021459,First Stage,2026-06-26,Türkiye,USA,TUR,USA,3,2,Türkiye,Los Angeles Stadium,2026-07-15T13:50:16.984927+00:00
+400021473,First Stage,2026-06-25,Tunisia,Netherlands,TUN,NED,1,3,Netherlands,Kansas City Stadium,2026-07-15T13:50:16.984927+00:00
+400021471,First Stage,2026-06-25,Japan,Sweden,JPN,SWE,1,1,,Dallas Stadium,2026-07-15T13:50:16.984927+00:00
+400021468,First Stage,2026-06-25,Curaçao,Côte d'Ivoire,CUW,CIV,0,2,Côte d'Ivoire,Philadelphia Stadium,2026-07-15T13:50:16.984927+00:00
+400021466,First Stage,2026-06-25,Ecuador,Germany,ECU,GER,2,1,Ecuador,New York/New Jersey Stadium,2026-07-15T13:50:16.984927+00:00
+400021445,First Stage,2026-06-25,South Africa,Korea Republic,RSA,KOR,1,0,South Africa,Monterrey Stadium,2026-07-15T13:50:16.984927+00:00
+400021444,First Stage,2026-06-25,Czechia,Mexico,CZE,MEX,0,3,Mexico,Mexico City Stadium,2026-07-15T13:50:16.984927+00:00
+400021455,First Stage,2026-06-24,Scotland,Brazil,SCO,BRA,0,3,Brazil,Miami Stadium,2026-07-15T13:50:16.984927+00:00
+400021452,First Stage,2026-06-24,Morocco,Haiti,MAR,HAI,4,2,Morocco,Atlanta Stadium,2026-07-15T13:50:16.984927+00:00
+400021451,First Stage,2026-06-24,Switzerland,Canada,SUI,CAN,2,1,Switzerland,BC Place Vancouver,2026-07-15T13:50:16.984927+00:00
+400021448,First Stage,2026-06-24,Bosnia and Herzegovina,Qatar,BIH,QAT,3,1,Bosnia and Herzegovina,Seattle Stadium,2026-07-15T13:50:16.984927+00:00
+400021501,First Stage,2026-06-24,Colombia,Congo DR,COL,COD,1,0,Colombia,Guadalajara Stadium,2026-07-15T13:50:16.984927+00:00
+400021511,First Stage,2026-06-23,Panama,Croatia,PAN,CRO,0,1,Croatia,Toronto Stadium,2026-07-15T13:50:16.984927+00:00
+400021506,First Stage,2026-06-23,England,Ghana,ENG,GHA,0,0,,Boston Stadium,2026-07-15T13:50:16.984927+00:00
+400021503,First Stage,2026-06-23,Portugal,Uzbekistan,POR,UZB,5,0,Portugal,Houston Stadium,2026-07-15T13:50:16.984927+00:00
+400021499,First Stage,2026-06-23,Jordan,Algeria,JOR,ALG,1,2,Algeria,San Francisco Bay Area Stadium,2026-07-15T13:50:16.984927+00:00
+400021491,First Stage,2026-06-23,Norway,Senegal,NOR,SEN,3,2,Norway,New York/New Jersey Stadium,2026-07-15T13:50:16.984927+00:00
+400021492,First Stage,2026-06-22,France,Iraq,FRA,IRQ,3,0,France,Philadelphia Stadium,2026-07-15T13:50:16.984927+00:00
+400021494,First Stage,2026-06-22,Argentina,Austria,ARG,AUT,2,0,Argentina,Dallas Stadium,2026-07-15T13:50:16.984927+00:00
+400021480,First Stage,2026-06-22,New Zealand,Egypt,NZL,EGY,1,3,Egypt,BC Place Vancouver,2026-07-15T13:50:16.984927+00:00
+400021487,First Stage,2026-06-21,Uruguay,Cabo Verde,URU,CPV,2,2,,Miami Stadium,2026-07-15T13:50:16.984927+00:00
+400021477,First Stage,2026-06-21,Belgium,IR Iran,BEL,IRN,0,0,,Los Angeles Stadium,2026-07-15T13:50:16.984927+00:00
+400021483,First Stage,2026-06-21,Spain,Saudi Arabia,ESP,KSA,4,0,Spain,Atlanta Stadium,2026-07-15T13:50:16.984927+00:00
+400021475,First Stage,2026-06-21,Tunisia,Japan,TUN,JPN,0,4,Japan,Monterrey Stadium,2026-07-15T13:50:16.984927+00:00
+400021465,First Stage,2026-06-21,Ecuador,Curaçao,ECU,CUW,0,0,,Kansas City Stadium,2026-07-15T13:50:16.984927+00:00
+400021469,First Stage,2026-06-20,Germany,Côte d'Ivoire,GER,CIV,2,1,Germany,Toronto Stadium,2026-07-15T13:50:16.984927+00:00
+400021472,First Stage,2026-06-20,Netherlands,Sweden,NED,SWE,5,1,Netherlands,Houston Stadium,2026-07-15T13:50:16.984927+00:00
+400021460,First Stage,2026-06-20,Türkiye,Paraguay,TUR,PAR,0,1,Paraguay,San Francisco Bay Area Stadium,2026-07-15T13:50:16.984927+00:00
+400021457,First Stage,2026-06-20,Brazil,Haiti,BRA,HAI,3,0,Brazil,Philadelphia Stadium,2026-07-15T13:50:16.984927+00:00
+400021454,First Stage,2026-06-19,Scotland,Morocco,SCO,MAR,0,1,Morocco,Boston Stadium,2026-07-15T13:50:16.984927+00:00
+400021462,First Stage,2026-06-19,USA,Australia,USA,AUS,2,0,USA,Seattle Stadium,2026-07-15T13:50:16.984927+00:00
+400021442,First Stage,2026-06-19,Mexico,Korea Republic,MEX,KOR,1,0,Mexico,Guadalajara Stadium,2026-07-15T13:50:16.984927+00:00
+400021450,First Stage,2026-06-18,Canada,Qatar,CAN,QAT,6,0,Canada,BC Place Vancouver,2026-07-15T13:50:16.984927+00:00
+400021446,First Stage,2026-06-18,Switzerland,Bosnia and Herzegovina,SUI,BIH,4,1,Switzerland,Los Angeles Stadium,2026-07-15T13:50:16.984927+00:00
+400021440,First Stage,2026-06-18,Czechia,South Africa,CZE,RSA,1,1,,Atlanta Stadium,2026-07-15T13:50:16.984927+00:00
+400021504,First Stage,2026-06-18,Uzbekistan,Colombia,UZB,COL,1,3,Colombia,Mexico City Stadium,2026-07-15T13:50:16.984927+00:00
+400021510,First Stage,2026-06-17,Ghana,Panama,GHA,PAN,1,0,Ghana,Toronto Stadium,2026-07-15T13:50:16.984927+00:00
+400021507,First Stage,2026-06-17,England,Croatia,ENG,CRO,4,2,England,Dallas Stadium,2026-07-15T13:50:16.984927+00:00
+400021502,First Stage,2026-06-17,Portugal,Congo DR,POR,COD,1,1,,Houston Stadium,2026-07-15T13:50:16.984927+00:00
+400021498,First Stage,2026-06-17,Austria,Jordan,AUT,JOR,3,1,Austria,San Francisco Bay Area Stadium,2026-07-15T13:50:16.984927+00:00
+400021496,First Stage,2026-06-17,Argentina,Algeria,ARG,ALG,3,0,Argentina,Kansas City Stadium,2026-07-15T13:50:16.984927+00:00
+400021488,First Stage,2026-06-16,Iraq,Norway,IRQ,NOR,1,4,Norway,Boston Stadium,2026-07-15T13:50:16.984927+00:00
+400021490,First Stage,2026-06-16,France,Senegal,FRA,SEN,3,1,France,New York/New Jersey Stadium,2026-07-15T13:50:16.984927+00:00
+400021476,First Stage,2026-06-16,IR Iran,New Zealand,IRN,NZL,2,2,,Los Angeles Stadium,2026-07-15T13:50:16.984927+00:00
+400021486,First Stage,2026-06-15,Saudi Arabia,Uruguay,KSA,URU,1,1,,Miami Stadium,2026-07-15T13:50:16.984927+00:00
+400021478,First Stage,2026-06-15,Belgium,Egypt,BEL,EGY,1,1,,Seattle Stadium,2026-07-15T13:50:16.984927+00:00
+400021482,First Stage,2026-06-15,Spain,Cabo Verde,ESP,CPV,0,0,,Atlanta Stadium,2026-07-15T13:50:16.984927+00:00
+400021474,First Stage,2026-06-15,Sweden,Tunisia,SWE,TUN,5,1,Sweden,Monterrey Stadium,2026-07-15T13:50:16.984927+00:00
+400021467,First Stage,2026-06-14,Côte d'Ivoire,Ecuador,CIV,ECU,1,0,Côte d'Ivoire,Philadelphia Stadium,2026-07-15T13:50:16.984927+00:00
+400021470,First Stage,2026-06-14,Netherlands,Japan,NED,JPN,2,2,,Dallas Stadium,2026-07-15T13:50:16.984927+00:00
+400021464,First Stage,2026-06-14,Germany,Curaçao,GER,CUW,7,1,Germany,Houston Stadium,2026-07-15T13:50:16.984927+00:00
+400021463,First Stage,2026-06-14,Australia,Türkiye,AUS,TUR,2,0,Australia,BC Place Vancouver,2026-07-15T13:50:16.984927+00:00
+400021453,First Stage,2026-06-14,Haiti,Scotland,HAI,SCO,0,1,Scotland,Boston Stadium,2026-07-15T13:50:16.984927+00:00
+400021456,First Stage,2026-06-13,Brazil,Morocco,BRA,MAR,1,1,,New York/New Jersey Stadium,2026-07-15T13:50:16.984927+00:00
+400021447,First Stage,2026-06-13,Qatar,Switzerland,QAT,SUI,1,1,,San Francisco Bay Area Stadium,2026-07-15T13:50:16.984927+00:00
+400021458,First Stage,2026-06-13,USA,Paraguay,USA,PAR,4,1,USA,Los Angeles Stadium,2026-07-15T13:50:16.984927+00:00
+400021449,First Stage,2026-06-12,Canada,Bosnia and Herzegovina,CAN,BIH,1,1,,Toronto Stadium,2026-07-15T13:50:16.984927+00:00
+400021441,First Stage,2026-06-12,Korea Republic,Czechia,KOR,CZE,2,1,Korea Republic,Guadalajara Stadium,2026-07-15T13:50:16.984927+00:00
+400021443,First Stage,2026-06-11,Mexico,South Africa,MEX,RSA,2,0,Mexico,Mexico City Stadium,2026-07-15T13:50:16.984927+00:00
