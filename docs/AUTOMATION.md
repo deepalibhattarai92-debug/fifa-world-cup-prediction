@@ -64,6 +64,49 @@ trigger it manually from the Actions tab ("Run workflow").
 **Recommendation:** use local cron (Option A) for dependable daily fixture updates;
 keep the Actions workflow as an on-demand / backup trigger.
 
+## Option C — Match-time auto refresh (knockout stage)
+
+During knockouts the dashboard can refresh automatically around each match:
+
+1. **At kickoff** — pull fixtures and re-simulate
+2. **After full time** — poll every **5 minutes for 1 hour** until FIFA publishes the score
+
+### GitHub Actions (hands-off)
+
+`.github/workflows/match-refresh.yml` runs every 5 minutes. Most runs no-op instantly;
+during an active match window it runs the full pipeline and pushes updates.
+
+Manual force refresh from the Actions tab: **Match-time prediction refresh → Run workflow → force: true**.
+
+### Local cron (best FIFA API reliability)
+
+Run the same scheduler every 5 minutes on your Mac:
+
+```bash
+crontab -e
+```
+
+```cron
+*/5 * * * * cd /Users/deepalibhattarai/Documents/GitHub/fifa-world-cup-prediction && AUTO_COMMIT=1 ./scripts/match_refresh.sh >> /tmp/wc_match_refresh.log 2>&1
+```
+
+Useful commands:
+
+```bash
+./scripts/match_refresh.sh --status     # show upcoming watch windows
+./scripts/match_refresh.sh --dry-run    # print decision without running
+./scripts/match_refresh.sh --force      # refresh now, ignore schedule
+```
+
+### Kickoff times
+
+FIFA's API only provides **dates**, not kickoff times. Defaults and overrides live in
+`config/match_kickoffs.json`. The World Cup Final is pre-configured for **Jul 19,
+2026 at 19:00 UTC** (3:00 pm ET).
+
+Adjust `match_duration_minutes` (default 135) and `poll_duration_minutes` (default 60)
+there if needed.
+
 ## What still needs a human
 
 - **Match results:** handled automatically via the fixtures feed. ✅

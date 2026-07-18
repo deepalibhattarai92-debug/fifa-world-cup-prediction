@@ -1,0 +1,80 @@
+name: Match-time prediction refresh
+
+# Polls every 5 minutes during the knockout stage. The scheduler only runs the
+# full pipeline when:
+#   • a knockout match is at scheduled kickoff, or
+#   • we are in the post-match polling window (~2h15m after kickoff for 1 hour)
+#
+# Once FIFA publishes the final score, the match is marked complete and polling
+# stops for that fixture.
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Run refresh even outside match windows"
+        required: false
+        default: "false"
+        type: choice
+        options:
+          - "false"
+          - "true"
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Decide whether to refresh
+        id: gate
+        run: |
+          set +e
+          if [[ "${{ github.event.inputs.force }}" == "true" ]]; then
+            echo "should_run=true" >> "$GITHUB_OUTPUT"
+            echo "Forced refresh requested."
+            exit 0
+          fi
+          python src/pipeline/run_match_refresh.py --check-only
+          code=$?
+          if [[ $code -eq 2 ]]; then
+            echo "should_run=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "should_run=false" >> "$GITHUB_OUTPUT"
+          fi
+          python src/pipeline/run_match_refresh.py --dry-run || true
+
+      - name: Run match-time refresh
+        if: steps.gate.outputs.should_run == 'true'
+        run: |
+          if [[ "${{ github.event.inputs.force }}" == "true" ]]; then
+            python src/pipeline/run_match_refresh.py --force
+          else
+            python src/pipeline/run_match_refresh.py
+          fi
+
+      - name: Commit and push updated predictions
+        if: steps.gate.outputs.should_run == 'true'
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git commit -m "Match-time prediction refresh $(date -u +%F-%H%M)"; then
+            git push
+          else
+            echo "No changes to commit."
+          fi

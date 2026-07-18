@@ -1,0 +1,16 @@
+{
+  "defaults": {
+    "knockout_kickoff_utc": "19:00",
+    "match_duration_minutes": 135,
+    "poll_duration_minutes": 60,
+    "poll_interval_minutes": 5,
+    "pre_kickoff_minutes": 0
+  },
+  "matches": {
+    "FINAL": {
+      "match_date": "2026-07-19",
+      "kickoff_utc": "2026-07-19T19:00:00+00:00",
+      "label": "World Cup Final"
+    }
+  }
+}
