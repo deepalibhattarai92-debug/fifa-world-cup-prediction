@@ -15,11 +15,11 @@ snapshots for documentation.
 
 ## 2026-07-19 — automated refresh
 
-*Generated 2026-07-19 22:10 UTC by `run_daily_update.py`.*
+*Generated 2026-07-19 23:27 UTC by `run_daily_update.py`.*
 
 **Archive:** [`archive/2026-07-19/`](../archive/2026-07-19/)
 
-**Knockout results detected (2 teams still alive):**
+**Knockout results detected (1 teams still alive):**
   - R16_1: France vs Paraguay → **France**
   - R16_2: Morocco vs Canada → **Morocco**
   - R16_3: Norway vs Brazil → **Norway**
@@ -34,6 +34,7 @@ snapshots for documentation.
   - QF_4: Argentina vs Switzerland → **Argentina**
   - SF_1: France vs Spain → **Spain**
   - SF_2: England vs Argentina → **Argentina**
+  - FINAL: Spain vs Argentina → **Spain**
 
 **Model:** XGBoost (tuned) — accuracy 0.6242, log loss 0.8499, ROC-AUC 0.7731
 
@@ -41,8 +42,7 @@ snapshots for documentation.
 
 | Rank | Team | Win % |
 |------|------|-------|
-| 1 | Spain | 50.4 |
-| 2 | Argentina | 49.6 |
+| 1 | Spain | 100.0 |
 
 ---
 

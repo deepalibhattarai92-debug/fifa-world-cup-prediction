@@ -1,5 +1,63 @@
 [
     {
+        "idMatch": "400021543",
+        "idMatchIfes": "151710",
+        "idCompetition": "17",
+        "idSeason": "285023",
+        "idStage": "289292",
+        "competitionName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup\u2122"
+            }
+        ],
+        "seasonName": [
+            {
+                "locale": "en-GB",
+                "description": "FIFA World Cup 2026\u2122"
+            }
+        ],
+        "stageName": [
+            {
+                "locale": "en-GB",
+                "description": "Final"
+            }
+        ],
+        "matchDate": "2026-07-19",
+        "teamAId": "43969",
+        "teamBId": "43922",
+        "teamAName": [
+            {
+                "locale": "en-GB",
+                "description": "Spain"
+            }
+        ],
+        "teamBName": [
+            {
+                "locale": "en-GB",
+                "description": "Argentina"
+            }
+        ],
+        "teamACountryCode": "ESP",
+        "teamBCountryCode": "ARG",
+        "teamAFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/ESP",
+        "teamBFlagUrl": "https://api.fifa.com/api/v3/picture/flags-sq-2/ARG",
+        "teamAScore": 1,
+        "teamBScore": 0,
+        "teamAPenaltyScore": 0,
+        "teamBPenaltyScore": 0,
+        "resultType": 3,
+        "winner": "43969",
+        "stadiumName": [
+            {
+                "locale": "en-GB",
+                "description": "New York/New Jersey Stadium"
+            }
+        ],
+        "hasPenalties": false,
+        "tournamentPageURL": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"
+    },
+    {
         "idMatch": "400021542",
         "idMatchIfes": "151709",
         "idCompetition": "17",

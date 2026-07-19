@@ -2,7 +2,7 @@
   "defaults": {
     "knockout_kickoff_utc": "19:00",
     "match_duration_minutes": 135,
-    "poll_duration_minutes": 60,
+    "poll_duration_minutes": 180,
     "poll_interval_minutes": 5,
     "pre_kickoff_minutes": 0
   },

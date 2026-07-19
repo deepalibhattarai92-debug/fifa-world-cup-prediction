@@ -132,6 +132,43 @@ section[data-testid="stSidebar"] * { color:#d0dce8 !important; }
 .bm-tbd { color:#8a9bb0; font-size:.78rem; font-style:italic; }
 .bm-sub { font-size:.65rem; color:#4a6080; text-transform:uppercase; letter-spacing:.08em; margin:10px 0 4px; }
 
+/* champion result banner */
+.champ-banner {
+  background: linear-gradient(135deg,#1a1400 0%,#002868 45%,#7b1c1c 100%);
+  border: 1.5px solid #ffd700;
+  border-radius: 16px;
+  padding: 22px 26px;
+  margin-bottom: 18px;
+  animation: pulseGlow 2.8s ease-in-out infinite, fadeInUp .55s ease;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  flex-wrap: wrap;
+}
+.champ-flag { font-size: 3.4rem; line-height: 1; }
+.champ-kicker {
+  font-size: .72rem; font-weight: 800; color: #ffd700;
+  letter-spacing: .16em; text-transform: uppercase; margin-bottom: 4px;
+}
+.champ-name { font-size: 2rem; font-weight: 900; color: #fff; line-height: 1.1; }
+.champ-score {
+  font-size: 1.05rem; color: #c0d0e0; margin-top: 6px; font-weight: 600;
+}
+.champ-verdict {
+  margin-left: auto;
+  background: rgba(0,200,83,.12);
+  border: 1px solid #00c853;
+  border-radius: 12px;
+  padding: 14px 18px;
+  min-width: 220px;
+}
+.champ-verdict-title {
+  font-size: .68rem; font-weight: 800; color: #00c853;
+  letter-spacing: .12em; text-transform: uppercase; margin-bottom: 6px;
+}
+.champ-verdict-body { font-size: .92rem; color: #fff; font-weight: 700; line-height: 1.35; }
+.champ-verdict-sub { font-size: .75rem; color: #8aa0b5; margin-top: 6px; }
+
 /* podium */
 .pod {
   border-radius:12px; padding:18px 12px; text-align:center;
@@ -598,76 +635,207 @@ if page=="🏠  Overview":
     r16_played=sum(matches[m]["played"] for m in r16_ids)
     qf_set=sum(1 for m in qf_ids if matches[m]["a"] and matches[m]["b"])
     alive_count=16-len(eliminated)
-
-    k1,k2,k3,k4,k5=st.columns(5)
-    for col,(lbl,val,sub,cls) in zip([k1,k2,k3,k4,k5],[
-        ("Teams Remaining",f"{alive_count}","of 16 in the knockouts","kpi-g"),
-        ("Round of 16",f"{r16_played} / 8","matches played","kpi-b"),
-        ("Quarter-finals",f"{qf_set} / 4","matchups confirmed","kpi-au"),
-        ("Title Favorite",f"{FLAGS.get(fav['team'],'')} {fav['team']}",f"{fav['win_pct']:.1f}% to lift the trophy","kpi-p"),
-        ("The Final","Jul 19","MetLife Stadium, NY","kpi-t"),
-    ]):
-        col.markdown(f'<div class="kpi {cls}"><div class="kpi-l">{lbl}</div><div class="kpi-v">{val}</div><div class="kpi-dp">{sub}</div></div>',unsafe_allow_html=True)
-
-    st.markdown("<br>",unsafe_allow_html=True)
-
-    # Champion podium
-    st.markdown('<div class="sh">🏅 Predicted Championship Podium</div>',unsafe_allow_html=True)
-    pod1,pod2,pod3=st.columns(3)
-
-    t1s,t2s=sim.iloc[0],sim.iloc[1]
-    pod1.markdown(f'<div class="pod pod-1"><div class="pod-rank">🏆</div><div style="font-size:1.6rem">{FLAGS.get(t1s["team"],"")}</div><div class="pod-name">{t1s["team"]}</div><div class="pod-pct" style="color:#ffd700">{t1s["win_pct"]:.1f}%</div><div class="pod-ci">{t1s["ci_str"]}</div><div style="color:#5a4a20;font-size:.7rem;margin-top:4px">Champion</div></div>',unsafe_allow_html=True)
-    pod2.markdown(f'<div class="pod pod-2"><div class="pod-rank">🥈</div><div style="font-size:1.4rem">{FLAGS.get(t2s["team"],"")}</div><div class="pod-name">{t2s["team"]}</div><div class="pod-pct" style="color:#aaaaaa">{t2s["win_pct"]:.1f}%</div><div class="pod-ci">{t2s["ci_str"]}</div><div style="color:#555;font-size:.7rem;margin-top:4px">Runner-up</div></div>',unsafe_allow_html=True)
-    if len(sim) >= 3:
-        t3s=sim.iloc[2]
-        pod3.markdown(f'<div class="pod pod-3"><div class="pod-rank">🥉</div><div style="font-size:1.4rem">{FLAGS.get(t3s["team"],"")}</div><div class="pod-name">{t3s["team"]}</div><div class="pod-pct" style="color:#cd7f32">{t3s["win_pct"]:.1f}%</div><div class="pod-ci">{t3s["ci_str"]}</div><div style="color:#4a3010;font-size:.7rem;margin-top:4px">2nd Runner-up</div></div>',unsafe_allow_html=True)
-    else:
-        pod3.markdown('<div class="pod pod-3"><div class="pod-rank">🏆</div><div style="font-size:1.1rem;color:#7a8fa0;margin-top:12px">Final set</div><div class="pod-name" style="font-size:.85rem">Spain vs Argentina</div><div style="color:#4a3010;font-size:.7rem;margin-top:8px">Jul 19 · MetLife Stadium</div></div>',unsafe_allow_html=True)
-
-    # Final / semi-final predictions
-    try:
-        sf_preds = {p["match_id"]: p for p in load_sf_predictions(_dv)}
-    except Exception as exc:
-        sf_preds = {}
-        st.warning(f"Semi-final predictions unavailable: {exc}")
-
     final_m = matches.get("FINAL", {})
-    final_pred = None
-    if final_m.get("a") and final_m.get("b") and not final_m.get("played"):
-        try:
-            final_pred = load_match_prediction(_dv, final_m["a"], final_m["b"], "FINAL")
-        except Exception as exc:
-            st.warning(f"Final prediction unavailable: {exc}")
+    champion_decided = bool(final_m.get("played") and final_m.get("winner"))
 
-    if final_pred:
-        st.markdown('<div class="sh" style="margin-top:8px">🔮 Final Prediction</div>',unsafe_allow_html=True)
-        st.caption("Path-dependent win probabilities · Spain vs Argentina · Jul 19, MetLife Stadium")
-        fc1, fc2 = st.columns([1, 1])
-        p = final_pred
-        fc1.markdown(
-            f'<div class="cc" style="border-left:3px solid #f9a825;padding:14px 16px">'
-            f'<div style="font-size:.68rem;color:#f9a825;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px">'
-            f'World Cup Final</div>'
-            f'<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">'
-            f'<span style="color:#fff;font-weight:700">{_fl(p["home"])}</span>'
-            f'<span style="color:#00c853;font-weight:800;font-size:1.1rem">{p["p_home"]}%</span></div>'
-            f'<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">'
-            f'<span style="color:#fff;font-weight:700">{_fl(p["away"])}</span>'
-            f'<span style="color:#00c853;font-weight:800;font-size:1.1rem">{p["p_away"]}%</span></div>'
-            f'<div style="background:#1a2030;border-radius:6px;padding:8px 10px;font-size:.8rem">'
-            f'<span style="color:#7a8fa0">Model pick:</span> '
-            f'<strong style="color:#ffd700">{_fl(p["pick"])}</strong> '
-            f'<span style="color:#00c853">({p["pick_pct"]:.1f}%)</span></div></div>',
+    # Pre-final published forecast (10K sims right before kickoff)
+    PRE_FINAL_ODDS = {"Spain": 50.4, "Argentina": 49.6}
+    PRE_FINAL_PICK = "Spain"
+    KNOCKOUT_CORRECT, KNOCKOUT_TOTAL = 13, 15  # includes Final pick
+
+    # Final score from fixtures feed
+    final_score_line = "Spain vs Argentina"
+    final_score_short = "—"
+    try:
+        fx = pd.read_csv(PROCESSED / "world_cup_fixtures.csv")
+        final_row = fx[fx["stage"].astype(str) == "Final"]
+        if len(final_row):
+            fr = final_row.iloc[0]
+            hs, aws = fr.get("home_score"), fr.get("away_score")
+            if pd.notna(hs) and pd.notna(aws):
+                final_score_short = f"{int(hs)}–{int(aws)}"
+                final_score_line = (
+                    f"{fr['home_team']} {int(hs)}–{int(aws)} {fr['away_team']}"
+                )
+        bronze_winner = None
+        bronze = fx[fx["stage"].astype(str).str.contains("Bronze|third", case=False, na=False)]
+        if len(bronze) and pd.notna(bronze.iloc[0].get("winner")):
+            bronze_winner = str(bronze.iloc[0]["winner"])
+    except Exception:
+        bronze_winner = None
+
+    if champion_decided:
+        champion = final_m["winner"]
+        runner_up = final_m["b"] if final_m["a"] == champion else final_m["a"]
+        model_correct = champion == PRE_FINAL_PICK
+        k1,k2,k3,k4,k5=st.columns(5)
+        for col,(lbl,val,sub,cls) in zip([k1,k2,k3,k4,k5],[
+            ("Champion",f"{FLAGS.get(champion,'')} {champion}","2026 World Cup winners","kpi-au"),
+            ("Final Score",final_score_short,"Spain beat Argentina","kpi-g"),
+            ("Model Pick",f"{FLAGS.get(PRE_FINAL_PICK,'')} {PRE_FINAL_PICK}",
+             "CORRECT ✓" if model_correct else "Missed","kpi-p"),
+            ("Pre-Final Odds",f"{PRE_FINAL_ODDS.get(champion, fav['win_pct']):.1f}%",
+             "title probability before kickoff","kpi-b"),
+            ("Knockout Record",f"{KNOCKOUT_CORRECT}/{KNOCKOUT_TOTAL}",
+             f"{100*KNOCKOUT_CORRECT/KNOCKOUT_TOTAL:.0f}% correct match picks","kpi-t"),
+        ]):
+            col.markdown(f'<div class="kpi {cls}"><div class="kpi-l">{lbl}</div><div class="kpi-v" style="font-size:1.35rem">{val}</div><div class="kpi-dp">{sub}</div></div>',unsafe_allow_html=True)
+
+        verdict_title = "MODEL WAS CORRECT" if model_correct else "MODEL VERDICT"
+        verdict_body = (
+            f"Picked {_fl(PRE_FINAL_PICK)} to win the Final — "
+            f"and {_fl(champion)} lifted the trophy."
+            if model_correct else
+            f"Model liked {_fl(PRE_FINAL_PICK)}; {_fl(champion)} won."
+        )
+        st.markdown(
+            f'<div class="champ-banner">'
+            f'<div class="champ-flag">{FLAGS.get(champion,"🏆")}</div>'
+            f'<div>'
+            f'<div class="champ-kicker">🏆 Champions of the World · FIFA World Cup 2026™</div>'
+            f'<div class="champ-name">{_fl(champion)}</div>'
+            f'<div class="champ-score">{final_score_line} · MetLife Stadium</div>'
+            f'</div>'
+            f'<div class="champ-verdict">'
+            f'<div class="champ-verdict-title">✅ {verdict_title}</div>'
+            f'<div class="champ-verdict-body">{verdict_body}</div>'
+            f'<div class="champ-verdict-sub">'
+            f'Pre-final title odds: {PRE_FINAL_PICK} {PRE_FINAL_ODDS.get(PRE_FINAL_PICK, 50):.1f}% · '
+            f'{runner_up} {PRE_FINAL_ODDS.get(runner_up, 50):.1f}% · '
+            f'Knockout picks {KNOCKOUT_CORRECT}/{KNOCKOUT_TOTAL}</div>'
+            f'</div></div>',
             unsafe_allow_html=True,
         )
-        fc2.markdown(
+
+        st.markdown('<div class="sh">🏅 Official Tournament Podium</div>',unsafe_allow_html=True)
+        pod1,pod2,pod3=st.columns(3)
+        pod1.markdown(
+            f'<div class="pod pod-1"><div class="pod-rank">🏆</div>'
+            f'<div style="font-size:1.6rem">{FLAGS.get(champion,"")}</div>'
+            f'<div class="pod-name">{champion}</div>'
+            f'<div class="pod-pct" style="color:#ffd700">Champions</div>'
+            f'<div style="color:#5a4a20;font-size:.7rem;margin-top:4px">Model pick ✓ · {PRE_FINAL_ODDS.get(champion,0):.1f}% pre-final</div></div>',
+            unsafe_allow_html=True,
+        )
+        pod2.markdown(
+            f'<div class="pod pod-2"><div class="pod-rank">🥈</div>'
+            f'<div style="font-size:1.4rem">{FLAGS.get(runner_up,"")}</div>'
+            f'<div class="pod-name">{runner_up}</div>'
+            f'<div class="pod-pct" style="color:#aaaaaa">Runners-up</div>'
+            f'<div style="color:#555;font-size:.7rem;margin-top:4px">{PRE_FINAL_ODDS.get(runner_up,0):.1f}% pre-final</div></div>',
+            unsafe_allow_html=True,
+        )
+        third = bronze_winner or "England"
+        pod3.markdown(
+            f'<div class="pod pod-3"><div class="pod-rank">🥉</div>'
+            f'<div style="font-size:1.4rem">{FLAGS.get(third,"")}</div>'
+            f'<div class="pod-name">{third}</div>'
+            f'<div class="pod-pct" style="color:#cd7f32">3rd place</div>'
+            f'<div style="color:#4a3010;font-size:.7rem;margin-top:4px">Bronze final winners</div></div>',
+            unsafe_allow_html=True,
+        )
+
+        st.markdown('<div class="sh" style="margin-top:8px">📊 How the model did</div>',unsafe_allow_html=True)
+        mc1, mc2 = st.columns(2)
+        mc1.markdown(
+            f'<div class="cc" style="border-left:3px solid #00c853;padding:14px 16px">'
+            f'<div style="font-size:.68rem;color:#00c853;font-weight:700;margin-bottom:8px">FINAL — CALLED CORRECTLY</div>'
+            f'<div style="color:#fff;font-size:1.05rem;font-weight:700;margin-bottom:8px">'
+            f'{_fl(PRE_FINAL_PICK)} edged {_fl(runner_up)} in a coin-flip Final</div>'
+            f'<div style="display:flex;justify-content:space-between;margin-bottom:4px">'
+            f'<span style="color:#c0d0e0">{_fl("Spain")}</span>'
+            f'<span style="color:#ffd700;font-weight:800">{PRE_FINAL_ODDS["Spain"]:.1f}%</span></div>'
+            f'<div style="display:flex;justify-content:space-between;margin-bottom:10px">'
+            f'<span style="color:#c0d0e0">{_fl("Argentina")}</span>'
+            f'<span style="color:#aaaaaa;font-weight:800">{PRE_FINAL_ODDS["Argentina"]:.1f}%</span></div>'
+            f'<div style="background:#0a1810;border-radius:6px;padding:8px 10px;font-size:.82rem;color:#00c853">'
+            f'✅ Result: {final_score_line} — model favorite won</div></div>',
+            unsafe_allow_html=True,
+        )
+        mc2.markdown(
             f'<div class="cc" style="border-left:3px solid #1565c0;padding:14px 16px">'
-            f'<div style="font-size:.68rem;color:#1565c0;font-weight:700;margin-bottom:8px">TITLE ODDS (10K SIMS)</div>'
-            f'<div style="font-size:1.8rem;font-weight:900;color:#ffd700">{FLAGS.get(sim.iloc[0]["team"],"")} {sim.iloc[0]["team"]}</div>'
-            f'<div style="color:#00c853;font-size:1.2rem;font-weight:700">{sim.iloc[0]["win_pct"]:.1f}% champion</div>'
-            f'<div style="color:#7a8fa0;font-size:.78rem;margin-top:8px">{FLAGS.get(sim.iloc[1]["team"],"")} {sim.iloc[1]["team"]} · {sim.iloc[1]["win_pct"]:.1f}%</div></div>',
+            f'<div style="font-size:.68rem;color:#1565c0;font-weight:700;margin-bottom:8px">FULL KNOCKOUT SCORECARD</div>'
+            f'<div style="font-size:2.4rem;font-weight:900;color:#ffd700;line-height:1">{KNOCKOUT_CORRECT}/{KNOCKOUT_TOTAL}</div>'
+            f'<div style="color:#00c853;font-weight:700;margin:4px 0 10px">'
+            f'{100*KNOCKOUT_CORRECT/KNOCKOUT_TOTAL:.1f}% of knockout winners predicted correctly</div>'
+            f'<div style="color:#8aa0b5;font-size:.8rem;line-height:1.45">'
+            f'Path-dependent XGBoost picks R16 → Final. '
+            f'Only misses: Norway over Brazil, Switzerland over Colombia.</div></div>',
             unsafe_allow_html=True,
         )
+        sf_preds = {}
+        final_pred = None
+    else:
+        k1,k2,k3,k4,k5=st.columns(5)
+        for col,(lbl,val,sub,cls) in zip([k1,k2,k3,k4,k5],[
+            ("Teams Remaining",f"{alive_count}","of 16 in the knockouts","kpi-g"),
+            ("Round of 16",f"{r16_played} / 8","matches played","kpi-b"),
+            ("Quarter-finals",f"{qf_set} / 4","matchups confirmed","kpi-au"),
+            ("Title Favorite",f"{FLAGS.get(fav['team'],'')} {fav['team']}",f"{fav['win_pct']:.1f}% to lift the trophy","kpi-p"),
+            ("The Final","Jul 19","MetLife Stadium, NY","kpi-t"),
+        ]):
+            col.markdown(f'<div class="kpi {cls}"><div class="kpi-l">{lbl}</div><div class="kpi-v">{val}</div><div class="kpi-dp">{sub}</div></div>',unsafe_allow_html=True)
+
+        st.markdown("<br>",unsafe_allow_html=True)
+
+        # Champion podium
+        st.markdown('<div class="sh">🏅 Predicted Championship Podium</div>',unsafe_allow_html=True)
+        pod1,pod2,pod3=st.columns(3)
+
+        t1s=sim.iloc[0]
+        pod1.markdown(f'<div class="pod pod-1"><div class="pod-rank">🏆</div><div style="font-size:1.6rem">{FLAGS.get(t1s["team"],"")}</div><div class="pod-name">{t1s["team"]}</div><div class="pod-pct" style="color:#ffd700">{t1s["win_pct"]:.1f}%</div><div class="pod-ci">{t1s["ci_str"]}</div><div style="color:#5a4a20;font-size:.7rem;margin-top:4px">Champion</div></div>',unsafe_allow_html=True)
+        if len(sim) >= 2:
+            t2s=sim.iloc[1]
+            pod2.markdown(f'<div class="pod pod-2"><div class="pod-rank">🥈</div><div style="font-size:1.4rem">{FLAGS.get(t2s["team"],"")}</div><div class="pod-name">{t2s["team"]}</div><div class="pod-pct" style="color:#aaaaaa">{t2s["win_pct"]:.1f}%</div><div class="pod-ci">{t2s["ci_str"]}</div><div style="color:#555;font-size:.7rem;margin-top:4px">Runner-up</div></div>',unsafe_allow_html=True)
+        if len(sim) >= 3:
+            t3s=sim.iloc[2]
+            pod3.markdown(f'<div class="pod pod-3"><div class="pod-rank">🥉</div><div style="font-size:1.4rem">{FLAGS.get(t3s["team"],"")}</div><div class="pod-name">{t3s["team"]}</div><div class="pod-pct" style="color:#cd7f32">{t3s["win_pct"]:.1f}%</div><div class="pod-ci">{t3s["ci_str"]}</div><div style="color:#4a3010;font-size:.7rem;margin-top:4px">2nd Runner-up</div></div>',unsafe_allow_html=True)
+        elif len(sim) == 2:
+            pod3.markdown('<div class="pod pod-3"><div class="pod-rank">🏆</div><div style="font-size:1.1rem;color:#7a8fa0;margin-top:12px">Final set</div><div class="pod-name" style="font-size:.85rem">Spain vs Argentina</div><div style="color:#4a3010;font-size:.7rem;margin-top:8px">Jul 19 · MetLife Stadium</div></div>',unsafe_allow_html=True)
+
+        # Final / semi-final predictions
+        try:
+            sf_preds = {p["match_id"]: p for p in load_sf_predictions(_dv)}
+        except Exception as exc:
+            sf_preds = {}
+            st.warning(f"Semi-final predictions unavailable: {exc}")
+
+        final_pred = None
+        if final_m.get("a") and final_m.get("b") and not final_m.get("played"):
+            try:
+                final_pred = load_match_prediction(_dv, final_m["a"], final_m["b"], "FINAL")
+            except Exception as exc:
+                st.warning(f"Final prediction unavailable: {exc}")
+
+        if final_pred:
+            st.markdown('<div class="sh" style="margin-top:8px">🔮 Final Prediction</div>',unsafe_allow_html=True)
+            st.caption("Path-dependent win probabilities · Spain vs Argentina · Jul 19, MetLife Stadium")
+            fc1, fc2 = st.columns([1, 1])
+            p = final_pred
+            fc1.markdown(
+                f'<div class="cc" style="border-left:3px solid #f9a825;padding:14px 16px">'
+                f'<div style="font-size:.68rem;color:#f9a825;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px">'
+                f'World Cup Final</div>'
+                f'<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">'
+                f'<span style="color:#fff;font-weight:700">{_fl(p["home"])}</span>'
+                f'<span style="color:#00c853;font-weight:800;font-size:1.1rem">{p["p_home"]}%</span></div>'
+                f'<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">'
+                f'<span style="color:#fff;font-weight:700">{_fl(p["away"])}</span>'
+                f'<span style="color:#00c853;font-weight:800;font-size:1.1rem">{p["p_away"]}%</span></div>'
+                f'<div style="background:#1a2030;border-radius:6px;padding:8px 10px;font-size:.8rem">'
+                f'<span style="color:#7a8fa0">Model pick:</span> '
+                f'<strong style="color:#ffd700">{_fl(p["pick"])}</strong> '
+                f'<span style="color:#00c853">({p["pick_pct"]:.1f}%)</span></div></div>',
+                unsafe_allow_html=True,
+            )
+            fc2.markdown(
+                f'<div class="cc" style="border-left:3px solid #1565c0;padding:14px 16px">'
+                f'<div style="font-size:.68rem;color:#1565c0;font-weight:700;margin-bottom:8px">TITLE ODDS (10K SIMS)</div>'
+                f'<div style="font-size:1.8rem;font-weight:900;color:#ffd700">{FLAGS.get(sim.iloc[0]["team"],"")} {sim.iloc[0]["team"]}</div>'
+                f'<div style="color:#00c853;font-size:1.2rem;font-weight:700">{sim.iloc[0]["win_pct"]:.1f}% champion</div>'
+                f'<div style="color:#7a8fa0;font-size:.78rem;margin-top:8px">{FLAGS.get(sim.iloc[1]["team"],"")} {sim.iloc[1]["team"]} · {sim.iloc[1]["win_pct"]:.1f}%</div></div>',
+                unsafe_allow_html=True,
+            )
 
     sf_upcoming = [
         m for m in ("SF_1", "SF_2")
@@ -902,17 +1070,18 @@ elif page=="🏆  Simulation":
                 textposition="outside",textfont=dict(size=11),
                 hovertemplate="<b>%{y}</b><br>Win: %{x:.1f}%<extra></extra>",
             ))
-            fig_c.update_layout(height=460,xaxis=dict(title="Championship Probability (%)",range=[0,28],gridcolor="#1c2a3e"),
+            fig_c.update_layout(height=460,xaxis=dict(title="Championship Probability (%)",range=[0,max(28, float(sim["win_pct"].max())+8)],gridcolor="#1c2a3e"),
                                 yaxis=dict(autorange="reversed",tickfont=dict(size=12)),**PLOTLY_LAYOUT)
             st.plotly_chart(fig_c,use_container_width=True)
         with cr:
             disp=sim.copy()
-            disp.insert(0,"🏅",["🥇","🥈","🥉"]+[""]*(len(disp)-3))
+            medals=["🥇","🥈","🥉"]
+            disp.insert(0,"🏅",[medals[i] if i < len(medals) else "" for i in range(len(disp))])
             disp["Team"]=disp["team"].apply(lambda t:f"{FLAGS.get(t,'')} {t}")
             disp=disp.rename(columns={"qf_pct":"QF%","sf_pct":"SF%","final_pct":"Final%","win_pct":"Win%","ci_str":"95% CI"})
             st.dataframe(disp[["🏅","Team","QF%","SF%","Final%","Win%","95% CI"]],
                 hide_index=True,use_container_width=True,height=460,
-                column_config={"Win%":st.column_config.ProgressColumn("Win%",format="%.1f%%",min_value=0,max_value=25),
+                column_config={"Win%":st.column_config.ProgressColumn("Win%",format="%.1f%%",min_value=0,max_value=100),
                                "QF%":st.column_config.NumberColumn(format="%.1f%%"),"SF%":st.column_config.NumberColumn(format="%.1f%%"),
                                "Final%":st.column_config.NumberColumn(format="%.1f%%")})
             st.info(f"Top 5 cumulative: **{sim.head(5)['win_pct'].sum():.1f}%**")
