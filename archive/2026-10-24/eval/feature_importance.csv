@@ -1,0 +1,31 @@
+feature,display_name,importance
+h2h_goal_diff,Head-to-Head Goal Diff,0.105994515
+points_diff,FIFA Points Difference,0.105313264
+rank_diff,FIFA Ranking Difference,0.09261731
+h2h_win_rate,Head-to-Head Win Rate,0.04632698
+home_form_goal_diff,Home Recent Goal Diff (10 matches),0.041681256
+away_form_goal_diff,Away Recent Goal Diff (10 matches),0.03964999
+neutral,Neutral Venue,0.03857497
+home_wc_appearances,Home World Cup Appearances,0.03504873
+home_form_goals_conceded,Home Form Goals Conceded,0.03373618
+away_wc_best_finish,Away WC Best Finish,0.02945965
+away_wc_appearances,Away World Cup Appearances,0.029427242
+away_form_goals_conceded,Away Form Goals Conceded,0.027890276
+away_fifa_points,Away FIFA Points,0.026665397
+away_fifa_rank,Away FIFA Rank,0.026587525
+home_wc_best_finish,Home WC Best Finish,0.024272531
+away_form_win_pct,Away Form Win Rate (10 matches),0.023460506
+home_fifa_points,Home FIFA Points,0.023133459
+home_fifa_rank,Home FIFA Rank,0.022942588
+away_elo_rating,Away Elo Rating,0.02180289
+elo_diff,Elo Rating Difference,0.020693718
+away_wc_titles,Away World Cup Titles,0.020101711
+same_conf,Same Confederation,0.020065932
+home_elo_rating,Home Elo Rating,0.01939423
+home_wc_titles,Home World Cup Titles,0.01937346
+home_form_win_pct,Home Form Win Rate (10 matches),0.019193906
+away_form_goals_scored,Away Form Goals Scored,0.018343598
+match_importance,Match Importance Score,0.01770583
+home_form_goals_scored,Home Form Goals Scored,0.017094558
+home_form_clean_sheet_pct,Home Clean Sheet Rate,0.016898204
+away_form_clean_sheet_pct,Away Clean Sheet Rate,0.016549569
